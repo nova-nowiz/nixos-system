@@ -44,7 +44,6 @@
       akonadi
       dotnet-sdk
       dotnet-netcore
-      mono6
       idea.idea-ultimate
       vscode
       #vscodium

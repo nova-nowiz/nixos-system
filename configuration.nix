@@ -298,7 +298,7 @@
     users = {
       narice = {
         isNormalUser = true;
-        extraGroups = [ "wheel" "vboxusers" "docker" "jackaudio" "audio" ]; # Enable ‘sudo’ for the user.
+        extraGroups = [ "wheel" "vboxusers" "kvm" "libvirtd" "docker" "jackaudio" "audio" ]; # Enable ‘sudo’ for the user.
       };
       monasbook = {
         isNormalUser = true;

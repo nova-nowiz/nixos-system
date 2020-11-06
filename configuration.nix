@@ -285,6 +285,8 @@
 
   virtualisation = {
     virtualbox.host.enable = true;
+    kvmgt.enable = true;
+    libvirtd.enable = true;
     docker.enable = true;
     podman = {
       enable = true;

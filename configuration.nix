@@ -115,11 +115,6 @@
 
     teamviewer.enable = true;
 
-    postgresql = {
-      enable = true;
-      package = pkgs.postgresql_13;
-    };
-
     jack = {
       jackd.enable = true;
       # support ALSA only programs via ALSA JACK PCM plugin

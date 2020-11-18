@@ -9,7 +9,6 @@
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
       ./themes.nix
-      #./home.nix
       #<musnix> #You have to install musnix: sudo -i nix-channel --add https://github.com/musnix/musnix/archive/master.tar.gz musnix && sudo -i nix-channel --update musnix
     ];
 
@@ -24,7 +23,7 @@
     extraModulePackages = with config.boot.kernelPackages; [
       v4l2loopback
     ];
-    plymouth.enable = true;
+    #plymouth.enable = true;
   };
 
   networking = {
@@ -89,15 +88,6 @@
     ubuntu_font_family
   ];
 
-  # Some programs need SUID wrappers, can be configured further or are
-  # started in user sessions.
-  # programs.mtr.enable = true;
-  # programs.gnupg.agent = {
-  #   enable = true;
-  #   enableSSHSupport = true;
-  #   pinentryFlavor = "gnome3";
-  # };
-
   # List services that you want to enable:
 
   services = {
@@ -129,22 +119,14 @@
       };
     };
 
-    # Enable the X11 windowing system.
-    # xserver.enable = true;
-    # xserver.layout = "us";
-    # xserver.xkbOptions = "eurosign:e";
-
-    # Enable touchpad support.
-    xserver.libinput.enable = true;
-
     gnome3.gnome-keyring.enable = true;
-
-    # Enable the KDE Desktop Environment.
-    # xserver.displayManager.sddm.enable = true;
-    # xserver.desktopManager.plasma5.enable = true;
 
     xserver = {
       enable = true;
+      # layout = "us";
+      # xkbOptions = "eurosign:e";
+
+      libinput.enable = true;
 
       desktopManager = {
         xterm.enable = false;
@@ -235,14 +217,31 @@
     zsh = {
       enable = true;
     };
+
+    # Some programs need SUID wrappers, can be configured further or are
+    # started in user sessions.
+    # mtr.enable = true;
+    # gnupg.agent = {
+    #   enable = true;
+    #   enableSSHSupport = true;
+    #   pinentryFlavor = "gnome3";
+    # };
   };
 
   # Enable sound.
   sound.enable = true;
-  hardware.pulseaudio = {
-    enable = true;
-    package = pkgs.pulseaudio.override { jackaudioSupport = true; };
-    support32Bit = true;
+  hardware = {
+    pulseaudio = {
+      enable = true;
+      package = pkgs.pulseaudio.override { jackaudioSupport = true; };
+      support32Bit = true;
+    };
+
+    opengl = {
+      extraPackages = with pkgs; [ amdvlk ];
+      driSupport32Bit = true;
+      extraPackages32 = with pkgs.pkgsi686Linux; [ libva ];
+    };
   };
 
   #musnix = {
@@ -253,12 +252,6 @@
   #  #  realtime = true;
   #  #};
   #};
-
-  hardware.opengl = {
-    extraPackages = with pkgs; [ amdvlk ];
-    driSupport32Bit = true;
-    extraPackages32 = with pkgs.pkgsi686Linux; [ libva ];
-  };
 
   systemd = {
     extraConfig = "DefaultLimitNOFILE=524288";
@@ -296,6 +289,7 @@
         isNormalUser = true;
         extraGroups = [ "wheel" "vboxusers" "kvm" "libvirtd" "docker" "jackaudio" "audio" ]; # Enable ‘sudo’ for the user.
       };
+
       monasbook = {
         isNormalUser = true;
         extraGroups = [ "vboxusers" "jackaudio" "audio" ];
@@ -312,6 +306,4 @@
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   system.stateVersion = "20.09"; # Did you read the comment?
-
 }
-

@@ -23,7 +23,7 @@
     extraModulePackages = with config.boot.kernelPackages; [
       v4l2loopback
     ];
-    #plymouth.enable = true;
+    plymouth.enable = true;
   };
 
   networking = {
@@ -34,7 +34,7 @@
     # Per-interface useDHCP will be mandatory in the future, so this generated config
     # replicates the default behaviour.
     useDHCP = false;
-    interfaces.enp5s0.useDHCP = true;
+    interfaces.eno1.useDHCP = true;
     dhcpcd.wait = "background";
 
     # Configure network proxy if necessary

@@ -63,7 +63,7 @@
       ghostscript
       gnumake
       godot
-      grimshot
+      sway-contrib.grimshot
       hardinfo
       imagemagick
       karchive

@@ -66,8 +66,8 @@
       sway-contrib.grimshot
       hardinfo
       imagemagick
-      karchive
-      kontact
+      kdeFrameworks.karchive
+      kdeApplications.kontact
       krita
       lm-sensors
       love
@@ -85,7 +85,7 @@
       obs-studio
       obs-wlrobs
       ocaml
-      okular
+      kdeApplications.okular
       olive-editor
       opam
       openjdk14
@@ -94,7 +94,6 @@
       psensor
       python39Full
       qjackctl
-      qttools
       radeon-profile
       rustup
       saxon
@@ -103,7 +102,7 @@
       unzip
       vagrant
       wine
-      xev
+      xorg.xev
       xournalpp
       zathura
       zip

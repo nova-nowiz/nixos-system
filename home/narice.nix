@@ -49,7 +49,6 @@
       #vscodium
       podman-compose
       docker-compose
-      apache-maven
       audacity
       bat
       cadence
@@ -76,6 +75,7 @@
       love
       lua
       lxappearance
+      maven
       MellowPlayer
       mono
       ninja

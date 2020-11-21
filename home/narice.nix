@@ -49,6 +49,66 @@
       #vscodium
       podman-compose
       docker-compose
+      apache-maven
+      audacity
+      bat
+      cadence
+      conan
+      corectrl
+      cmake
+      elm
+      elm-format
+      exfat
+      feh
+      flameshot
+      gcc
+      ghc
+      ghostscript
+      gnumake
+      godot
+      grimshot
+      hardinfo
+      imagemagick
+      karchive
+      kontact
+      krita
+      lm-sensors
+      love
+      lua
+      lxappearance
+      MellowPlayer
+      mono
+      ninja
+      nix-index
+      nix-prefetch-github
+      nmap
+      nodejs
+      ntfs3g
+      obs-studio
+      obs-wlrobs
+      ocaml
+      okular
+      olive-editor
+      opam
+      openjdk14
+      pciutils
+      perl
+      psensor
+      python39Full
+      qjackctl
+      qttools
+      radeon-profile
+      rustup
+      saxon
+      scons
+      tree
+      unzip
+      vagrant
+      wine
+      xev
+      xournalpp
+      zathura
+      zip
   ];
 
   programs.direnv.enable = true;

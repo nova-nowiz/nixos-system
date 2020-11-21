@@ -55,8 +55,6 @@
       conan
       corectrl
       cmake
-      elm
-      elm-format
       exfat
       feh
       flameshot

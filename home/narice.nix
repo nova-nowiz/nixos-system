@@ -69,16 +69,16 @@
       kdeFrameworks.karchive
       kdeApplications.kontact
       krita
-      lm-sensors
+      lm_sensors
       love
       lua
       lxappearance
       maven
-      MellowPlayer
+      mellowplayer
       mono
       ninja
       nix-index
-      nix-prefetch-github
+      nix-prefetch
       nmap
       nodejs
       ntfs3g

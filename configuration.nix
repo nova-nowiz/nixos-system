@@ -18,6 +18,10 @@
       systemd-boot.enable = true;
       efi.canTouchEfiVariables = true;
     };
+    kernel.sysctl = {
+      "vm.max_map_count" = 262144;
+      "fs.file-max" = 65536;
+    };
     kernelModules = [ "snd-seq" "snd-rawmidi" ];
     initrd.kernelModules = [ "amdgpu" ];
     extraModulePackages = with config.boot.kernelPackages; [

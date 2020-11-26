@@ -41,7 +41,6 @@
       minecraft
       teams
       aseprite
-      akonadi
       dotnet-sdk
       dotnet-netcore
       idea.idea-ultimate
@@ -66,8 +65,6 @@
       sway-contrib.grimshot
       hardinfo
       imagemagick
-      kdeFrameworks.karchive
-      kdeApplications.kontact
       krita
       lm_sensors
       love

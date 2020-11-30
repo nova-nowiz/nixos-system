@@ -123,7 +123,10 @@
       };
     };
 
-    gnome3.gnome-keyring.enable = true;
+    gnome3 = {
+      gnome-keyring.enable = true;
+      evolution-data-server.enable = true;
+    };
 
     xserver = {
       enable = true;

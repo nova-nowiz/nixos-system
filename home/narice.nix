@@ -54,6 +54,7 @@
       conan
       corectrl
       cmake
+      gnome3.evolution
       exfat
       feh
       flameshot
@@ -105,8 +106,19 @@
       zip
   ];
 
-  programs.direnv.enable = true;
-  programs.direnv.enableNixDirenvIntegration = true;
+  programs = {
+    direnv = {
+      enable = true;
+      enableNixDirenvIntegration = true;
+    };
+  };
+
+  services = {
+    kdeconnect = {
+      enable = true;
+      indicator = true;
+    };
+  };
 
   # This value determines the Home Manager release that your
   # configuration is compatible with. This helps avoid breakage

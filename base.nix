@@ -32,14 +32,12 @@
   };
 
   networking = {
-    hostName = "narice-pc"; # Define your hostname.
     #wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
     # The global useDHCP flag is deprecated, therefore explicitly set to false here.
     # Per-interface useDHCP will be mandatory in the future, so this generated config
     # replicates the default behaviour.
     useDHCP = false;
-    interfaces.eno1.useDHCP = true;
     dhcpcd.wait = "background";
 
     # Configure network proxy if necessary
@@ -200,7 +198,7 @@
           alacritty
           firefox
           gparted
-          cinnamon.nemo
+          kdeApplications.dolphin
           gnome3.gnome-calculator
           libreoffice-fresh
           adapta-gtk-theme
@@ -229,7 +227,7 @@
         alacritty
         firefox
         gparted
-        cinnamon.nemo
+        kdeApplications.dolphin
         gnome3.gnome-calculator
         libreoffice-fresh
         adapta-gtk-theme
@@ -322,7 +320,7 @@
 
       monasbook = {
         isNormalUser = true;
-        extraGroups = [ "vboxusers" "jackaudio" "audio" ];
+        extraGroups = [ "vboxusers" "kvm" "libvirtd" "jackaudio" "audio" ];
       };
     };
 

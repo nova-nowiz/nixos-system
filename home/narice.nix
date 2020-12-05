@@ -17,7 +17,6 @@
       ranger
       neovim
       discord
-      #ripcord
       exa
       bottom
       dust
@@ -45,12 +44,10 @@
       dotnet-netcore
       idea.idea-ultimate
       vscode
-      #vscodium
       podman-compose
       docker-compose
       audacity
       bat
-      cadence
       conan
       corectrl
       cmake

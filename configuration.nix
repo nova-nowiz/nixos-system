@@ -170,8 +170,8 @@
         sddm = {
           enable = true;
           extraConfig = ''
-            [Autologin]
-            User=narice
+            #[Autologin]
+            #User=narice
             [Theme]
             FacesDir=/etc/nixos/assets/faces
           '';

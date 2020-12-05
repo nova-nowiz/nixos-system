@@ -15,6 +15,7 @@
   # Use the systemd-boot EFI boot loader.
   boot = {
     loader = {
+      timeout = null;
       systemd-boot.enable = true;
       efi.canTouchEfiVariables = true;
     };
@@ -22,7 +23,7 @@
       "vm.max_map_count" = 262144;
       "fs.file-max" = 65536;
     };
-    kernelModules = [ "snd-seq" "snd-rawmidi" ];
+    kernelModules = [ "kvm-amd" "snd-seq" "snd-rawmidi" ];
     initrd.kernelModules = [ "amdgpu" ];
     extraModulePackages = with config.boot.kernelPackages; [
       v4l2loopback
@@ -165,12 +166,14 @@
       };
 
       displayManager = {
-        defaultSession = "plasma+i3";
+        defaultSession = "plasma5+i3";
         sddm = {
           enable = true;
           extraConfig = ''
+            [Autologin]
+            User=narice
             [Theme]
-            FacesDir="/etc/nixos/assets/faces"
+            FacesDir=/etc/nixos/assets/faces
           '';
         };
       };

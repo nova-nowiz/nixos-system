@@ -23,7 +23,6 @@
       fd
       ripgrep
       ripgrep-all
-      korganizer
       hunspell
       hunspellDicts.en-us
       hunspellDicts.fr-any
@@ -47,6 +46,7 @@
       podman-compose
       docker-compose
       audacity
+      ark
       bat
       conan
       corectrl
@@ -80,7 +80,24 @@
       obs-studio
       obs-wlrobs
       ocaml
+      kdeApplications.akonadi
+      kdeApplications.akonadi-calendar
+      kdeApplications.akonadi-contacts
+      kdeApplications.akonadi-import-wizard
+      kdeApplications.akonadi-mime
+      kdeApplications.akonadi-notes
+      kdeApplications.akonadi-search
+      kdeApplications.calendarsupport
       kdeApplications.okular
+      kdeApplications.kalarm
+      kdeApplications.kalarmcal
+      kdeApplications.kdeconnect-kde
+      kdeApplications.kidentitymanagement
+      kdeApplications.kmail
+      kdeApplications.kmailtransport
+      kdeApplications.kontact
+      kdeApplications.korganizer
+      kdeApplications.ksmtp
       olive-editor
       opam
       openjdk14
@@ -94,6 +111,7 @@
       saxon
       scons
       tree
+      unar
       unzip
       vagrant
       vlc

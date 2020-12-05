@@ -166,14 +166,12 @@
       };
 
       displayManager = {
-        defaultSession = "plasma5+i3";
+        defaultSession = "i3";
         sddm = {
           enable = true;
           extraConfig = ''
-            #[Autologin]
-            #User=narice
-            [Theme]
-            FacesDir=/etc/nixos/assets/faces
+            [Autologin]
+            User=narice
           '';
         };
       };

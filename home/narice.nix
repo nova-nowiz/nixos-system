@@ -96,6 +96,7 @@
       tree
       unzip
       vagrant
+      vlc
       wine
       xorg.xev
       xournalpp

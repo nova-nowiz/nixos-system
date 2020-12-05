@@ -77,6 +77,7 @@
       nmap
       nodejs
       ntfs3g
+      mpv
       obs-studio
       obs-wlrobs
       ocaml

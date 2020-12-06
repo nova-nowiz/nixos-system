@@ -164,12 +164,12 @@
       };
 
       displayManager = {
-        defaultSession = "i3";
         sddm = {
           enable = true;
           extraConfig = ''
             [Autologin]
             User=narice
+            Session=plasma5+i3.desktop
           '';
         };
       };

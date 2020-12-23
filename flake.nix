@@ -22,7 +22,7 @@
           #"nvidia-persistenced"
       "teamviewer"
 
-      # Narice Unfree Packages
+      # Users Unfree Packages
           "discord"
           "steam"
           "steam-original"
@@ -67,6 +67,7 @@
             home-manager = {
               useGlobalPkgs = true;
               users.narice = import home/narice.nix;
+              users.monasbook = import home/monasbook.nix;
             };
           })
         ];

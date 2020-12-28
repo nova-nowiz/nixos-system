@@ -62,6 +62,17 @@
       zip
   ];
 
+  nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
+    # Users Unfree Packages
+    "discord"
+    "steam"
+    "steam-original"
+    "steam-runtime"
+    "minecraft-launcher"
+    "teams"
+    "vscode"
+  ];
+
   programs = {
     direnv = {
       enable = true;

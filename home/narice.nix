@@ -18,8 +18,8 @@
       neovim
       discord
       exa
-      bottom
-      dust
+      #bottom # not in 20.09
+      #dust
       fd
       ripgrep
       ripgrep-all
@@ -49,7 +49,7 @@
       ark
       bat
       conan
-      corectrl
+      #corectrl # not in 20.09
       cmake
       gnome3.evolution
       exfat
@@ -101,7 +101,7 @@
       kdeApplications.ksmtp
       olive-editor
       opam
-      openjdk14
+      jdk
       pciutils
       perl
       psensor
@@ -121,6 +121,18 @@
       xournalpp
       zathura
       zip
+  ];
+
+  nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
+    # Users Unfree Packages
+    "discord"
+    "steam"
+    "steam-original"
+    "steam-runtime"
+    "minecraft-launcher"
+    "teams"
+    "idea-ultimate"
+    "vscode"
   ];
 
   programs = {

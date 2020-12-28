@@ -1,43 +1,46 @@
 {
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+    nixos-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
 
-    unstable.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
+    nixos-unstable-small.url = "github:NixOS/nixpkgs/nixos-unstable-small";
 
-    home-manager = {
+    nixos-20-09.url = "github:NixOS/nixpkgs/nixos-20.09";
+
+    nixos-20-09-small.url = "github:NixOS/nixpkgs/nixos-20.09-small";
+
+    nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
+
+    home-manager-unstable = {
       url = "github:nix-community/home-manager/master";
-      inputs.nixpkgs.follows = "/unstable";
+      inputs.nixpkgs.follows = "/nixos-unstable";
+    };
+
+    home-manager-20-09 = {
+      url = "github:nix-community/home-manager/release-20.09";
+      inputs.nixpkgs.follows = "/nixos-20-09";
     };
   };
 
   outputs = inputs:
   let
-    pkgs = import inputs.unstable {
+    os = inputs.nixos-20-09;
+    hm = inputs.home-manager-20-09;
+    pkgs = import os {
       system = "x86_64-linux";
       config = {
-        allowUnfreePredicate = pkg: builtins.elem (inputs.unstable.lib.getName pkg) [
-      # System Unfree Packages
+        allowUnfreePredicate = pkg: builtins.elem (os.lib.getName pkg) [
+          # System Unfree Packages
           #"nvidia-x11"
           #"nvidia-settings"
           #"nvidia-persistenced"
-      "teamviewer"
-
-      # Users Unfree Packages
-          "discord"
-          "steam"
-          "steam-original"
-          "steam-runtime"
-          "minecraft-launcher"
-          "teams"
-          "idea-ultimate"
-          "vscode"
+          "teamviewer"
         ];
       };
     };
   in
   {
     nixosConfigurations = {
-      narice-pc = inputs.unstable.lib.nixosSystem {
+      narice-pc = os.lib.nixosSystem {
 
         system = "x86_64-linux";
 
@@ -48,7 +51,7 @@
         modules = [ 
           ./base.nix
 
-          inputs.home-manager.nixosModules.home-manager
+          hm.nixosModules.home-manager
 
           ({config, pkgs, lib, ...}:{
 
@@ -62,10 +65,9 @@
               then inputs.self.rev
               else throw "Refusing to build from a dirty Git tree";
 
-            nix.registry.nixpkgs.flake = inputs.unstable;
+            nix.registry.nixpkgs.flake = os;
 
             home-manager = {
-              useGlobalPkgs = true;
               users.narice = import home/narice.nix;
               users.monasbook = import home/monasbook.nix;
             };
@@ -73,7 +75,7 @@
         ];
       };
 
-      narice-hp = inputs.unstable.lib.nixosSystem {
+      narice-hp = os.lib.nixosSystem {
 
         system = "x86_64-linux";
 
@@ -84,7 +86,7 @@
         modules = [ 
           ./base.nix
 
-          inputs.home-manager.nixosModules.home-manager
+          hm.nixosModules.home-manager
 
           ({config, pkgs, lib, ...}:{
 
@@ -99,7 +101,7 @@
               then inputs.self.rev
               else throw "Refusing to build from a dirty Git tree";
 
-            nix.registry.nixpkgs.flake = inputs.unstable;
+            nix.registry.nixpkgs.flake = os;
 
             home-manager = {
               useGlobalPkgs = true;

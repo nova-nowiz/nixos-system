@@ -294,14 +294,17 @@
     user.extraConfig = "DefaultLimitNOFILE=524288";
   };
 
-  security.pam.loginLimits = [
-    {
-      domain = "narice";
-      type = "hard";
-      item = "nofile";
-      value = "524288";
-    }
-  ];
+  security.pam = {
+    services.sddm.enableGnomeKeyring = true;
+    loginLimits = [
+      {
+        domain = "narice";
+        type = "hard";
+        item = "nofile";
+        value = "524288";
+      }
+    ];
+  };
 
   xdg.portal = {
     enable = true;

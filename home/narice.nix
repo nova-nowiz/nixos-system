@@ -111,6 +111,7 @@
       rustup
       saxon
       scons
+      texlive.combined.scheme-tetex
       tree
       unar
       unzip

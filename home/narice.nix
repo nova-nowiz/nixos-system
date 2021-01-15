@@ -115,6 +115,7 @@
       unar
       unzip
       vagrant
+      virt-manager
       vlc
       wine
       xorg.xev

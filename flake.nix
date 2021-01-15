@@ -1,19 +1,19 @@
 {
   inputs = {
-    nixos-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
+    #nixos-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
 
-    nixos-unstable-small.url = "github:NixOS/nixpkgs/nixos-unstable-small";
+    #nixos-unstable-small.url = "github:NixOS/nixpkgs/nixos-unstable-small";
 
     nixos-20-09.url = "github:NixOS/nixpkgs/nixos-20.09";
 
-    nixos-20-09-small.url = "github:NixOS/nixpkgs/nixos-20.09-small";
+    #nixos-20-09-small.url = "github:NixOS/nixpkgs/nixos-20.09-small";
 
-    nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
+    #nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
 
-    home-manager-unstable = {
-      url = "github:nix-community/home-manager/master";
-      inputs.nixpkgs.follows = "/nixos-unstable";
-    };
+    #home-manager-unstable = {
+    #  url = "github:nix-community/home-manager/master";
+    #  inputs.nixpkgs.follows = "/nixos-unstable";
+    #};
 
     home-manager-20-09 = {
       url = "github:nix-community/home-manager/release-20.09";

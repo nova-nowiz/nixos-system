@@ -50,6 +50,7 @@
       bat
       conan
       #corectrl # not in 20.09
+      cloc
       cmake
       gnome3.evolution
       exfat
@@ -58,6 +59,7 @@
       gcc
       ghc
       ghostscript
+      git-crypt
       gnumake
       godot
       sway-contrib.grimshot
@@ -121,6 +123,7 @@
       wine
       xorg.xev
       xournalpp
+      youtube-dl
       zathura
       zip
   ];

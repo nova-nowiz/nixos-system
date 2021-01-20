@@ -45,8 +45,9 @@
       vscode
       podman-compose
       docker-compose
-      audacity
+      android-studio
       ark
+      audacity
       bat
       conan
       #corectrl # not in 20.09
@@ -130,6 +131,7 @@
 
   nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
     # Users Unfree Packages
+    "android-studio-stable"
     "discord"
     "steam"
     "steam-original"

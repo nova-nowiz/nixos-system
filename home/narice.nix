@@ -127,6 +127,7 @@
       youtube-dl
       zathura
       zip
+      zoom
   ];
 
   nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
@@ -140,6 +141,7 @@
     "teams"
     "idea-ultimate"
     "vscode"
+    "zoom"
   ];
 
   programs = {

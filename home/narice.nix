@@ -111,6 +111,7 @@
       python39Full
       qjackctl
       radeon-profile
+      razergenie
       rustup
       saxon
       scons

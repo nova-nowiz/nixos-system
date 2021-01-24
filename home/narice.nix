@@ -131,19 +131,33 @@
       zoom
   ];
 
-  nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
-    # Users Unfree Packages
-    "android-studio-stable"
-    "discord"
-    "steam"
-    "steam-original"
-    "steam-runtime"
-    "minecraft-launcher"
-    "teams"
-    "idea-ultimate"
-    "vscode"
-    "zoom"
-  ];
+  nixpkgs.config = {
+    allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
+      # Users Unfree Packages
+      "android-studio-stable"
+      "discord"
+      "steam"
+      "steam-original"
+      "steam-runtime"
+      "minecraft-launcher"
+      "teams"
+      "idea-ultimate"
+      "vscode"
+      "zoom"
+    ];
+
+    packageOverrides = super: {
+      razergenie = super.razergenie.overrideAttrs (old: {
+        version = "0.9.0";
+        src = super.fetchFromGitHub {
+          owner = "z3ntu";
+          repo = "RazerGenie";
+          rev = "v0.9.0";
+          sha256 = "17xlv26q8sdbav00wdm043449pg2424l3yaf8fvkc9rrlqkv13a4";
+        };
+      });
+    };
+  };
 
   programs = {
     direnv = {

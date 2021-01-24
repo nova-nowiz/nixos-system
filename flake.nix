@@ -35,6 +35,18 @@
           #"nvidia-persistenced"
           "teamviewer"
         ];
+
+        packageOverrides = super: {
+          openrazer-daemon = super.openrazer-daemon.overrideAttrs (old: {
+            version = "2.9.0";
+            src = super.fetchFromGitHub {
+              owner = "openrazer";
+              repo = "openrazer";
+              rev = "v2.9.0";
+              sha256 = "1js7hq7zx5kj99brffrfaaah283ydkffmmrzsxv4mkd3nnd6rykk";
+            };
+          });
+        };
       };
     };
   in

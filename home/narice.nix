@@ -27,7 +27,7 @@
       hunspellDicts.en-us
       hunspellDicts.fr-any
       pandoc
-      emacs
+      (emacs.override { withXwidgets = true; })
       htop
       keepassxc
       killall

@@ -108,7 +108,7 @@
       pciutils
       perl
       psensor
-      python39Full
+      (python39Full.withPackages(p: with p; [ pygments ]))
       qjackctl
       radeon-profile
       razergenie

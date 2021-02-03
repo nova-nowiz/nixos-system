@@ -117,23 +117,31 @@
       scons
       (texlive.combine
         { inherit (texlive) 
-          scheme-tetex
-          needspace
-          titlesec
-          titlepic
-          fontspec
-          latexmk
-          dvisvgm
-          wrapfig
           capt-of
+          catchfile
           chktex
+          dvisvgm
+          etoolbox
+          fancyvrb
+          float
+          fontspec
+          framed
+          fvextra
+          ifplatform
+          kvoptions
+          latexmk
+          lineno
           lipsum
           minted
-          fvextra
+          needspace
+          pdftexcmds
+          scheme-tetex
+          titlepic
+          titlesec
           upquote
-          catchfile
+          wrapfig
+          xcolor
           xstring
-          framed
         ;}
       )
       tree

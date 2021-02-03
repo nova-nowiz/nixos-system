@@ -115,7 +115,7 @@
       rustup
       saxon
       scons
-      (texlive.combine { inherit (texlive) scheme-tetex needspace titlesec titlepic fontspec latexmk dvisvgm wrapfig capt-of chktex lipsum minted; })
+      (texlive.combine { inherit (texlive) scheme-tetex needspace titlesec titlepic fontspec latexmk dvisvgm wrapfig capt-of chktex lipsum minted fvextra; })
       tree
       unar
       unzip

@@ -10,80 +10,49 @@
   home.homeDirectory = "/home/narice";
 
   home.packages = with pkgs; [
-      wget
-      git
-      tridactyl-native
-      fzf
-      ranger
-      neovim
-      discord
-      exa
-      #bottom # not in 20.09
-      #dust
-      fd
-      ripgrep
-      ripgrep-all
-      hunspell
-      hunspellDicts.en-us
-      hunspellDicts.fr-any
-      pandoc
-      (emacs.override { withXwidgets = true; })
-      htop
-      keepassxc
-      killall
-      rhythmbox
-      w3m
-      wev
-      steam
-      lutris
-      minecraft
-      teams
-      aseprite
-      dotnet-sdk
-      dotnet-netcore
-      idea.idea-ultimate
-      vscode
-      podman-compose
-      docker-compose
       android-studio
+      appimage-run
       ark
+      aseprite
       audacity
       bat
-      conan
-      #corectrl # not in 20.09
+      #bottom # not in 20.09
       cloc
       cmake
-      gnome3.evolution
+      conan
+      #corectrl # not in 20.09
+      discord
+      docker-compose
+      dotnet-netcore
+      dotnet-sdk
+      #dust
+      element-desktop
+      (emacs.override { withXwidgets = true; })
+      exa
       exfat
+      fd
       feh
+      ffmpeg
       flameshot
+      fzf
       gcc
       ghc
       ghostscript
+      git
       git-crypt
+      gnome3.evolution
+      gnome3.seahorse
       gnumake
       godot
-      sway-contrib.grimshot
       hardinfo
+      htop
+      hunspell
+      hunspellDicts.en-us
+      hunspellDicts.fr-any
+      idea.idea-ultimate
       imagemagick
-      krita
-      lm_sensors
-      love
-      lua
-      lxappearance
-      maven
-      mellowplayer
-      mono
-      ninja
-      nix-index
-      nix-prefetch
-      nmap
-      nodejs
-      ntfs3g
-      mpv
-      obs-studio
-      obs-wlrobs
-      ocaml
+      inkscape
+      jdk
       kdeApplications.akonadi
       kdeApplications.akonadi-calendar
       kdeApplications.akonadi-contacts
@@ -92,7 +61,6 @@
       kdeApplications.akonadi-notes
       kdeApplications.akonadi-search
       kdeApplications.calendarsupport
-      kdeApplications.okular
       kdeApplications.kalarm
       kdeApplications.kalarmcal
       kdeApplications.kdeconnect-kde
@@ -102,19 +70,58 @@
       kdeApplications.kontact
       kdeApplications.korganizer
       kdeApplications.ksmtp
+      kdeApplications.okular
+      keepassxc
+      killall
+      krita
+      libtool
+      lm_sensors
+      love
+      lua
+      lutris
+      lxappearance
+      maven
+      mellowplayer
+      minecraft
+      mono
+      mpv
+      neofetch
+      neovim
+      ninja
+      nix-index
+      nix-prefetch
+      nix-prefetch-github
+      nmap
+      nodejs
+      ntfs3g
+      obs-studio
+      obs-wlrobs
+      ocaml
       olive-editor
       opam
-      jdk
+      pandoc
       pciutils
+      peek
       perl
+      podman-compose
+      procs
       psensor
       (python39Full.withPackages(p: with p; [ pygments ]))
       qjackctl
       radeon-profile
+      ranger
       razergenie
+      rhythmbox
+      ripgrep
+      ripgrep-all
+      rnix-lsp
       rustup
       saxon
       scons
+      steam
+      sway-contrib.grimshot
+      tealdeer
+      teams
       (texlive.combine
         { inherit (texlive) 
           capt-of
@@ -144,13 +151,20 @@
           xstring
         ;}
       )
+      tokei
       tree
+      tridactyl-native
       unar
       unzip
       vagrant
       virt-manager
       vlc
+      vscode
+      w3m
+      wev
+      wget
       wine
+      xclip
       xorg.xev
       xournalpp
       youtube-dl

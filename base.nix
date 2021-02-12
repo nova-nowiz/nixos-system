@@ -128,6 +128,36 @@
       ];
     };
 
+    picom = {
+      enable = true;
+      backend = "glx";
+      fade = true;
+      vSync = true;
+      shadow = true;
+      shadowOffsets = [ 0 0 ];
+      inactiveOpacity = 0.8;
+      settings = {
+        experimental-backends = true;
+        corner-radius = 25;
+        round-borders = 1;
+        frame-opacity = 0.7;
+        blur = {
+          method = "kawase";
+          strength = 7;
+          background = false;
+          background-frame = false;
+          background-fixed = false;
+          kern = "3x3box";
+        };
+        mark-wmwin-focused = true;
+        detect-rounded-corners = true;
+        detect-client-opacity = true;
+        detect-transient = true;
+        detect-client-leader = true;
+        log-level = "info";
+      };
+    };
+
     teamviewer.enable = true;
 
     #jack = {
@@ -304,7 +334,10 @@
   };
 
   security.pam = {
-    services.sddm.enableGnomeKeyring = true;
+    services ={
+      sddm.enableGnomeKeyring = true;
+      kwallet.enableKwallet = true;
+    };
     loginLimits = [
       {
         domain = "narice";

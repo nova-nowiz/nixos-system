@@ -17,14 +17,11 @@
       audacity
       bat
       #bottom # not in 20.09
-      cloc
       cmake
       conan
       #corectrl # not in 20.09
       discord
       docker-compose
-      dotnet-netcore
-      dotnet-sdk
       #dust
       element-desktop
       (emacs.override { withXwidgets = true; })
@@ -35,12 +32,9 @@
       ffmpeg
       flameshot
       fzf
-      gcc
-      ghc
       ghostscript
       git
       git-crypt
-      gnome3.evolution
       gnome3.seahorse
       gnumake
       godot
@@ -49,7 +43,6 @@
       hunspell
       hunspellDicts.en-us
       hunspellDicts.fr-any
-      idea.idea-ultimate
       imagemagick
       inkscape
       jdk
@@ -76,14 +69,8 @@
       krita
       libtool
       lm_sensors
-      love
-      lua
-      lutris
-      lxappearance
-      maven
       mellowplayer
       minecraft
-      mono
       mpv
       neofetch
       neovim
@@ -102,7 +89,6 @@
       pandoc
       pciutils
       peek
-      perl
       podman-compose
       procs
       psensor
@@ -153,12 +139,9 @@
       )
       tokei
       tree
-      tridactyl-native
       unar
       unzip
-      vagrant
       virt-manager
-      vlc
       vscode
       w3m
       wev

@@ -132,23 +132,29 @@
       enable = true;
       backend = "glx";
       fade = true;
+      fadeDelta = 5;
       vSync = true;
-      shadow = true;
+      shadow = false;
       shadowOffsets = [ 0 0 ];
-      inactiveOpacity = 0.8;
+      inactiveOpacity = 0.6;
       settings = {
         experimental-backends = true;
-        corner-radius = 25;
+        corner-radius = 10;
+        rounded-corners-exclude = [
+          #"class_g = 'i3-frame'"
+          "class_g = 'plasmashell'"
+        ];
         round-borders = 1;
         frame-opacity = 0.7;
         blur = {
           method = "kawase";
-          strength = 7;
+          strength = 3;
           background = false;
           background-frame = false;
           background-fixed = false;
           kern = "3x3box";
         };
+        blur-background-exclude = [ "class_g = 'Peek'" ];
         mark-wmwin-focused = true;
         detect-rounded-corners = true;
         detect-client-opacity = true;

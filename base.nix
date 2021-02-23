@@ -136,7 +136,12 @@
       vSync = true;
       shadow = false;
       shadowOffsets = [ 0 0 ];
-      inactiveOpacity = 0.6;
+      opacityRules = [
+        # basically I'll have to put applications that are not references, but input things in there
+        "80:class_g = 'Alacritty' && !_NET_WM_STATE@:32a && !focused"
+        "80:class_g = 'Emacs' && !_NET_WM_STATE@:32a && !focused"
+        "0:_NET_WM_STATE@:32a *= '_NET_WM_STATE_HIDDEN'"
+      ];
       settings = {
         experimental-backends = true;
         corner-radius = 10;

@@ -181,6 +181,13 @@
           sha256 = "17xlv26q8sdbav00wdm043449pg2424l3yaf8fvkc9rrlqkv13a4";
         };
       });
+      teams = super.teams.overrideAttrs (old: {
+        version = "1.3.00.30857";
+        src = super.fetchurl {
+          url = "https://packages.microsoft.com/repos/ms-teams/pool/main/t/teams/teams_1.3.00.30857_amd64.deb";
+          sha256 = "06r48h1fr2si2g5ng8hsnbcmr70iapnafj21v5bzrzzrigzb2n2h";
+        };
+      });
     };
   };
 

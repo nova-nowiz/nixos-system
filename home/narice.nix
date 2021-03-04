@@ -21,6 +21,7 @@
       cmake
       conan
       #corectrl # not in 20.09
+      dbeaver
       discord
       docker-compose
       #dust

@@ -12,6 +12,7 @@
   home.packages = with pkgs; [
       android-studio
       appimage-run
+      ardour
       ark
       aseprite
       audacity
@@ -186,6 +187,13 @@
         src = super.fetchurl {
           url = "https://packages.microsoft.com/repos/ms-teams/pool/main/t/teams/teams_1.3.00.30857_amd64.deb";
           sha256 = "06r48h1fr2si2g5ng8hsnbcmr70iapnafj21v5bzrzzrigzb2n2h";
+        };
+      });
+      ardour = super.ardour.overrideAttrs (old: {
+        version = "6.5";
+        src = super.fetchgit {
+          url = "git://git.ardour.org/ardour/ardour.git";
+          sha256 = "0sd38hchyr16biq9hcxha4ljy3pf0yhcgn90i5zfqcznnc57ildx";
         };
       });
     };

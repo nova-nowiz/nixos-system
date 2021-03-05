@@ -88,6 +88,7 @@
       ocaml
       olive-editor
       opam
+      oracle-instantclient
       pandoc
       pciutils
       peek
@@ -163,12 +164,13 @@
       # Users Unfree Packages
       "android-studio-stable"
       "discord"
+      "idea-ultimate"
+      "minecraft-launcher"
+      "oracle-instantclient"
       "steam"
       "steam-original"
       "steam-runtime"
-      "minecraft-launcher"
       "teams"
-      "idea-ultimate"
       "vscode"
       "zoom"
     ];

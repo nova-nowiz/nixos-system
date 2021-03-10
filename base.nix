@@ -208,11 +208,11 @@
         sddm = {
           enable = true;
           # not available on unstable
-          extraConfig = ''
-            [Autologin]
-            User=narice
-            Session=plasma5+i3.desktop
-          '';
+          #extraConfig = ''
+          #  [Autologin]
+          #  User=narice
+          #  Session=plasma5+i3.desktop
+          #'';
           # not available on 20.09
           #settings = {
           #  Autologin = {

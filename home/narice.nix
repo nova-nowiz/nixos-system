@@ -48,6 +48,7 @@
       hunspellDicts.fr-any
       imagemagick
       inkscape
+      insomnia
       jdk
       kdeApplications.akonadi
       kdeApplications.akonadi-calendar

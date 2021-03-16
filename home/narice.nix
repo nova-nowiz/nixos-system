@@ -150,6 +150,7 @@
       wev
       wget
       wine
+      x2goclient
       xclip
       xorg.xev
       xournalpp

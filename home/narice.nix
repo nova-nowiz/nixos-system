@@ -33,6 +33,7 @@
       feh
       ffmpeg
       flameshot
+      freerdp
       fzf
       ghostscript
       git

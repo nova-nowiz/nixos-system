@@ -23,7 +23,7 @@
       "vm.max_map_count" = 262144;
       "fs.file-max" = 65536;
     };
-    kernelModules = [ "kvm-amd" "snd-seq" "snd-rawmidi" ];
+    kernelModules = [ "kvm-amd" ];
     initrd.kernelModules = [ "amdgpu" ];
     extraModulePackages = with config.boot.kernelPackages; [
       v4l2loopback

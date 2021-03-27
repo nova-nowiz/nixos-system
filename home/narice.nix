@@ -97,7 +97,7 @@
       podman-compose
       procs
       psensor
-      (python39Full.withPackages(p: with p; [ pygments ]))
+      (python39Full.withPackages(p: with p; [ pygments sqlparse ]))
       qjackctl
       radeon-profile
       ranger

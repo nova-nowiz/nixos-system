@@ -79,6 +79,7 @@
       neofetch
       neovim
       ninja
+      nix-du
       nix-index
       nix-prefetch
       nix-prefetch-github

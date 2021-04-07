@@ -86,6 +86,7 @@
       keep-outputs = true
       keep-derivations = true
     '';
+    autoOptimiseStore = true;
   };
 
   system.autoUpgrade.enable = true;

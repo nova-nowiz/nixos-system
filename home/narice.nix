@@ -41,6 +41,7 @@
       gnome3.seahorse
       gnumake
       godot
+      graphviz
       hardinfo
       htop
       hunspell

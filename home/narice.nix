@@ -111,6 +111,7 @@
       rustup
       saxon
       scons
+      slack-dark
       steam
       sway-contrib.grimshot
       tealdeer
@@ -161,7 +162,7 @@
       youtube-dl
       zathura
       zip
-      zoom
+      zoom-us
   ];
 
   nixpkgs.config = {
@@ -172,6 +173,7 @@
       "idea-ultimate"
       "minecraft-launcher"
       "oracle-instantclient"
+      "slack"
       "steam"
       "steam-original"
       "steam-runtime"

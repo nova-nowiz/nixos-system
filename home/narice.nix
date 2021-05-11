@@ -18,6 +18,7 @@
       audacity
       bat
       #bottom # not in 20.09
+      chessx
       cmake
       conan
       #corectrl # not in 20.09

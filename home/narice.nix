@@ -10,29 +10,16 @@
   home.homeDirectory = "/home/narice";
 
   home.packages = with pkgs; [
-      android-studio
-      appimage-run
-      ardour
       ark
-      aseprite
-      audacity
       bat
-      #bottom # not in 20.09
       chessx
-      cmake
-      conan
-      #corectrl # not in 20.09
-      dbeaver
       discord
       docker-compose
-      #dust
-      element-desktop
       (emacs.override { withXwidgets = true; })
       exa
       exfat
       fd
       feh
-      ffmpeg
       flameshot
       freerdp
       fzf
@@ -40,18 +27,13 @@
       git
       git-crypt
       gnome3.seahorse
-      gnumake
-      godot
-      graphviz
       hardinfo
       htop
       hunspell
       hunspellDicts.en-us
       hunspellDicts.fr-any
       imagemagick
-      inkscape
       insomnia
-      jdk
       kdeApplications.akonadi
       kdeApplications.akonadi-calendar
       kdeApplications.akonadi-contacts
@@ -80,28 +62,20 @@
       mpv
       neofetch
       neovim
-      ninja
       nix-du
       nix-index
       nix-prefetch
       nix-prefetch-github
       nmap
-      nodejs
       ntfs3g
       obs-studio
       obs-wlrobs
-      ocaml
       olive-editor
-      opam
-      oracle-instantclient
       pandoc
       pciutils
       peek
-      podman-compose
       procs
       psensor
-      (python39Full.withPackages(p: with p; [ pygments sqlparse ]))
-      qjackctl
       radeon-profile
       ranger
       razergenie
@@ -109,9 +83,6 @@
       ripgrep
       ripgrep-all
       rnix-lsp
-      rustup
-      saxon
-      scons
       slack-dark
       steam
       sway-contrib.grimshot
@@ -151,7 +122,6 @@
       unar
       unzip
       virt-manager
-      vscode
       w3m
       wev
       wget
@@ -169,17 +139,13 @@
   nixpkgs.config = {
     allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
       # Users Unfree Packages
-      "android-studio-stable"
       "discord"
-      "idea-ultimate"
       "minecraft-launcher"
-      "oracle-instantclient"
       "slack"
       "steam"
       "steam-original"
       "steam-runtime"
       "teams"
-      "vscode"
       "zoom"
     ];
 

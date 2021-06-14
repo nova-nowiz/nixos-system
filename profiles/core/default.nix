@@ -1,8 +1,8 @@
-{ self, config, lib, pkgs, options, ... }:
+{ self, config, lib, pkgs, options, modulesPath, ... }:
 let inherit (lib) fileContents;
 in
 {
-  imports = [ ../cachix ./sddm.nix ];
+  imports = [ ../cachix ./sddm.nix (modulesPath + "/installer/scan/not-detected.nix") ];
 
   environment = {
     systemPackages = with pkgs; [

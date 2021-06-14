@@ -21,13 +21,38 @@
 
       pkgs.url = "path:./pkgs";
       pkgs.inputs.nixpkgs.follows = "nixos";
+
+      emacs.url = "github:nix-community/emacs-overlay";
     };
 
-  outputs = inputs@{ self, pkgs, digga, nixos, ci-agent, home, nixos-hardware, nur, ... }:
+  outputs =
+    inputs@{ self
+    , pkgs
+    , digga
+    , nixos
+    , ci-agent
+    , home
+    , nixos-hardware
+    , nur
+    , emacs
+    , ...
+    }:
     digga.lib.mkFlake {
       inherit self inputs;
 
-      channelsConfig = { allowUnfree = true; };
+      channelsConfig = {
+        allowUnfreePredicate = pkg: builtins.elem (nixos.lib.getName pkg) [
+          # Narice Unfree Packages
+          "discord"
+          "minecraft-launcher"
+          "slack"
+          "steam"
+          "steam-original"
+          "steam-runtime"
+          "teams"
+          "zoom"
+        ];
+      };
 
       channels = {
         nixos = {
@@ -36,6 +61,7 @@
             ./pkgs/default.nix
             pkgs.overlay # for `srcs`
             nur.overlay
+            emacs.overlay
           ];
         };
         latest = { };
@@ -67,20 +93,25 @@
         imports = [ (digga.lib.importers.hosts ./hosts) ];
         hosts = {
           /* set host specific properties here */
-          NixOS = { };
+          narice-pc = { };
         };
-        profiles = [ ./profiles ./users ];
-        suites = { profiles, users, ... }: with profiles; rec {
-          base = [ core users.nixos users.root ];
+        importables = rec {
+          profiles = digga.lib.importers.rakeLeaves ./profiles;
+          users = digga.lib.importers.rakeLeaves ./users;
+          suites = with profiles; {
+            base = [ core users.narice users.root ];
+          };
         };
       };
 
       home = {
         modules = ./users/modules/module-list.nix;
         externalModules = [ ];
-        profiles = [ ./users/profiles ];
-        suites = { profiles, ... }: with profiles; rec {
-          base = [ direnv git ];
+        importables = rec {
+          profiles = digga.lib.importers.rakeLeaves ./users/profiles;
+          suites = with profiles; {
+            base = [ direnv git ];
+          };
         };
       };
 

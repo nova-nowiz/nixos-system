@@ -1,0 +1,15 @@
+set recolor-lightcolor "#2E3440"
+set recolor-darkcolor "#D8DEE9"
+
+set default-bg "#2E3440"
+set default-fg "#D8DEE9"
+
+set recolor true
+set recolor-keephue true
+
+# copy selection to system clipboard
+set selection-clipboard clipboard
+
+map <C-h> set recolor-keephue
+map <Left> navigate previous
+map <Right> navigate next

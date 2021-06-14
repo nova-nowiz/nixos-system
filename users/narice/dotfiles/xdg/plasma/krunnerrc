@@ -1,0 +1,32 @@
+[General]
+history=slack,emacs,xour,sla,fla,steam,nitro,vir,zoom,ska,teams,mi,firefo,chess,gpa,display,calc,xou,nix,inso,krita,color,godo,stea,parti,teamvi,2go,andr,dolphi,discord,mello,kor,keepa,gparted,file,t,x2g,audacity,a,pa,pac,insomni,ins,x2go,x2,android,sens,ire,obs,db
+
+[PlasmaRunnerManager]
+LaunchCounts=1 Kill Runner_alacritty,1 services_firefox.desktop
+
+[Plugins]
+CharacterRunnerEnabled=true
+DictionaryEnabled=false
+Kill RunnerEnabled=true
+PowerDevilEnabled=false
+Spell CheckerEnabled=true
+baloosearchEnabled=false
+bookmarksEnabled=true
+browsertabsEnabled=true
+calculatorEnabled=true
+desktopsessionsEnabled=false
+konsoleprofilesEnabled=true
+krunner_appstreamEnabled=false
+kwinEnabled=false
+locationsEnabled=false
+org.kde.activitiesEnabled=true
+org.kde.datetimeEnabled=false
+org.kde.windowedwidgetsEnabled=true
+placesEnabled=true
+plasma-desktopEnabled=true
+recentdocumentsEnabled=false
+servicesEnabled=true
+shellEnabled=false
+unitconverterEnabled=true
+webshortcutsEnabled=true
+windowsEnabled=true

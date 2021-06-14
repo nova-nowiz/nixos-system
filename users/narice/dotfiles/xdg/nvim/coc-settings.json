@@ -1,0 +1,43 @@
+{
+    // Global config
+    "diagnostic.virtualText": true,
+    // Explorer config
+    "explorer.icon.enableNerdfont": true,
+    "explorer.width": 30,
+    "explorer.toggle": true,
+    "explorer.file.columns":[
+      "git",
+      "selection",
+      "clip",
+      "diagnosticError",
+      "indent",
+      "icon",
+      "filename",
+      "size",
+      "modified",
+      "readonly"
+    ],
+    "explorer.sources":[
+      {
+        "name": "buffer",
+        "expand": true
+      },
+      {
+        "name": "file",
+        "expand": true
+      }
+    ],
+    "languageserver": {
+    "ccls": {
+      "command": "ccls",
+      "filetypes": ["c", "cpp", "objc", "objcpp"],
+      "rootPatterns": [".ccls", "compile_commands.json", ".vim/", ".git/", ".hg/"],
+      "initializationOptions": {
+         "cache": {
+           "directory": "/tmp/ccls"
+         }
+       }
+    }
+  }
+
+}

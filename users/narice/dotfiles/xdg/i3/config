@@ -1,0 +1,251 @@
+# startup apps -- -- -- -- -- --
+
+# Important
+
+exec setxkbmap -rules evdev -model pc105 -layout "fr,fr,us" -variant "us,bepo,intl" -option 'grp:alt_shift_toggle'
+exec $HOME/.config/i3/auto-nitro.sh
+exec kstart5 plasmashell
+
+# Optional
+
+#exec sleep 10 && keepassxc
+#exec firefox
+#exec Discord
+#exec Huion_WH1409.sh
+#exec teams
+#exec emacs
+#exec korganizer
+
+
+# settings -- -- -- -- -- --
+
+set $mod Mod4
+
+focus_follows_mouse no
+
+# Use Mouse+$mod to drag floating windows to their wanted position
+floating_modifier $mod
+
+
+## Start apps
+
+# start a terminal
+bindsym $mod+Return exec i3-sensible-terminal # determined by the $TERMINAL env var
+
+# start dmenu (a program launcher)
+bindsym $mod+space exec krunner
+
+# locks i3
+#bindsym $mod+Shift+x exec qdbus org.freedesktop.ScreenSaver /ScreenSaver Lock
+
+# screenshot
+bindsym Print exec flameshot gui &
+
+# scratchpad
+bindsym $mod+equal move scratchpad
+bindsym $mod+shift+equal sticky toggle
+bindsym $mod+Control+equal scratchpad show
+
+# Touchpad controls
+bindsym $mod+Shift+t exec $HOME/.config/i3/toggletouchpad.sh # toggle touchpad
+
+
+## i3 management
+
+# reload the configuration file
+bindsym $mod+Shift+c reload
+# restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
+bindsym $mod+Shift+r restart
+# exit i3 (logs you out of your X session)
+bindsym $mod+Control+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b '' 'systemctl poweroff' -b '' 'systemctl reboot' -b 'suspend' 'systemctl suspend && lock & && disown' -b 'logout' 'i3-msg exit' -b 'lock' 'lock'"
+
+
+## Window management
+
+# kill focused window
+bindsym $mod+q kill
+
+# enter fullscreen mode for the focused container
+bindsym $mod+f fullscreen toggle
+
+# toggle tiling / floating
+bindsym $mod+Shift+space floating toggle
+
+# change focus between tiling / floating windows
+bindsym $mod+t focus mode_toggle
+
+
+# change focus
+bindsym $mod+h focus left
+bindsym $mod+j focus down
+bindsym $mod+k focus up
+bindsym $mod+l focus right
+
+# move focused window
+bindsym $mod+Shift+h move left
+bindsym $mod+Shift+j move down
+bindsym $mod+Shift+k move up
+bindsym $mod+Shift+l move right
+
+# resize windows
+bindsym $mod+Left resize shrink width 10 px or 10 ppt
+bindsym $mod+Down resize grow height 10 px or 10 ppt
+bindsym $mod+Up resize shrink height 10 px or 10 ppt
+bindsym $mod+Right resize grow width 10 px or 10 ppt
+
+
+## Layout management
+
+# split in horizontal orientation
+bindsym $mod+s split h
+
+# split in vertical orientation
+bindsym $mod+v split v
+
+# change container layout (stacked, tabbed, toggle split)
+bindsym $mod+m layout stacking
+bindsym $mod+w layout tabbed
+bindsym $mod+e layout toggle split
+
+# split a window that is tabbed
+bindsym $mod+Shift+m split v, layout stacking
+bindsym $mod+Shift+w split v, layout tabbed
+bindsym $mod+Shift+e split v, layout toggle split
+
+# focus the parent container
+bindsym $mod+p focus parent
+
+# focus the child container
+bindsym $mod+c focus child
+
+## Worspace management
+
+set $ws1 "1: "
+set $ws2 "2: "
+set $ws3 "3:ﭮ "
+set $ws4 "4: "
+set $ws5 "5: "
+set $ws6 "6"
+set $ws7 "7"
+set $ws8 "8: "
+set $ws9 "9: "
+set $ws10 "10: "
+
+# switch to workspace
+bindsym $mod+1 workspace $ws1
+bindsym $mod+2 workspace $ws2
+bindsym $mod+3 workspace $ws3
+bindsym $mod+4 workspace $ws4
+bindsym $mod+5 workspace $ws5
+bindsym $mod+6 workspace $ws6
+bindsym $mod+7 workspace $ws7
+bindsym $mod+8 workspace $ws8
+bindsym $mod+9 workspace $ws9
+bindsym $mod+0 workspace $ws10
+
+# move focused container to workspace
+bindsym $mod+Shift+1 move container to workspace $ws1
+bindsym $mod+Shift+2 move container to workspace $ws2
+bindsym $mod+Shift+3 move container to workspace $ws3
+bindsym $mod+Shift+4 move container to workspace $ws4
+bindsym $mod+Shift+5 move container to workspace $ws5
+bindsym $mod+Shift+6 move container to workspace $ws6
+bindsym $mod+Shift+7 move container to workspace $ws7
+bindsym $mod+Shift+8 move container to workspace $ws8
+bindsym $mod+Shift+9 move container to workspace $ws9
+bindsym $mod+Shift+0 move container to workspace $ws10
+
+
+## Assignements
+
+assign [class="discord"] $ws3
+assign [class="Firefox"] $ws2
+assign [class="korganizer"] $ws5
+assign [class="kwalletd5"] $ws5
+assign [class="Steam"] $ws4
+assign [class="Rhythmbox"] $ws10
+assign [class="Allegro"] $ws9
+assign [class="krita"] $ws9
+assign [class="libreoffice"] $ws8
+assign [class="emacs"] $ws1
+assign [class="microsoft teams - preview"] $ws8
+
+
+## Window Specific Config
+
+# Plasma
+
+# Don’t treat Plasma pop-ups as full-sized windows
+for_window [class="plasmashell"] floating enable
+
+# Make Peek windows sticky so that the peek follows me when I switch workspace
+for_window [class="Peek"] sticky enable
+
+# Don’t spawn an empty window for the Plasma Desktop
+for_window [title="Desktop — Plasma"] kill, floating enable, border none
+
+# Don’t let notifications and non-interactive pop-up windows steal focus
+no_focus [class="plasmashell" window_type="notification"]
+no_focus [class="plasmashell" window_type="on_screen_display"]
+
+# Teams
+for_window [title="Microsoft Teams Notification"] floating enable
+
+
+## Shortcut controls
+
+# Pulse Audio controls
+bindsym XF86AudioRaiseVolume exec pactl set-sink-volume 0 +5% #increase sound volume
+bindsym XF86AudioLowerVolume exec pactl set-sink-volume 0 -5% #decrease sound volume
+bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle # mute sound
+
+# Sreen brightness controls
+bindsym XF86MonBrightnessUp exec xbacklight -inc 5 # increase screen brightness
+bindsym XF86MonBrightnessDown exec xbacklight -dec 5 # decrease screen brightness
+
+# Media player controls
+bindsym XF86AudioPlay exec playerctl play-pause
+bindsym XF86AudioPause exec playerctl pause
+bindsym XF86AudioNext exec playerctl next
+bindsym XF86AudioPrev exec playerctl previous
+
+
+# Aesthetics -- -- -- -- --
+
+font pango:Hack Nerd Font 8
+
+title_align center
+
+hide_edge_borders smart
+default_border pixel 0
+default_floating_border none
+
+gaps inner 7
+
+set_from_resource $foreground  i3.foreground  #000000
+set_from_resource $background  i3.background  #000000
+set_from_resource $cursorColor i3.cursorColor #000000
+
+set_from_resource $darkblack   i3.color0      #000000
+set_from_resource $black       i3.color8      #000000
+set_from_resource $darkred     i3.color9      #000000
+set_from_resource $red         i3.color1      #000000
+set_from_resource $darkgreen   i3.color10     #000000
+set_from_resource $green       i3.color2      #000000
+set_from_resource $darkyellow  i3.color11     #000000
+set_from_resource $yellow      i3.color3      #000000
+set_from_resource $darkblue    i3.color12     #000000
+set_from_resource $blue        i3.color4      #000000
+set_from_resource $darkmagenta i3.color13     #000000
+set_from_resource $magenta     i3.color5      #000000
+set_from_resource $darkcyan    i3.color14     #000000
+set_from_resource $cyan        i3.color6      #000000
+set_from_resource $darkwhite   i3.color15     #000000
+set_from_resource $white       i3.color7      #000000
+
+#                       BORDER      BACKGROUND  TEXT        INDICATOR   CHILD_BORDER
+client.focused          $background $background $white      $darkwhite  $black
+client.unfocused        $background $background $darkwhite  $darkblack  $darkblack
+client.focused_inactive $background $background $darkwhite  $darkblack  $darkblack
+client.urgent           $darkred    $darkred    $black      $red        $darkred
+client.background       $background

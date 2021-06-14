@@ -1,0 +1,20 @@
+[$Version]
+update_info=ksmserver_update_loginMode_value.upd:ksmserver_update_loginMode_value_default_enum
+
+[LegacySession: saved at previous logout]
+count=0
+
+[Session: saved at previous logout]
+clientId1=10134c69fd9000161751961100000027330009
+clientId2=10134c69fd9000161751961200000027330011
+count=2
+program1=/home/narice/.nix-profile/bin/keepassxc
+program2=/home/narice/.nix-profile/bin/korgac
+restartCommand1=/home/narice/.nix-profile/bin/keepassxc,-session,10134c69fd9000161751961100000027330009_1623001784_767263,-name,keepassxc
+restartCommand2=/home/narice/.nix-profile/bin/korgac,-session,10134c69fd9000161751961200000027330011_1623001784_767271,-name,korgac
+restartStyleHint1=0
+restartStyleHint2=0
+userId1=narice
+userId2=narice
+wasWm1=false
+wasWm2=false

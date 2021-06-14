@@ -1,7 +1,42 @@
 {
   description = "Package Sources";
 
-  inputs = { };
+  inputs = {
+    zsh-fzf-tab = {
+      url = "github:Aloxaf/fzf-tab";
+      flake = false;
+    };
+    zsh-autopair = {
+      url = "github:hlissner/zsh-autopair";
+      flake = false;
+    };
+    zsh-nix-shell = {
+      url = "github:chisui/zsh-nix-shell";
+      flake = false;
+    };
+    zsh-completions = {
+      url = "github:zsh-users/zsh-completions";
+      flake = false;
+    };
+    zsh-you-should-use = {
+      url = "github:MichaelAquilina/zsh-you-should-use";
+      flake = false;
+    };
+    zsh-powerlevel10k = {
+      url = "github:romkatv/powerlevel10k";
+      flake = false;
+    };
+
+    candy-icon-theme = {
+      url = "github:EliverLara/candy-icons";
+      flake = false;
+    };
+
+    doom-emacs = {
+      url = "github:hlissner/doom-emacs";
+      flake = false;
+    };
+  };
 
   outputs = { self, nixpkgs, ... }: {
     overlay = final: prev: {

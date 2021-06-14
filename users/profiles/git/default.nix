@@ -1,4 +1,5 @@
 {
+  # TODO: make the config
   programs.git = {
     enable = true;
 

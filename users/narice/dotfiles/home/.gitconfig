@@ -1,0 +1,19 @@
+[user]
+	email = narice@tutanota.com
+	name = Narice
+[alias]
+    br = branch
+    co = checkout
+    lg = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(dim white)%an%C(reset) - %C(bold green)(%ar)%C(reset)%C(auto)%d%C(reset)%n    %C(white)%s%C(reset)%n' --stat --all
+[filter "lfs"]
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
+	clean = git-lfs clean -- %f
+[filesystem "N/A|11.0.8|/dev/sdb5"]
+	timestampResolution = 6000 nanoseconds
+	minRacyThreshold = 1396 microseconds
+[rebase]
+	autosquash = true
+[pull]
+	rebase = true

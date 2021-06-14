@@ -1,0 +1,14 @@
+[Applications][discord]
+Seen=true
+
+[Applications][firefox]
+Seen=true
+
+[Applications][mellowplayer]
+Seen=true
+
+[Applications][slack]
+Seen=true
+
+[Notifications]
+PopupTimeout=3000

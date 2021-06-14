@@ -1,0 +1,8 @@
+[$Version]
+update_info=kscreenlocker.upd:0.1-autolock
+
+[Greeter]
+Theme=org.kde.breezedark.desktop
+
+[Greeter][Wallpaper][org.kde.image][General]
+Image=file:///nix/store/ca7q2wzgax0rlsa1k2aq16sz181dkvgw-plasma-workspace-wallpapers-5.18.5/share/wallpapers/SafeLanding/contents/images/5120x2880.jpg

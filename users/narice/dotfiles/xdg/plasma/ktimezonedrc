@@ -1,0 +1,4 @@
+[TimeZones]
+LocalZone=Europe/Paris
+ZoneinfoDir=/etc/zoneinfo
+Zonetab=/etc/zoneinfo/zone.tab

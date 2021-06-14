@@ -213,6 +213,7 @@
     # TODO: discord config?
     # TODO: mellowdream config?
     # TODO: keepass config? probably unsafe
+    # FIXME: color of cursor on alacritty
   };
 
   users.users.narice = {

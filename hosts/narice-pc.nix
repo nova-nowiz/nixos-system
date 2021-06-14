@@ -16,23 +16,21 @@
     };
     initrd = {
       # Corresponds to NixOS's first boot stage
-      availableKernelModules = [ "nvme" "xhci_pci" "ahci" "usbhid" "usb_storage" "sd_mod" "ext4" ];
-      kernelModules = [ "amdgpu" "nvme" "xhci_pci" "ahci" "usbhid" "usb_storage" "sd_mod" "ext4" ];
-      supportedFilesystems = [ "ext4" ];
+      availableKernelModules = [ "nvme" "xhci_pci" "ahci" "usbhid" "usb_storage" "sd_mod" ];
+      kernelModules = [ "amdgpu" ];
     };
-    kernel.sysctl = {
-      "vm.swappiness" = 1;
-    };
+    # kernel.sysctl = {
+    #   "vm.swappiness" = 1;
+    # };
     kernelModules = [ "kvm-amd" ];
     extraModulePackages = [ ];
-    # zfs.enableUnstable = true;
   };
 
   services = {
     xserver = {
       videoDrivers = [ "amdgpu" ];
     };
-    fstrim.enable = true;
+    # fstrim.enable = true;
   };
 
   hardware = {
@@ -41,61 +39,48 @@
     };
   };
 
-  # fileSystems = {
-  #   "/" = {
-  #     label = "nixos-root";
-  #     fsType = "ext4";
-  #   };
-  #   "/nix/store" = {
-  #     label = "nixos-store";
-  #     fsType = "ext4";
-  #   };
-  #   "/boot" = {
-  #     label = "BOOT";
-  #     fsType = "vfat";
-  #   };
-  #   "/home" = {
-  #     label = "nixos-home";
-  #     fsType = "ext4";
-  #   };
-  #   "/home/narice/vault" = {
-  #     label = "vault-narice";
-  #     fsType = "ext4";
-  #   };
-  #   # "/home/monasbook/vault" = {
-  #   #   label = "vault-monasbook";
-  #   #   fsType = "ext4";
-  #   # };
-  #   "/home/narice/shared" = {
-  #     label = "shared";
-  #     fsType = "ext4";
-  #   };
-  #   # "/home/monasbook/shared" = {
-  #   #   device = "/home/narice/shared";
-  #   #   fsType = "none";
-  #   #   options = [ "bind" ];
-  #   # };
-  # };
-
-  fileSystems."/" =
-    { device = "/dev/disk/by-uuid/40628186-dfa5-40b1-a50e-590b70ea828f";
+  fileSystems = {
+    "/" = {
+      label = "nixos-root";
       fsType = "ext4";
     };
 
-  fileSystems."/home" =
-    { device = "/dev/disk/by-uuid/7f1e3c57-24a7-469e-bfb2-d6a7960f6510";
+    "/home" = {
+      label = "nixos-home";
       fsType = "ext4";
     };
 
-  fileSystems."/boot" =
-    { device = "/dev/disk/by-uuid/A947-9FE6";
+    "/boot" = {
+      label = "BOOT";
       fsType = "vfat";
     };
 
-  fileSystems."/nix/store" =
-    { device = "/dev/disk/by-uuid/fccf1661-82dd-422e-8858-e2470742db76";
+    "/nix/store" = {
+      label = "nix-store";
       fsType = "ext4";
     };
+
+    "/home/narice/vault" = {
+      label = "vault-narice";
+      fsType = "ext4";
+    };
+
+    # "/home/monasbook/vault" = {
+    #   label = "vault-monasbook";
+    #   fsType = "ext4";
+    # };
+
+    "/home/narice/shared" = {
+      label = "shared";
+      fsType = "ext4";
+    };
+
+    # "/home/monasbook/shared" = {
+    #   device = "/home/narice/shared";
+    #   fsType = "none";
+    #   options = [ "bind" ];
+    # };
+  };
 
   swapDevices = [
     { label = "swap"; }

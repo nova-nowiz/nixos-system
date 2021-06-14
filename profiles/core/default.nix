@@ -1,9 +1,11 @@
-{ self, config, lib, pkgs, options, modulesPath, ... }:
+{ self, config, lib, pkgs, options, ... }:
 let inherit (lib) fileContents;
 in
 {
-  imports = [ ../cachix ./sddm.nix (modulesPath + "/installer/scan/not-detected.nix") ];
+  imports = [ ../cachix ./sddm.nix ];
 
+  # TODO: check the systemPackages
+  # TODO: split everything of into profiles
   environment = {
     systemPackages = with pkgs; [
       binutils
@@ -81,6 +83,7 @@ in
   };
 
   i18n.defaultLocale = "en_US.UTF-8";
+  time.timeZone = "Europe/Paris";
 
   nix = {
 

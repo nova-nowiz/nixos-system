@@ -131,7 +131,14 @@ in
 
       desktopManager = {
         xterm.enable = false;
-        plasma5.enable = true;
+        xfce = {
+          enable = true;
+          enableXfwm = false;
+          thunarPlugins = with pkgs.xfce; [
+            thunar-volman
+            thunar-archive-plugin
+          ];
+        };
       };
 
       windowManager.i3 = {
@@ -239,6 +246,9 @@ in
       syntaxHighlighting = {
         enable = true;
         highlighters = [ "main" "brackets" "pattern" "cursor" ];
+        styles = {
+          "cursor" = "bold";
+        };
       };
       ohMyZsh = {
         enable = true;

@@ -5,6 +5,7 @@
 
     home.packages = with pkgs; [
       ark
+      audacity
       bat
       chessx
       discord
@@ -20,7 +21,9 @@
       ghostscript
       git
       git-crypt
+      gnome3.gnome-calculator
       gnome3.seahorse
+      gparted
       hardinfo
       htop
       hunspell
@@ -166,11 +169,7 @@
         ".vimrc".source = "${home}/.vimrc";
         ".zshrc".source = "${home}/.zshrc";
         ".doom.d".source = "${doom}";
-        # ".emacs.d".source = pkgs.doom-emacs; # FIXME: doom-emacs seems like a pain to package...
-        ".config" = {
-          source = "${config}/plasma";
-          recursive = true;
-        };
+        # ".emacs.d".source = pkgs.doom-emacs; # WONTFIX: doom-emacs IS a pain to package...
       };
 
     gtk = {
@@ -199,7 +198,7 @@
     };
 
     xsession = {
-      enable = true;
+      enable = false;
       windowManager.command = "${pkgs.i3-gaps}/bin/i3";
       pointerCursor = {
         package = pkgs.qogir-icon-theme;
@@ -213,7 +212,8 @@
     # TODO: discord config?
     # TODO: mellowdream config?
     # TODO: keepass config? probably unsafe
-    # FIXME: color of cursor on alacritty
+    # TODO: copy .local/bin files
+    # TODO: i3lock-color
   };
 
   users.users.narice = {

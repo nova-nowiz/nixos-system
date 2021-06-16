@@ -4,7 +4,6 @@
 
 exec setxkbmap -rules evdev -model pc105 -layout "fr,fr,us" -variant "us,bepo,intl" -option 'grp:alt_shift_toggle'
 exec $HOME/.config/i3/auto-nitro.sh
-exec kstart5 plasmashell
 
 # Optional
 

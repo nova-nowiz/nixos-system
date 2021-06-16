@@ -4,6 +4,7 @@
   inputs =
     {
       nixos.url = "nixpkgs/nixos-unstable";
+      unstable.url = "nixpkgs/nixpkgs-unstable";
       latest.url = "nixpkgs";
       digga.url = "github:divnix/digga";
 
@@ -22,11 +23,12 @@
       pkgs.url = "path:./pkgs";
       pkgs.inputs.nixpkgs.follows = "nixos";
 
-      emacs.url = "github:nix-community/emacs-overlay";
+      emacs.url = "github:nix-community/emacs-overlay/09b557553d5d9d3a468670a4b0d30776de73107d";
     };
 
   outputs =
-    inputs@{ self
+    inputs@
+    { self
     , pkgs
     , digga
     , nixos
@@ -64,6 +66,7 @@
             emacs.overlay
           ];
         };
+        unstable = { };
         latest = { };
       };
 

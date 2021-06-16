@@ -29,10 +29,10 @@ floating_modifier $mod
 ## Start apps
 
 # start a terminal
-bindsym $mod+Return exec i3-sensible-terminal # determined by the $TERMINAL env var
+bindsym $mod+Return exec alacritty #i3-sensible-terminal # determined by the $TERMINAL env var
 
 # start dmenu (a program launcher)
-bindsym $mod+space exec krunner
+bindsym $mod+space exec xfce4-appfinder
 
 # locks i3
 #bindsym $mod+Shift+x exec qdbus org.freedesktop.ScreenSaver /ScreenSaver Lock
@@ -186,6 +186,9 @@ for_window [title="Desktop — Plasma"] kill, floating enable, border none
 # Don’t let notifications and non-interactive pop-up windows steal focus
 no_focus [class="plasmashell" window_type="notification"]
 no_focus [class="plasmashell" window_type="on_screen_display"]
+
+# XFCE
+for_window [class="Xfce4-appfinder"] floating enable
 
 # Teams
 for_window [title="Microsoft Teams Notification"] floating enable

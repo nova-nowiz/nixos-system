@@ -2,7 +2,7 @@
 let inherit (lib) fileContents;
 in
 {
-  imports = [ ../cachix ./sddm.nix ];
+  imports = [ ../cachix ];
 
   # TODO: check the systemPackages
   # TODO: split everything of into profiles
@@ -126,7 +126,27 @@ in
       enable = true;
 
       displayManager = {
-        sddm.enable = true;
+        lightdm = {
+          enable = true;
+          background = ./background.jpg;
+          greeters.enso = {
+            enable = true;
+            blur = true;
+            theme = {
+              package = pkgs.sweet;
+              name = "Sweet-Dark";
+            };
+            iconTheme = {
+              package = pkgs.candy-icon-theme;
+              name = "candy-icons";
+            };
+            cursorTheme = {
+              package = pkgs.qogir-icon-theme;
+              name = "Qogir";
+            };
+          };
+        };
+        defaultSession = "xfce+i3";
       };
 
       desktopManager = {

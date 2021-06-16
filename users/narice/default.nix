@@ -10,6 +10,7 @@
       chessx
       discord
       docker-compose
+      libsForQt5.dolphin
       element-desktop
       exa
       exfat

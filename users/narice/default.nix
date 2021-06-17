@@ -155,6 +155,11 @@
         "zathura".source = "${config}/zathura";
         "nvim".source = "${config}/nvim";
         "background".source = "${config}/background";
+        # This fixed dolphin not following the background set by the gtk theme
+        "kdeglobals".text = ''
+          [Colors:View]
+          BackgroundNormal=22,25,37
+        '';
       };
 
     home.file =
@@ -188,6 +193,12 @@
         package = pkgs.sweet; # TODO: add murrine engine to gtk | opened issue on it
         name = "Sweet-Dark";
       };
+    };
+
+    qt = {
+      enable = true;
+      platformTheme = "gtk";
+      style.name = "gtk2";
     };
 
     home.sessionVariables = {

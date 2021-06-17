@@ -19,9 +19,9 @@
       availableKernelModules = [ "nvme" "xhci_pci" "ahci" "usbhid" "usb_storage" "sd_mod" ];
       kernelModules = [ "amdgpu" ];
     };
-    # kernel.sysctl = {
-    #   "vm.swappiness" = 1;
-    # };
+    kernel.sysctl = {
+      "vm.swappiness" = 1;
+    };
     kernelModules = [ "kvm-amd" ];
     extraModulePackages = [ ];
   };
@@ -30,7 +30,7 @@
     xserver = {
       videoDrivers = [ "amdgpu" ];
     };
-    # fstrim.enable = true;
+    fstrim.enable = true;
   };
 
   hardware = {

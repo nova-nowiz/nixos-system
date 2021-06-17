@@ -8,24 +8,28 @@ in
   # TODO: split everything of into profiles
   environment = {
     systemPackages = with pkgs; [
+      bat
       binutils
+      carla
       coreutils
       curl
       direnv
       dnsutils
       dosfstools
+      exa
       fd
+      fzf
       git
       gotop
       gptfdisk
       iputils
       jq
+      lightlocker
       manix
       moreutils
       nix-index
       nmap
       pulseaudio
-      carla
       qjackctl
       ripgrep
       skim
@@ -33,9 +37,6 @@ in
       usbutils
       utillinux
       whois
-      exa
-      fzf
-      bat
     ];
 
     sessionVariables = {

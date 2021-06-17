@@ -29,13 +29,13 @@ floating_modifier $mod
 ## Start apps
 
 # start a terminal
-bindsym $mod+Return exec alacritty #i3-sensible-terminal # determined by the $TERMINAL env var
+bindsym $mod+Return exec i3-sensible-terminal # determined by the $TERMINAL env var
 
 # start dmenu (a program launcher)
-bindsym $mod+space exec xfce4-appfinder
+bindsym $mod+space exec xfce4-appfinder -c
 
 # locks i3
-#bindsym $mod+Shift+x exec qdbus org.freedesktop.ScreenSaver /ScreenSaver Lock
+bindsym $mod+Shift+x exec lock
 
 # screenshot
 bindsym Print exec flameshot gui &

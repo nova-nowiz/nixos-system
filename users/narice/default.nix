@@ -30,6 +30,7 @@
       hunspell
       hunspellDicts.en-us
       hunspellDicts.fr-any
+      i3lock-color
       imagemagick
       insomnia
       korganizer
@@ -167,6 +168,7 @@
         home = ./dotfiles/home;
         doom = ./dotfiles/doom;
         config = ./dotfiles/xdg;
+        bin = ./dotfiles/bin;
       in
       {
         ".face.icon".source = "${home}/.face.icon";
@@ -175,7 +177,10 @@
         ".vimrc".source = "${home}/.vimrc";
         ".zshrc".source = "${home}/.zshrc";
         ".doom.d".source = "${doom}";
-        # ".emacs.d".source = pkgs.doom-emacs; # WONTFIX: doom-emacs IS a pain to package...
+        ".local/bin" = {
+          source = "${bin}";
+          recursive = true;
+        };
       };
 
     gtk = {
@@ -185,6 +190,7 @@
         name = "Ubuntu";
         size = 12;
       };
+      # FIXME: not applied correctly on xfce
       iconTheme = {
         package = pkgs.candy-icon-theme;
         name = "candy-icons";
@@ -210,22 +216,55 @@
     };
 
     xsession = {
-      enable = false;
-      windowManager.command = "${pkgs.i3-gaps}/bin/i3";
+      enable = true;
+      windowManager.command = ''
+        ${pkgs.i3-gaps}/bin/i3 &
+        waitPID=$!
+
+
+        # Start the desktop manager.
+        ${pkgs.bash}/bin/bash ${pkgs.xfce.xfce4-session}/etc/xdg/xfce4/xinitrc &
+        waitPID=$!
+
+
+        ${pkgs.dbus}/bin/dbus-update-activation-environment --systemd --all
+
+
+        test -n "$waitPID" && wait "$waitPID"
+
+        /run/current-system/systemd/bin/systemctl --user stop graphical-session.target
+
+        exit 0
+      '';
+      # FIXME: pointerCursor config not taken into account
       pointerCursor = {
         package = pkgs.qogir-icon-theme;
         name = "Qogir";
       };
     };
 
-    xresources.extraConfig = builtins.readFile ./dotfiles/home/challenger-deep-xresources;
+    xresources.extraConfig = (builtins.readFile ./dotfiles/home/challenger-deep-xresources) + ''
+
+      URxvt.font: xft:Hack Nerd Font:size=12
+      URxvt.depth: 32
+
+      XTerm*faceName: Hack Nerd Font
+      XTerm*faceSize: 12
+
+      Xft.dpi: 96
+      Xft.antialias: true
+      Xft.hinting: true
+      Xft.rgba: rgb
+      Xft.autohint: false
+      Xft.hintstyle: hintslight
+      Xft.lcdfilter: lcddefault
+    '';
 
     # TODO: firefox config?
     # TODO: discord config?
     # TODO: mellowdream config?
     # TODO: keepass config? probably unsafe
-    # TODO: copy .local/bin files
-    # TODO: i3lock-color
+    # TODO: change lock mechanism to light-lock
   };
 
   users.users.narice = {

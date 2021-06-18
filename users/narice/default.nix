@@ -30,7 +30,6 @@
       hunspell
       hunspellDicts.en-us
       hunspellDicts.fr-any
-      i3lock-color
       imagemagick
       insomnia
       korganizer

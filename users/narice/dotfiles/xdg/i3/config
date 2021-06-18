@@ -35,7 +35,7 @@ bindsym $mod+Return exec i3-sensible-terminal # determined by the $TERMINAL env 
 bindsym $mod+space exec xfce4-appfinder -c
 
 # locks i3
-bindsym $mod+Shift+x exec lock
+bindsym $mod+Shift+x exec light-locker-command -l
 
 # screenshot
 bindsym Print exec flameshot gui &

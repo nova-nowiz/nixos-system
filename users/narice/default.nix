@@ -181,6 +181,10 @@
           source = "${bin}";
           recursive = true;
         };
+        ".xournalpp" = {
+          source = "${home}/xournalpp";
+          recursive = true;
+        };
       };
 
     gtk = {

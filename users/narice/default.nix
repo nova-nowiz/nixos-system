@@ -38,6 +38,7 @@
       keepassxc
       killall
       krita
+      libreoffice-fresh
       libtool
       lm_sensors
       lxappearance

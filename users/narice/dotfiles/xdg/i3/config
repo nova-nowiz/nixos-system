@@ -56,7 +56,7 @@ bindsym $mod+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+r restart
 # exit i3 (logs you out of your X session)
-bindsym $mod+Control+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b '' 'systemctl poweroff' -b '' 'systemctl reboot' -b 'suspend' 'systemctl suspend && lock & && disown' -b 'logout' 'i3-msg exit' -b 'lock' 'lock'"
+bindsym $mod+Control+e exec xfce4-session-logout
 
 
 ## Window management
@@ -189,6 +189,7 @@ no_focus [class="plasmashell" window_type="on_screen_display"]
 
 # XFCE
 for_window [class="Xfce4-appfinder"] floating enable
+# for_window [class="Xfdesktop"] kill, floating enable, border none # doesn't work
 
 # Teams
 for_window [title="Microsoft Teams Notification"] floating enable

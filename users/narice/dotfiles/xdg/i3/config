@@ -193,6 +193,8 @@ for_window [class="Xfce4-appfinder"] floating enable
 # Teams
 for_window [title="Microsoft Teams Notification"] floating enable
 
+#Steam controller
+for_window [title="Steam Keyboard"] floating enable
 
 ## Shortcut controls
 

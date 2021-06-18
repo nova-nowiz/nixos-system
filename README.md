@@ -8,6 +8,49 @@
 > should be considered unstable, though quite usable as flakes have been
 > maturing _well_ [for a while](https://github.com/divnix/devos/tree/17713c22d07c54525c728c62060a0428b76dee3b).
 
+# Things to do before installation
+
+- create your partitions
+- fork this project
+- create your user or rename mine
+
+# Things to do after installation
+
+## XFCE
+
+You need to deactivate the xfdestop on the first boot.
+To do that, go to the xfce settings (`Settings` -> `Settings Manager`), then to `Session and Startup`.
+From there, you will go to the `Current Session` tab.
+On this tab you will see a list of processes.
+For the `xfdestop` process, switch the `Restart Style` from `Immediately` to `Never`.
+Make sure you have the `xfdesktop` selected and then tap on `Quit Program` on the bottom left.
+
+## SSH
+
+Don't forget to transfer your SSH keys.
+
+## Firefox
+
+You can transfer your firefox profile to the new machine/setup.
+To do this, you can simply transfer the `~/.mozilla/firefox` folder.
+If it does not work, open an issue.
+
+## Doom Emacs
+
+You have to install doom emacs yourself.
+If you kept my user config, then the `.doom.d` folder is already present,
+so you just have to do the installation (clone + doom install)
+
+## Asking Questions!
+
+If you have any, open an issue!
+If it's not clear, it can be made better so just open an issue :smile:
+
+---
+
+Following is DevOS readme. it covers how devos works, what it does
+and what is the installation process.
+
 # Introduction
 DevOS grants a simple way to use, deploy and manage [NixOS][nixos] systems for
 personal and productive use. A sane repository structure is provided,

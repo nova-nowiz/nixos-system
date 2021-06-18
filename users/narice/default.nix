@@ -156,6 +156,10 @@
         "zathura".source = "${config}/zathura";
         "nvim".source = "${config}/nvim";
         "background".source = "${config}/background";
+        "xfce4" = {
+          source = "${config}/xfce4";
+          recursive = true;
+        };
         # This fixed dolphin not following the background set by the gtk theme
         "kdeglobals".text = ''
           [Colors:View]

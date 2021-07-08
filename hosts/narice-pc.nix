@@ -1,8 +1,6 @@
 { suites, lib, pkgs, ... }:
 {
-  ### root password is empty by default ###
   imports = suites.base;
-
 
   networking = {
     interfaces.eno1.useDHCP = true;
@@ -20,7 +18,7 @@
       kernelModules = [ "amdgpu" ];
     };
     kernel.sysctl = {
-      "vm.swappiness" = 1;
+      "vm.swappiness" = lib.mkForce 1;
     };
     kernelModules = [ "kvm-amd" ];
     extraModulePackages = [ ];
@@ -86,9 +84,9 @@
     { label = "swap"; }
   ];
 
-  powerManagement.cpuFreqGovernor = lib.mkDefault "powersave";
+  powerManagement.cpuFreqGovernor = lib.mkForce "powersave";
   # high-resolution display
-  hardware.video.hidpi.enable = lib.mkDefault true;
+  hardware.video.hidpi.enable = true;
 
   system.stateVersion = "21.11";
 }

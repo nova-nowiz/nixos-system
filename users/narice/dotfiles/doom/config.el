@@ -60,6 +60,18 @@
       "C-k" #'windmove-up
       "C-l" #'windmove-right)
 
+(map! :map vterm-mode-map
+      "C-h" #'windmove-left
+      "C-j" #'windmove-down
+      "C-k" #'windmove-up
+      "C-l" #'windmove-right)
+
+(map! :map treemacs-mode-map
+      "C-h" #'windmove-left
+      "C-j" #'windmove-down
+      "C-k" #'windmove-up
+      "C-l" #'windmove-right)
+
 (map! :after company
       :map company-active-map
       "<tab>" #'company-complete-selection
@@ -69,6 +81,7 @@
 (map! :map magit-mode-map
       "%" #'magit-gitflow-popup)
 
+(setq enable-local-variables 't)
 
 (after! org
   (map! :map org-mode-map)

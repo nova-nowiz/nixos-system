@@ -125,8 +125,11 @@
     programs = {
       emacs = {
         enable = true;
-        package = (pkgs.emacsGcc.override { withXwidgets = true; });
-        extraPackages = (epkgs: [ epkgs.vterm ]);
+        package = ((pkgs.emacsGcc.override { withXwidgets = true; }).pkgs.withPackages (epkgs: with epkgs; [
+          vterm
+          pdf-tools # FIXME: installing pdf-tools like this doesn't work
+        ]));
+        # extraPackages = (epkgs: with epkgs; [ vterm pdf-tools ]);
       };
 
       alacritty.enable = true;
@@ -180,7 +183,10 @@
         ".p10k.zsh".source = "${home}/.p10k.zsh";
         ".vimrc".source = "${home}/.vimrc";
         ".zshrc".source = "${home}/.zshrc";
-        ".doom.d".source = "${doom}";
+        ".doom.d" = {
+          source = "${doom}";
+          recursive = true;
+        };
         ".local/bin" = {
           source = "${bin}";
           recursive = true;

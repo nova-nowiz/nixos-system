@@ -119,7 +119,8 @@
        assembly          ; assembly for fun or debugging
        (cc               ; C/C++/Obj-C madness
         +lsp)
-       ;;clojure           ; java with a lisp
+       (clojure           ; java with a lisp
+        +lsp)
        ;;common-lisp       ; if you've seen one lisp, you've seen them all
        ;;coq               ; proofs-as-programs
        crystal           ; ruby at the speed of c
@@ -158,7 +159,8 @@
        (lua              ; one-based indices? one-based indices
         +lsp)
        markdown          ; writing docs for people to ignore
-       ;;nim               ; python + lisp at the speed of c
+       (nim               ; python + lisp at the speed of c
+        +lsp)
        (nix              ; I hereby declare "nix geht mehr!"
         +lsp)
        ;;ocaml             ; an objective camel
@@ -208,5 +210,5 @@
        ;;twitter           ; twitter client https://twitter.com/vnought
 
        :config
-       literate
+       ;;literate
        (default +bindings +smartparens))

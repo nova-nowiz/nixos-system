@@ -24,6 +24,7 @@
       pkgs.inputs.nixpkgs.follows = "nixos";
 
       emacs.url = "github:nix-community/emacs-overlay/09b557553d5d9d3a468670a4b0d30776de73107d";
+      musnix.url = "github:cidkidnix/musnix/flake";
     };
 
   outputs =
@@ -37,6 +38,7 @@
     , nixos-hardware
     , nur
     , emacs
+    , musnix
     , ...
     }:
     digga.lib.mkFlake {
@@ -89,6 +91,7 @@
             { _module.args.ourLib = self.lib; }
             ci-agent.nixosModules.agent-profile
             home.nixosModules.home-manager
+            musnix.nixosModules.musnix
             ./modules/customBuilds.nix
           ];
         };

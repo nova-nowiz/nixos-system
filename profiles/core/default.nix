@@ -361,4 +361,12 @@ in
   users = {
     defaultUserShell = pkgs.zsh;
   };
+
+  musnix = {
+    enable = true;
+    kernel = {
+      optimize = true;
+      realtime = true;
+    };
+  };
 }

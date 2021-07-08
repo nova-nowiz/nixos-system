@@ -8,6 +8,7 @@
       audacity
       bat
       chessx
+      cura
       discord
       docker-compose
       libsForQt5.dolphin
@@ -34,6 +35,7 @@
       insomnia
       korganizer
       okular
+      openscad
       keepassxc
       killall
       krita
@@ -53,9 +55,9 @@
       nmap
       ntfs3g
       obs-studio
-      obs-wlrobs
       olive-editor
       pandoc
+      pavucontrol
       pciutils
       peek
       procs

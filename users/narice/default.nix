@@ -33,7 +33,6 @@
       hunspellDicts.fr-any
       imagemagick
       insomnia
-      korganizer
       okular
       openscad
       keepassxc

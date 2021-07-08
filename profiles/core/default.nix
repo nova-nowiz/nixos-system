@@ -8,6 +8,7 @@ in
   # TODO: split everything of into profiles
   environment = {
     systemPackages = with pkgs; [
+      korganizer # TODO: make korganizer work
       bat
       binutils
       carla

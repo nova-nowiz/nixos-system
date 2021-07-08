@@ -7,13 +7,14 @@ exec $HOME/.config/i3/auto-nitro.sh
 
 # Optional
 
-#exec sleep 10 && keepassxc
-#exec firefox
-#exec Discord
+exec sleep 10 && keepassxc
+exec firefox
+exec discord
 #exec Huion_WH1409.sh
 #exec teams
-#exec emacs
-#exec korganizer
+exec emacs
+exec korganizer
+exec slack
 
 
 # settings -- -- -- -- -- --
@@ -158,6 +159,7 @@ bindsym $mod+Shift+0 move container to workspace $ws10
 ## Assignements
 
 assign [class="discord"] $ws3
+assign [class="Slack"] $ws3
 assign [class="Firefox"] $ws2
 assign [class="korganizer"] $ws5
 assign [class="kwalletd5"] $ws5

@@ -19,11 +19,11 @@
     "doom-emacs": {
       "flake": false,
       "locked": {
-        "lastModified": 1623114989,
-        "narHash": "sha256-btRwMu76Gnn9lW7YbzDAgWjlJx61tCT+e3kByNx97aw=",
+        "lastModified": 1626604817,
+        "narHash": "sha256-z+dvjB02cHU+VQ5EMkzqSdX817PZar9AkmmfK27q0vo=",
         "owner": "hlissner",
         "repo": "doom-emacs",
-        "rev": "2731685095d1e6101b3215aa689426e1834ce00f",
+        "rev": "46732c0adaef147144418f9f284ca6b1183ab96f",
         "type": "github"
       },
       "original": {
@@ -34,11 +34,11 @@
     },
     "nixpkgs": {
       "locked": {
-        "lastModified": 1625134613,
-        "narHash": "sha256-CMYLa9ONujDnTjvEk0BGqiIe5XW1rkrEPDIQ3TChBUQ=",
+        "lastModified": 1626616805,
+        "narHash": "sha256-J/XxM05E6nwrz3/+PaRezPcI/i5s1Fidem/vPJqTX78=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "dd9790a83f3e88d4fc1ca809ec53a48d0d10662e",
+        "rev": "20117e607d3dd91bef0136220e0056c0827e2854",
         "type": "github"
       },
       "original": {
@@ -126,11 +126,11 @@
     "zsh-powerlevel10k": {
       "flake": false,
       "locked": {
-        "lastModified": 1625133946,
-        "narHash": "sha256-2v+vJ3maqLitgohAeDKfkXM6VsUoXzBjyCcdTwdfvW0=",
+        "lastModified": 1626511102,
+        "narHash": "sha256-LWTbIhRxHsIN0Rf2X1xwHGtt74khs8RykIyd03g7Als=",
         "owner": "romkatv",
         "repo": "powerlevel10k",
-        "rev": "3213e2e17f1695c88959e3b74e3302d628520382",
+        "rev": "83d80fa308f6f8a496205a1ad5cb2ae4c4be55a6",
         "type": "github"
       },
       "original": {

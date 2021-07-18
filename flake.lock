@@ -31,11 +31,11 @@
         "pre-commit-hooks-nix": "pre-commit-hooks-nix"
       },
       "locked": {
-        "lastModified": 1624885917,
-        "narHash": "sha256-CaAEhMKzuTyN9krTLZ1jWW3C5HzvKRZY/doVOezZZx0=",
+        "lastModified": 1626066948,
+        "narHash": "sha256-rBo4nCPyAHb1e/9ysYGH7tW1FV0N2XNvRcJR+g8gugA=",
         "owner": "hercules-ci",
         "repo": "hercules-ci-agent",
-        "rev": "5eba6597af97e358542c6f968f6ef680ffd2a401",
+        "rev": "7f3265cc42d5f364066c145939ee2812938b991c",
         "type": "github"
       },
       "original": {
@@ -125,11 +125,11 @@
     "doom-emacs": {
       "flake": false,
       "locked": {
-        "lastModified": 1623114989,
-        "narHash": "sha256-btRwMu76Gnn9lW7YbzDAgWjlJx61tCT+e3kByNx97aw=",
+        "lastModified": 1626604817,
+        "narHash": "sha256-z+dvjB02cHU+VQ5EMkzqSdX817PZar9AkmmfK27q0vo=",
         "owner": "hlissner",
         "repo": "doom-emacs",
-        "rev": "2731685095d1e6101b3215aa689426e1834ce00f",
+        "rev": "46732c0adaef147144418f9f284ca6b1183ab96f",
         "type": "github"
       },
       "original": {
@@ -208,11 +208,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1625016439,
-        "narHash": "sha256-zHf7iCU9nYd6/7xwYx5gwDzXdXcJ9RUagdy0IgX39sQ=",
+        "lastModified": 1626356862,
+        "narHash": "sha256-4ONLWH4UygF4pI0XBej8+2OMUrdb8HsUUFsiRDFmjrk=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "9ad0024d4d292c628d4c9a50c2347f23418d7000",
+        "rev": "c476cc61b2dd8c7f868b213b7757b565bdf2bb7d",
         "type": "github"
       },
       "original": {
@@ -327,11 +327,11 @@
     },
     "nixos-hardware": {
       "locked": {
-        "lastModified": 1625127528,
-        "narHash": "sha256-NDD8BuY8UjAs7VfeiRck7JkpsUyUWJYg1/RqdEJ0PgE=",
+        "lastModified": 1625333638,
+        "narHash": "sha256-M6J9RN60XJyv6nUfDFCwnz5aVjhe8+GJnV8Q9VpdQQQ=",
         "owner": "nixos",
         "repo": "nixos-hardware",
-        "rev": "eb889532fef2cb73071436842ae2ca0ed2d011aa",
+        "rev": "41775780a0b6b32b3d32dcc32bb9bc6df809062d",
         "type": "github"
       },
       "original": {
@@ -415,7 +415,7 @@
         "zsh-you-should-use": "zsh-you-should-use"
       },
       "locked": {
-        "narHash": "sha256-C353XQmcD8jUsrAEk5gCg7HQ/pi4xN/01tMKaeK6310=",
+        "narHash": "sha256-KXsbhZKhbyrEwGokWzeKZRRXddqav6glLTHdz6bQWW8=",
         "path": "./pkgs",
         "type": "path"
       },
@@ -573,11 +573,11 @@
     "zsh-powerlevel10k": {
       "flake": false,
       "locked": {
-        "lastModified": 1625133946,
-        "narHash": "sha256-2v+vJ3maqLitgohAeDKfkXM6VsUoXzBjyCcdTwdfvW0=",
+        "lastModified": 1626511102,
+        "narHash": "sha256-LWTbIhRxHsIN0Rf2X1xwHGtt74khs8RykIyd03g7Als=",
         "owner": "romkatv",
         "repo": "powerlevel10k",
-        "rev": "3213e2e17f1695c88959e3b74e3302d628520382",
+        "rev": "83d80fa308f6f8a496205a1ad5cb2ae4c4be55a6",
         "type": "github"
       },
       "original": {

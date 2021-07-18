@@ -129,6 +129,17 @@ in
     xserver = {
       enable = true;
 
+      # extraLayouts = {
+      #   eurkey-cmk-dh-ansi = {
+      #     description = "EurKEY (Colemak-DH, ANSI)";
+      #     symbolsFile = ;
+      #   };
+      #   eurkey-cmk-dh-iso = {
+      #     description = "EurKEY (Colemak-DH, ISO)";
+      #     symbolsFile = ;
+      #   };
+      # };
+
       displayManager = {
         lightdm = {
           enable = true;
@@ -293,14 +304,10 @@ in
       };
     };
     dconf.enable = true;
+    steam.enable = true;
   };
 
   hardware = {
-    opengl = {
-      enable = true;
-      driSupport32Bit = true;
-      extraPackages32 = with pkgs.pkgsi686Linux; [ libva ];
-    };
     steam-hardware.enable = true;
   };
 

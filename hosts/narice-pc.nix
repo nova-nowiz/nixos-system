@@ -33,7 +33,17 @@
 
   hardware = {
     opengl = {
-      extraPackages = with pkgs; [ amdvlk ];
+      enable = true;
+      driSupport32Bit = true;
+      extraPackages = with pkgs; [
+        rocm-opencl-icd
+        rocm-opencl-runtime
+        amdvlk
+      ];
+      extraPackages32 = with pkgs; [
+        pkgsi686Linux.libva
+        driversi686Linux.amdvlk
+      ];
     };
   };
 

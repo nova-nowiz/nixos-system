@@ -69,7 +69,6 @@
       ripgrep-all
       rnix-lsp
       slack-dark
-      steam
       sway-contrib.grimshot
       tealdeer
       teams

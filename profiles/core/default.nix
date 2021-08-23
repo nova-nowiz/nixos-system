@@ -21,7 +21,7 @@ in
       fd
       fzf
       git
-      gotop
+      bottom
       gptfdisk
       iputils
       jq
@@ -202,6 +202,7 @@ in
       jack.enable = true;
     };
 
+    # TODO: research rage encryption
     openssh.enable = true;
 
     fail2ban = {
@@ -304,7 +305,10 @@ in
       };
     };
     dconf.enable = true;
-    steam.enable = true;
+    steam = {
+      enable = true;
+      remotePlay.openFirewall = true;
+    };
   };
 
   hardware = {

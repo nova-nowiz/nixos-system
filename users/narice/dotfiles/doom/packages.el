@@ -61,3 +61,5 @@
 (package! laas
   :recipe (:host github :repo "tecosaur/LaTeX-auto-activating-snippets"))
 (package! auctex-latexmk)
+(package! org-tanglesync)
+(unpin! lsp-ui)

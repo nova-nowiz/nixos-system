@@ -3,27 +3,30 @@ channels: final: prev: {
   __dontExport = true; # overrides clutter up actual creations
 
   inherit (channels.latest)
-    cachix
-    dhall
-    discord
-    element-desktop
-    # manix
-    nixpkgs-fmt
-    qutebrowser
     steam
-    yuzu;
+    discord;
+
+  inherit (channels.unstable)
+    cachix
+    element-desktop
+    manix
+    rage
+    qutebrowser
+    yuzu
+    yuzu-ea;
 
 
-  haskellPackages = prev.haskellPackages.override {
-    overrides = hfinal: hprev:
-      let version = prev.lib.replaceChars [ "." ] [ "" ] prev.ghc.version;
-      in
-      {
-        # same for haskell packages, matching ghc versions
-        inherit (channels.latest.haskell.packages."ghc${version}")
-          haskell-language-server;
-      };
-  };
+  haskellPackages = prev.haskellPackages.override
+    (old: {
+      overrides = prev.lib.composeExtensions (old.overrides or (_: _: { })) (hfinal: hprev:
+        let version = prev.lib.replaceChars [ "." ] [ "" ] prev.ghc.version;
+        in
+        {
+          # same for haskell packages, matching ghc versions
+          inherit (channels.latest.haskell.packages."ghc${version}")
+            haskell-language-server;
+        });
+    });
 
   # TODO: move it to its own overlay
   # TODO: have the src as a flake...

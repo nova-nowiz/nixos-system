@@ -1,6 +1,6 @@
 { ... }:
 {
-  home-manager.users.narice = { suites, pkgs, lib, nixos, ... }: {
+  home-manager.users.narice = { suites, pkgs, lib, nixos, config, ... }: {
     imports = suites.base;
 
     home.packages = with pkgs; [
@@ -9,7 +9,7 @@
       bat
       chessx
       cura
-      discord
+      (discord.override { nss = nss; })
       docker-compose
       libsForQt5.dolphin
       element-desktop
@@ -117,6 +117,7 @@
       xorg.xev
       xournalpp
       youtube-dl
+      yuzu-ea
       zathura
       zip
       zoom-us
@@ -151,16 +152,16 @@
 
     xdg.configFile =
       let
-        config = ./dotfiles/xdg;
+        conf = ./dotfiles/xdg;
       in
       {
-        "alacritty".source = "${config}/alacritty";
-        "i3".source = "${config}/i3";
-        "zathura".source = "${config}/zathura";
-        "nvim".source = "${config}/nvim";
-        "background".source = "${config}/background";
+        "alacritty".source = "${conf}/alacritty";
+        "i3".source = "${conf}/i3";
+        "zathura".source = "${conf}/zathura";
+        "nvim".source = "${conf}/nvim";
+        "background".source = "${conf}/background";
         "xfce4" = {
-          source = "${config}/xfce4";
+          source = config.lib.file.mkOutOfStoreSymlink "${conf}/xfce4";
           recursive = true;
         };
         # This fixed dolphin not following the background set by the gtk theme
@@ -174,7 +175,6 @@
       let
         home = ./dotfiles/home;
         doom = ./dotfiles/doom;
-        config = ./dotfiles/xdg;
         bin = ./dotfiles/bin;
       in
       {
@@ -184,7 +184,7 @@
         ".vimrc".source = "${home}/.vimrc";
         ".zshrc".source = "${home}/.zshrc";
         ".doom.d" = {
-          source = "${doom}";
+          source = config.lib.file.mkOutOfStoreSymlink "${doom}";
           recursive = true;
         };
         ".local/bin" = {

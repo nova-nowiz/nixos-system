@@ -33,7 +33,8 @@
 
   hardware = {
     opengl = {
-      extraPackages = with pkgs; [ amdvlk ];
+      enable = true;
+      driSupport32Bit = true;
     };
   };
 

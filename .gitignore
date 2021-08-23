@@ -5,3 +5,5 @@ hosts/up-*
 doc/index.html
 vm
 iso
+doi
+pkgs/_sources/.shake*

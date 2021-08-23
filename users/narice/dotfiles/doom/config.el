@@ -72,6 +72,12 @@
       "C-k" #'windmove-up
       "C-l" #'windmove-right)
 
+(map! :map org-mode-map
+      "C-h" #'windmove-left
+      "C-j" #'windmove-down
+      "C-k" #'windmove-up
+      "C-l" #'windmove-right)
+
 (map! :after company
       :map company-active-map
       "<tab>" #'company-complete-selection
@@ -82,6 +88,9 @@
       "%" #'magit-gitflow-popup)
 
 (setq enable-local-variables 't)
+
+(setq evil-split-window-below 't
+      evil-vsplit-window-right 't)
 
 (after! org
   (map! :map org-mode-map)
@@ -192,63 +201,20 @@
 
 (require 'auctex-latexmk)
 (auctex-latexmk-setup)
+
 (after! lsp-ui
-  (setq lsp-ui-doc-max-height 40
+  (setq lsp-ui-doc-enable t
+        lsp-ui-doc-position 'at-point
+        lsp-ui-doc-show-with-cursor nil
+        lsp-ui-doc-show-with-mouse t
+        lsp-ui-doc-use-webkit t
+        lsp-ui-doc-max-height 40
         lsp-ui-doc-max-width 150
-        lsp-ui-sideline-ignore-duplicate t
         lsp-ui-doc-header t
         lsp-ui-doc-include-signature t
-        lsp-ui-doc-position 'at-point
-        lsp-ui-doc-use-webkit nil
+        lsp-ui-sideline-ignore-duplicate t
         lsp-ui-flycheck-enable t
-        )
-  (setq-default
-        lsp-ui-doc-frame-parameters
-        '((left . -1)
-          (top . -1)
-          (min-width  . 0)
-          (min-height  . 0)
-          (width  . 0)
-          (height  . 0)
-          (no-focus-on-map . t)
-          (internal-border-width . nil)
-          (vertical-scroll-bars . nil)
-          (horizontal-scroll-bars . nil)
-          (right-fringe . 0)
-          (left-fringe . 0)
-          (menu-bar-lines . 0)
-          (tool-bar-lines . 0)
-          (line-spacing . 0)
-          (unsplittable . t)
-          (undecorated . t)
-          (visibility . nil)
-          (mouse-wheel-frame . nil)
-          (no-other-frame . t)
-          (inhibit-double-buffering . t)
-          (drag-internal-border . t)
-          (drag-with-header-line . t)
-          (no-special-glyphs . t)
-          (desktop-dont-save . t))
-        )
-  (lsp-ui-doc-mode)
-  (defun lsp-ui-doc--extract-marked-string (marked-string &optional language)
-    (string-trim-right
-     (let* ((string (if (stringp marked-string)
-                        marked-string
-                      (lsp:markup-content-value marked-string)))
-            (with-lang (lsp-marked-string? marked-string))
-            (language (or (and with-lang
-                               (or (lsp:marked-string-language marked-string)
-                                   (lsp:markup-content-kind marked-string)))
-                          language))
-            (markdown-hr-display-char nil))
-       (cond
-        (lsp-ui-doc-use-webkit
-         (if (and language (not (or (string= "text" language)
-                                    (string= "markdown" language))))
-             (format "```%s\n%s\n```" language string)
-           string))
-        (t (lsp--render-element (lsp-ui-doc--inline-formatted-string string))))))))
+        ))
 
 (after! typescript
   (setq lsp-clients-angular-language-server-command
@@ -256,6 +222,16 @@
               "--ngProbeLocations" "node_modules"
               "--tsProbeLocations" "node_modules"
               "--stdio")))
+
+(use-package org-tanglesync
+  :hook ((org-mode . org-tanglesync-mode)
+         ;; enable watch-mode globally:
+         ((prog-mode text-mode) . org-tanglesync-watch-mode))
+  :custom
+  (org-tanglesync-watch-files '("readme.org" "README.org"))
+  :bind
+  (( "C-c M-i" . org-tanglesync-process-buffer-interactive)
+   ( "C-c M-a" . org-tanglesync-process-buffer-automatic)))
 
 (setq scroll-conservatively 0)
 ;; (add-hook 'after-init-hook #'doom/quickload-session)

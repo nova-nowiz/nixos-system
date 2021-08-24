@@ -129,6 +129,9 @@ in
     xserver = {
       enable = true;
 
+      layout = "fr";
+      xkbVariant = "us";
+
       # extraLayouts = {
       #   eurkey-cmk-dh-ansi = {
       #     description = "EurKEY (Colemak-DH, ANSI)";

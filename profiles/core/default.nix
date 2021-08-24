@@ -67,7 +67,7 @@ in
 
   boot = {
     loader = {
-      timeout = null;
+      timeout = lib.mkForce null;
     };
     kernel.sysctl = {
       "vm.max_map_count" = 262144;
@@ -315,6 +315,7 @@ in
   };
 
   hardware = {
+    pulseaudio.enable = false;
     steam-hardware.enable = true;
   };
 

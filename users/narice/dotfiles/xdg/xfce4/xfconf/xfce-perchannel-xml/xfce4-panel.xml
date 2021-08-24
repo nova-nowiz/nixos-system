@@ -62,6 +62,8 @@
     <property name="plugin-6" type="string" value="systray">
       <property name="square-icons" type="bool" value="true"/>
       <property name="known-legacy-items" type="array">
+        <value type="string" value="thunar"/>
+        <value type="string" value="steam"/>
         <value type="string" value="discord"/>
         <value type="string" value="xfce4-power-manager"/>
         <value type="string" value="task manager"/>
@@ -101,7 +103,9 @@
         <value type="string" value="slack"/>
         <value type="string" value="task manager"/>
         <value type="string" value="xfce4-power-manager"/>
+        <value type="string" value="thunar"/>
         <value type="string" value="discord"/>
+        <value type="string" value="steam"/>
       </property>
     </property>
     <property name="plugin-9" type="string" value="power-manager-plugin"/>

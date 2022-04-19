@@ -1,0 +1,5 @@
+TERMINAL="alacritty"
+EDITOR="emacsclient -cn"
+VISUAL="emacsclient -cn"
+NIX_BUILD_SHELL="/usr/bin/env zsh"
+PATH="$PATH:$HOME/.emacs.d/bin:$HOME/.local/bin"

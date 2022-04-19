@@ -21,7 +21,7 @@ tabletY=34500
 screenX=1920  
 screenY=1080  
 # map to good screen (dual nvidia)  
-xsetwacom --set "$tabletstylus" MapToOutput "HEAD-0"  
+xsetwacom --set "$tabletstylus" MapToOutput "eDP-1" # can be "HEAD-0", depends on your primary monitor, could be automatized
 # setup ratio :  
 newtabletY=$(( $screenY * $tabletX / $screenX ))  
 xsetwacom --set "$tabletstylus" Area 0 0 "$tabletX" "$newtabletY"  

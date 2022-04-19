@@ -23,11 +23,15 @@
 ;; They all accept either a font-spec, font string ("Input Mono-12"), or xlfd
 ;; font string. You generally only need these two:
 (setq doom-font (font-spec :family "Hack Nerd Font" :size 16))
+(setq doom-variable-pitch-font (font-spec :family "DejaVu Serif" :style "Book" :size 16))
+(setq doom-unicode-font (font-spec :family "Hack Nerd Font"))
+(setq doom-symbol-fallback-font-families '("Hack Nerd Font"))
 
 ;; There are two ways to load a theme. Both assume the theme is installed and
 ;; available. You can either set `doom-theme' or manually load a theme with the
 ;; `load-theme' function. This is the default:
-(setq doom-theme 'doom-challenger-deep)
+;; (setq doom-theme 'doom-shades-of-purple)
+(setq doom-theme 'doom-solarized-light)
 
 ;; If you use `org' and don't want your org files in the default location below,
 ;; change `org-directory'. It must be set before org loads!
@@ -35,7 +39,8 @@
 
 ;; This determines the style of line numbers in effect. If set to `nil', line
 ;; numbers are disabled. For relative line numbers, set this to `relative'.
-(setq display-line-numbers-type 'relative)
+;; (setq display-line-numbers-type 'relative)
+(setq display-line-numbers-type nil)
 
 
 ;; Here are some additional functions/macros that could help you configure Doom:
@@ -55,28 +60,13 @@
 ;; You can also try 'gd' (or 'C-c g d') to jump to their definition and see how
 ;; they are implemented.
 
-(map! "C-h" #'windmove-left
-      "C-j" #'windmove-down
-      "C-k" #'windmove-up
-      "C-l" #'windmove-right)
+(map! :nvieomrg "C-h" #'windmove-left
+      :nvieomrg "C-j" #'windmove-down
+      :nvieomrg "C-k" #'windmove-up
+      :nvieomrg "C-l" #'windmove-right)
 
-(map! :map vterm-mode-map
-      "C-h" #'windmove-left
-      "C-j" #'windmove-down
-      "C-k" #'windmove-up
-      "C-l" #'windmove-right)
-
-(map! :map treemacs-mode-map
-      "C-h" #'windmove-left
-      "C-j" #'windmove-down
-      "C-k" #'windmove-up
-      "C-l" #'windmove-right)
-
-(map! :map org-mode-map
-      "C-h" #'windmove-left
-      "C-j" #'windmove-down
-      "C-k" #'windmove-up
-      "C-l" #'windmove-right)
+(map! :mode org-mode
+      :localleader "z" #'org-add-note)
 
 (map! :after company
       :map company-active-map
@@ -84,8 +74,10 @@
       "<return>" nil
       "C-l" #'company-complete-common)
 
-(map! :map magit-mode-map
+(map! :mode magit-mode
       "%" #'magit-gitflow-popup)
+
+(setq evil-snipe-scope 'visible)
 
 (setq enable-local-variables 't)
 
@@ -93,7 +85,6 @@
       evil-vsplit-window-right 't)
 
 (after! org
-  (map! :map org-mode-map)
   (setq org-todo-keywords '((sequence "TODO(t)" "DOING(d)" "WAIT(w)" "|" "DONE(v)" "CANCELLED(x)"))
         org-todo-keyword-faces
         '(("TODO" :foreground "#2ecc71" :weight bold)
@@ -112,31 +103,88 @@
           (?E :foreground "#27ae60" :weight bold)
           (?F :foreground "#2ecc71" :weight bold)
           (?G :foreground "#3498db" :weight bold)))
-  (setq org-plantuml-jar-path "/usr/share/java/plantuml/plantuml.jar")
+  (setq org-plantuml-jar-path "/usr/share/java/plantuml/plantuml.jar"
+        org-plantuml-exec-mode 'jar)
   (setq org-latex-listings 'minted
-      org-latex-packages-alist '(("" "minted"))
-      org-latex-pdf-process
-      '("lualatex -shell-escape -interaction nonstopmode -output-directory %o %f"
-        "lualatex -shell-escape -interaction nonstopmode -output-directory %o %f"
-        "lualatex -shell-escape -interaction nonstopmode -output-directory %o %f")))
+        org-latex-packages-alist '(("" "minted"))
+        org-latex-pdf-process
+        '("lualatex -shell-escape -interaction nonstopmode -output-directory %o %f"
+          "lualatex -shell-escape -interaction nonstopmode -output-directory %o %f"
+          "lualatex -shell-escape -interaction nonstopmode -output-directory %o %f"))
+  (setq org-log-into-drawer 't
+        org-columns-default-format "%40ITEM(name) %TODO(status) %3PRIORITY(priority) %Effort(time estimate){:} %CLOCKSUM(time spent) %SCHEDULED(scheduled) %DEADLINE(deadline) %TIMESTAMP(timestamp) %TAGS(tags)"))
 
-;; (use-package org-fancy-priorities
-;;   :hook (org-mode . org-fancy-priorities-mode)
-;;   :config
-;;   (setq org-fancy-priorities-list '("VERY HIGH" "HIGH" "MID/HIGH" "MID" "LOW" "VERY LOW" "OPTIONAL")))
+;; org agenda
+(after! org-agenda
+ (defun org-time-to-minutes (time)
+   "Convert an HHMM time to minutes"
+   (+ (* (/ time 100) 60) (% time 100)))
+
+ (defun org-time-from-minutes (minutes)
+   "Convert a number of minutes to an HHMM time"
+   (+ (* (/ minutes 60) 100) (% minutes 60)))
+
+ (defadvice org-agenda-add-time-grid-maybe (around mde-org-agenda-grid-tweakify
+                                                   (list ndays todayp))
+   (if (member 'remove-match (car org-agenda-time-grid))
+       (flet ((extract-window
+               (line)
+               (let ((start (get-text-property 1 'time-of-day line))
+                     (dur (get-text-property 1 'duration line)))
+                 (cond
+                  ((and start dur)
+                   (cons start
+                         (org-time-from-minutes
+                          (truncate
+                           (+ dur (org-time-to-minutes start))))))
+                  (start start)
+                  (t nil)))))
+         (let* ((windows (delq nil (mapcar 'extract-window list)))
+                (org-agenda-time-grid
+                 (list
+                  (car org-agenda-time-grid)
+                  (remove-if
+                   (lambda (time)
+                     (find-if (lambda (w)
+                                (if (numberp w)
+                                    (equal w time)
+                                  (and (>= time (car w))
+                                       (< time (cdr w)))))
+                              windows))
+                   (cadr org-agenda-time-grid))
+                  (caddr org-agenda-time-grid)
+                  (cadddr org-agenda-time-grid))))
+
+           ad-do-it))
+     ad-do-it))
+ (ad-activate 'org-agenda-add-time-grid-maybe)
+ (setq org-agenda-time-grid
+       '((daily weekly today require-timed remove-match)
+         (800 830 900 1000 1100 1200 1300 1400 1500 1600 1700 1800 1900 2000 2100 2200 2300)
+         "......" "----------------")
+       org-agenda-start-day ""
+       org-agenda-custom-commands
+       '(("n" "TODOs and agenda"
+          ((alltodo "" ((org-agenda-todo-ignore-scheduled 't) (org-agenda-sorting-strategy '(category-keep priority-down))))
+           (agenda "" ((org-agenda-span 7))))))))
+
+(use-package! org-fancy-priorities
+  :hook
+  (org-mode . org-fancy-priorities-mode)
+  :config
+  (setq org-fancy-priorities-list
+        '("VERY HIGH" "HIGH" "MID/HIGH" "MID" "LOW" "VERY LOW" "OPTIONAL")))
 
 ;; (add-hook 'after-init-hook #'global-emojify-mode)
 
 (after! ispell
-  (setq ispell-program-name "hunspell")
-  (setq ispell-dictionary "en_US,fr_FR")
+  (setq ispell-dictionary "american,fr-toutesvariantes")
   ;; ispell-set-spellchecker-params has to be called
   ;; before ispell-hunspell-add-multi-dic will work
   (ispell-set-spellchecker-params)
-  (ispell-hunspell-add-multi-dic "en_US"))
+  (ispell-hunspell-add-multi-dic "american,fr-toutesvariantes"))
 
 (after! langtool
-  (setq langtool-java-classpath "/usr/share/languagetool:/usr/share/java/languagetool/*")
   (setq langtool-default-language auto))
 
 (global-evil-matchit-mode 1)
@@ -188,13 +236,13 @@
         :image-output-type "png"
         :image-size-adjust (1.0 . 1.0)
         :latex-compiler ("lualatex -interaction nonstopmode -shell-escape -output-directory %o %f")
-        :image-converter ("convert -density %D -trim -antialias %f -quality 100 %O")))
-   )
+        :image-converter ("convert -density %D -trim -antialias %f -quality 100 %O"))))
+   
   (add-hook 'latex-mode-hook #'xenops-mode)
   (add-hook 'LaTeX-mode-hook #'xenops-mode)
   (add-hook 'latex-mode-hook #'xenops-xen-mode)
-  (add-hook 'LaTeX-mode-hook #'xenops-xen-mode)
-)
+  (add-hook 'LaTeX-mode-hook #'xenops-xen-mode))
+
 
 (after! tex
   (setq TeX-engine 'luatex))
@@ -213,8 +261,8 @@
         lsp-ui-doc-header t
         lsp-ui-doc-include-signature t
         lsp-ui-sideline-ignore-duplicate t
-        lsp-ui-flycheck-enable t
-        ))
+        lsp-ui-flycheck-enable t))
+        
 
 (after! typescript
   (setq lsp-clients-angular-language-server-command
@@ -223,15 +271,27 @@
               "--tsProbeLocations" "node_modules"
               "--stdio")))
 
-(use-package org-tanglesync
-  :hook ((org-mode . org-tanglesync-mode)
-         ;; enable watch-mode globally:
-         ((prog-mode text-mode) . org-tanglesync-watch-mode))
-  :custom
-  (org-tanglesync-watch-files '("readme.org" "README.org"))
-  :bind
-  (( "C-c M-i" . org-tanglesync-process-buffer-interactive)
-   ( "C-c M-a" . org-tanglesync-process-buffer-automatic)))
+;; (use-package org-tanglesync
+;;   :hook ((org-mode . org-tanglesync-mode)
+;;          ;; enable watch-mode globally:
+;;          ((prog-mode text-mode) . org-tanglesync-watch-mode))
+;;   :custom
+;;   (org-tanglesync-watch-files '("readme.org" "README.org"))
+;;   :bind
+;;   (( "C-c M-i" . org-tanglesync-process-buffer-interactive)
+;;    ( "C-c M-a" . org-tanglesync-process-buffer-automatic)))
 
-(setq scroll-conservatively 0)
+(setq sql-mysql-options [ "--protocol=tcp" "-P 3306"])
 ;; (add-hook 'after-init-hook #'doom/quickload-session)
+;; org-ref
+;; (require 'org-ref-ivy)
+
+;; (setq org-ref-insert-link-function 'org-ref-insert-link-hydra/body
+;;       org-ref-insert-cite-function 'org-ref-cite-insert-ivy
+;;       org-ref-insert-label-function 'org-ref-insert-label-link
+;;       org-ref-insert-ref-function 'org-ref-insert-ref-link
+;;       org-ref-cite-onclick-function (lambda (_) (org-ref-citation-hydra/body)))
+(require 'org-ref)
+;; remove after PR #5881
+(general-auto-unbind-keys :off)
+(remove-hook 'doom-after-init-modules-hook #'general-auto-unbind-keys)

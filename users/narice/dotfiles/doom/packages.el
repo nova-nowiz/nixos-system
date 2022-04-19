@@ -62,4 +62,10 @@
   :recipe (:host github :repo "tecosaur/LaTeX-auto-activating-snippets"))
 (package! auctex-latexmk)
 (package! org-tanglesync)
+(package! sql-indent)
+(package! pdf-tools :type 'built-in) ;;does not work as built in, you need to build it externally
+(package! org-ql)
+(package! org-super-agenda)
+(package! org-ref)
 (unpin! lsp-ui)
+(package! general :pin "9651024e7f40a8ac5c3f31f8675d3ebe2b667344") ;; remove after PR #5881 is merged

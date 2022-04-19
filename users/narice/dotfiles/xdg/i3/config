@@ -2,19 +2,20 @@
 
 # Important
 
-exec setxkbmap -rules evdev -model pc105 -layout "fr,fr,us" -variant "us,bepo,intl" -option 'grp:alt_shift_toggle'
+exec setxkbmap -rules evdev -model pc105 -layout "fr" -variant "us" -option 'grp:alt_shift_toggle'
 exec $HOME/.config/i3/auto-nitro.sh
 
 # Optional
 
 exec sleep 10 && keepassxc
-exec firefox
+#exec firefox
 exec discord
 #exec Huion_WH1409.sh
 #exec teams
-exec emacs
-exec korganizer
-exec slack
+#exec emacsclient -cn
+#exec slack
+exec syncthing
+exec deadd-notification-center
 
 
 # settings -- -- -- -- -- --
@@ -32,8 +33,14 @@ floating_modifier $mod
 # start a terminal
 bindsym $mod+Return exec i3-sensible-terminal # determined by the $TERMINAL env var
 
+# start an editor
+bindsym $mod+Shift+Return exec $EDITOR # determined by the $TERMINAL env var
+
 # start dmenu (a program launcher)
-bindsym $mod+space exec xfce4-appfinder -c
+bindsym $mod+space exec rofi -no-lazy-grab -show drun
+
+# toggle notification center
+bindsym $mod+n exec kill -s USR1 $(pidof deadd-notification-center)
 
 # locks i3
 bindsym $mod+Shift+x exec light-locker-command -l
@@ -58,6 +65,8 @@ bindsym $mod+Shift+c reload
 bindsym $mod+Shift+r restart
 # exit i3 (logs you out of your X session)
 bindsym $mod+Control+e exec xfce4-session-logout
+# turn-off monitor until activity
+bindsym $mod+Control+d exec xset dpms force off
 
 
 ## Window management
@@ -158,18 +167,29 @@ bindsym $mod+Shift+0 move container to workspace $ws10
 
 ## Assignements
 
+assign [class="emacs"] $ws1
+assign [class="libreoffice"] $ws1
+
+assign [class="Firefox"] $ws2
+assign [class="qutebrowser"] $ws2
+
 assign [class="discord"] $ws3
 assign [class="Slack"] $ws3
-assign [class="Firefox"] $ws2
+assign [class="Microsoft Teams - Preview"] $ws3
+
+assign [class="Steam"] $ws4
+
 assign [class="korganizer"] $ws5
 assign [class="kwalletd5"] $ws5
-assign [class="Steam"] $ws4
-assign [class="Rhythmbox"] $ws10
-assign [class="Allegro"] $ws9
+
+assign [class="MellowPlayer"] $ws8
+
+assign [class="Pavucontrol"] $ws9
+
+assign [class="Allegro"] $ws9 #is that ardour?
 assign [class="krita"] $ws9
-assign [class="libreoffice"] $ws8
-assign [class="emacs"] $ws1
-assign [class="microsoft teams - preview"] $ws8
+
+assign [class="Rhythmbox"] $ws10
 
 
 ## Window Specific Config
@@ -227,7 +247,8 @@ hide_edge_borders smart
 default_border pixel 0
 default_floating_border none
 
-gaps inner 7
+gaps inner 60
+gaps outer 0
 
 set_from_resource $foreground  i3.foreground  #000000
 set_from_resource $background  i3.background  #000000

@@ -6,12 +6,13 @@
     {
       nixos.url = "nixpkgs/nixos-unstable";
       unstable.url = "nixpkgs/nixpkgs-unstable";
-      latest.url = "nixpkgs";
+      latest.url = "nixpkgs/master";
 
       digga.url = "github:divnix/digga";
       digga.inputs.nixpkgs.follows = "nixos";
       digga.inputs.nixlib.follows = "nixos";
       digga.inputs.home-manager.follows = "home";
+      digga.inputs.deploy.follows = "deploy";
 
       bud.url = "github:divnix/bud";
       bud.inputs.nixpkgs.follows = "nixos";
@@ -23,7 +24,8 @@
       home.url = "github:nix-community/home-manager";
       home.inputs.nixpkgs.follows = "nixos";
 
-      deploy.follows = "digga/deploy";
+      deploy.url = "github:input-output-hk/deploy-rs";
+      deploy.inputs.nixpkgs.follows = "nixos";
 
       # TODO: research and use it
       agenix.url = "github:ryantm/agenix";
@@ -31,8 +33,6 @@
 
       nvfetcher.url = "github:berberman/nvfetcher";
       nvfetcher.inputs.nixpkgs.follows = "latest";
-      nvfetcher.inputs.flake-compat.follows = "digga/deploy/flake-compat";
-      nvfetcher.inputs.flake-utils.follows = "digga/flake-utils-plus/flake-utils";
 
       naersk.url = "github:nmattia/naersk";
       naersk.inputs.nixpkgs.follows = "latest";
@@ -42,17 +42,8 @@
       pkgs.url = "path:./pkgs";
       pkgs.inputs.nixpkgs.follows = "nixos";
 
-      emacs.url = "github:nix-community/emacs-overlay/4470595d93d25163609226c21e1a1dcf366de2ea";
-      musnix.url = "github:musnix/musnix";
-
-      # start ANTI CORRUPTION LAYER
-      # remove after https://github.com/NixOS/nix/pull/4641
-      nixpkgs.follows = "nixos";
-      nixlib.follows = "digga/nixlib";
-      blank.follows = "digga/blank";
-      flake-utils-plus.follows = "digga/flake-utils-plus";
-      flake-utils.follows = "digga/flake-utils";
-      # end ANTI CORRUPTION LAYER
+      emacs.url = "github:nix-community/emacs-overlay/31e9b8c9f4d69d47625efb2510815ec5f529b20c";
+      musnix-flake.url = "github:musnix/musnix";
     };
 
   outputs =
@@ -69,7 +60,7 @@
     , nvfetcher
     , deploy
     , emacs
-    , musnix
+    , musnix-flake
     , ...
     }:
     digga.lib.mkFlake {
@@ -85,6 +76,8 @@
           "steam-original"
           "steam-runtime"
           "teams"
+          "widevine"
+          "yuzu-mainline"
           "yuzu-ea"
           "zoom"
         ];
@@ -95,7 +88,6 @@
           imports = [ (digga.lib.importOverlays ./overlays) ];
           overlays = [
             pkgs.overlay # for `srcs`
-            digga.overlays.patchedNix
             nur.overlay
             agenix.overlay
             nvfetcher.overlay
@@ -123,15 +115,15 @@
         hostDefaults = {
           system = "x86_64-linux";
           channelName = "nixos";
-          imports = [ (digga.lib.importModules ./modules) ];
-          externalModules = [
+          imports = [ (digga.lib.importExportableModules ./modules) ];
+          modules = [
             { lib.our = self.lib; }
             digga.nixosModules.bootstrapIso
             digga.nixosModules.nixConfig
             home.nixosModules.home-manager
             agenix.nixosModules.age
             bud.nixosModules.bud
-            musnix.nixosModules.musnix
+            musnix-flake.nixosModules.musnix
           ];
         };
 
@@ -139,20 +131,67 @@
         hosts = {
           /* set host specific properties here */
           narice-pc = { };
+          astraea = {
+            modules = with nixos-hardware.nixosModules; [ dell-xps-13-9310 ];
+          };
         };
         importables = rec {
           profiles = digga.lib.rakeLeaves ./profiles // {
             users = digga.lib.rakeLeaves ./users;
           };
           suites = with profiles; rec {
-            base = [ core users.narice users.root ];
+            base = [
+              core
+              users.narice
+              users.root
+            ];
+            default = [
+              base
+              bluetooth
+              fail2ban
+              fonts
+              fzf
+              gnome
+              graphic-tablet
+              i3
+              keyboard
+              lightdm
+              musnix
+              picom
+              pipewire
+              printing
+              qt
+              steam
+              touchpad
+              virtualization
+              xfce
+              xfce-i3
+              zsh
+            ];
+            wayland = [
+              base
+              bluetooth
+              fail2ban
+              fonts
+              fzf
+              graphic-tablet
+              keyboard
+              musnix
+              pipewire
+              printing
+              qt
+              steam
+              touchpad
+              virtualization
+              zsh
+            ];
           };
         };
       };
 
       home = {
-        imports = [ (digga.lib.importModules ./users/modules) ];
-        externalModules = [ ];
+        imports = [ (digga.lib.importExportableModules ./users/modules) ];
+        modules = [ ];
         importables = rec {
           profiles = digga.lib.rakeLeaves ./users/profiles;
           suites = with profiles; rec {
@@ -174,7 +213,7 @@
     }
     //
     {
-      budModules = { devos = import ./bud; };
+      budModules = { devos = import ./shell/bud; };
     }
   ;
 }

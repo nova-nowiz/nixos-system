@@ -3,14 +3,14 @@ channels: final: prev: {
   __dontExport = true; # overrides clutter up actual creations
 
   inherit (channels.latest)
-    steam
-    discord;
+    ;
 
   inherit (channels.unstable)
     cachix
     element-desktop
     manix
     rage
+    steam
     qutebrowser
     yuzu
     yuzu-ea;
@@ -37,6 +37,16 @@ channels: final: prev: {
       repo = "picom";
       rev = "60eb00ce1b52aee46d343481d0530d5013ab850b";
       sha256 = "sha256-PDQnWB6Gkc/FHNq0L9VX2VBcZAE++jB8NkoLQqH9J9Q=";
+    };
+  });
+
+  nix-direnv = prev.nix-direnv.overrideAttrs (hprev: {
+    version = "nix-2.4";
+    src = prev.fetchFromGitHub {
+      owner = "nix-community";
+      repo = "nix-direnv";
+      rev = "ee17ef31d087cddc0932cd39e6f47175e6443176";
+      sha256 = "sha256-PEteip6FcaJ2wqdhSM9SqL7bJ4nimcOrC3s2pWunEIE=";
     };
   });
 }

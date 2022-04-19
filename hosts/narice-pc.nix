@@ -1,6 +1,6 @@
 { suites, lib, pkgs, ... }:
 {
-  imports = suites.base;
+  imports = suites.default;
 
   networking = {
     interfaces.eno1.useDHCP = true;

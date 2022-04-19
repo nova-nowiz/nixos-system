@@ -16,10 +16,9 @@
         <value type="int" value="7"/>
         <value type="int" value="4"/>
         <value type="int" value="3"/>
-        <value type="int" value="2"/>
-        <value type="int" value="5"/>
         <value type="int" value="6"/>
         <value type="int" value="10"/>
+        <value type="int" value="8"/>
         <value type="int" value="11"/>
         <value type="int" value="12"/>
         <value type="int" value="13"/>
@@ -37,15 +36,7 @@
       <property name="show-button-title" type="bool" value="false"/>
       <property name="show-generic-names" type="bool" value="false"/>
       <property name="custom-menu" type="bool" value="false"/>
-    </property>
-    <property name="plugin-2" type="string" value="tasklist">
-      <property name="grouping" type="uint" value="0"/>
-      <property name="show-labels" type="bool" value="false"/>
-      <property name="show-handle" type="bool" value="false"/>
-      <property name="flat-buttons" type="bool" value="true"/>
-      <property name="sort-order" type="uint" value="1"/>
-      <property name="show-wireframes" type="bool" value="false"/>
-      <property name="include-all-workspaces" type="bool" value="true"/>
+      <property name="button-icon" type="string" value="desktop-environment-xfce"/>
     </property>
     <property name="plugin-3" type="string" value="separator">
       <property name="expand" type="bool" value="true"/>
@@ -54,14 +45,20 @@
     <property name="plugin-4" type="string" value="pager">
       <property name="rows" type="uint" value="1"/>
       <property name="miniature-view" type="bool" value="true"/>
-    </property>
-    <property name="plugin-5" type="string" value="separator">
-      <property name="style" type="uint" value="0"/>
-      <property name="expand" type="bool" value="true"/>
+      <property name="numbering" type="bool" value="false"/>
+      <property name="workspace-scrolling" type="bool" value="true"/>
     </property>
     <property name="plugin-6" type="string" value="systray">
       <property name="square-icons" type="bool" value="true"/>
       <property name="known-legacy-items" type="array">
+        <value type="string" value="wpa_gui"/>
+        <value type="string" value="bluetooth disabled"/>
+        <value type="string" value="keepassxc"/>
+        <value type="string" value="evolution-alarm-notify"/>
+        <value type="string" value="reminders"/>
+        <value type="string" value="bluetooth enabled"/>
+        <value type="string" value="teams"/>
+        <value type="string" value="network"/>
         <value type="string" value="thunar"/>
         <value type="string" value="steam"/>
         <value type="string" value="discord"/>
@@ -75,6 +72,13 @@
       <property name="symbolic-icons" type="bool" value="true"/>
       <property name="icon-size" type="int" value="0"/>
       <property name="known-items" type="array">
+        <value type="string" value="wpa_gui"/>
+        <value type="string" value="obs"/>
+        <value type="string" value="systray"/>
+        <value type="string" value="blueman"/>
+        <value type="string" value="nm-applet"/>
+        <value type="string" value="Element1"/>
+        <value type="string" value="vlc"/>
         <value type="string" value="zoom"/>
         <value type="string" value="Microsoft Teams - Preview1"/>
         <value type="string" value="MellowPlayer3"/>
@@ -87,34 +91,56 @@
         <value type="string" value="Slack1"/>
       </property>
       <property name="hidden-items" type="array">
-        <value type="string" value="KDE Connect Indicator"/>
-        <value type="string" value="MellowPlayer3"/>
-        <value type="string" value="flameshot"/>
-        <value type="string" value="steam"/>
-        <value type="string" value="KeePassXC"/>
-        <value type="string" value="Klipper"/>
-        <value type="string" value="Microsoft Teams - Preview1"/>
+        <value type="string" value="obs"/>
         <value type="string" value="Slack1"/>
+        <value type="string" value="Element1"/>
+        <value type="string" value="Microsoft Teams - Preview1"/>
+        <value type="string" value="nm-applet"/>
+        <value type="string" value="blueman"/>
+        <value type="string" value="vlc"/>
+        <value type="string" value="Klipper"/>
         <value type="string" value="discord1"/>
         <value type="string" value="zoom"/>
+        <value type="string" value="MellowPlayer3"/>
+        <value type="string" value="KDE Connect Indicator"/>
+        <value type="string" value="flameshot"/>
+        <value type="string" value="systray"/>
+        <value type="string" value="steam"/>
+        <value type="string" value="wpa_gui"/>
+        <value type="string" value="KeePassXC"/>
       </property>
       <property name="hidden-legacy-items" type="array">
-        <value type="string" value="networkmanager applet"/>
-        <value type="string" value="slack"/>
+        <value type="string" value="keepassxc"/>
         <value type="string" value="task manager"/>
-        <value type="string" value="xfce4-power-manager"/>
+        <value type="string" value="reminders"/>
         <value type="string" value="thunar"/>
-        <value type="string" value="discord"/>
+        <value type="string" value="bluetooth enabled"/>
         <value type="string" value="steam"/>
+        <value type="string" value="networkmanager applet"/>
+        <value type="string" value="network"/>
+        <value type="string" value="wpa_gui"/>
+        <value type="string" value="bluetooth disabled"/>
+        <value type="string" value="discord"/>
+        <value type="string" value="slack"/>
+        <value type="string" value="xfce4-power-manager"/>
+        <value type="string" value="evolution-alarm-notify"/>
+        <value type="string" value="teams"/>
       </property>
     </property>
-    <property name="plugin-9" type="string" value="power-manager-plugin"/>
     <property name="plugin-10" type="string" value="notification-plugin"/>
     <property name="plugin-11" type="string" value="separator">
       <property name="style" type="uint" value="0"/>
     </property>
     <property name="plugin-12" type="string" value="clock">
       <property name="mode" type="uint" value="2"/>
+      <property name="show-seconds" type="bool" value="false"/>
+      <property name="flash-separators" type="bool" value="false"/>
+      <property name="show-meridiem" type="bool" value="false"/>
+      <property name="fuzziness" type="uint" value="0"/>
+      <property name="show-inactive" type="bool" value="true"/>
+      <property name="true-binary" type="bool" value="false"/>
+      <property name="show-grid" type="bool" value="false"/>
+      <property name="digital-format" type="string" value="%_H:%M"/>
     </property>
     <property name="plugin-13" type="string" value="separator">
       <property name="style" type="uint" value="0"/>
@@ -138,5 +164,10 @@
       <property name="button-title" type="uint" value="1"/>
     </property>
     <property name="plugin-7" type="string" value="separator"/>
+    <property name="plugin-8" type="string" value="power-manager-plugin"/>
+    <property name="plugin-9" type="string" value="pulseaudio">
+      <property name="enable-keyboard-shortcuts" type="bool" value="true"/>
+      <property name="mpris-players" type="string" value="chromium.instance119235;chromium.instance1420015;chromium.instance14336;chromium.instance1591508;chromium.instance1592981;chromium.instance185260;chromium.instance1919;chromium.instance1945;chromium.instance1949;chromium.instance229763;chromium.instance232466;chromium.instance249572;chromium.instance335816;chromium.instance3513;chromium.instance357962;chromium.instance419451;chromium.instance475500;chromium.instance479870;chromium.instance61032;chromium.instance860335;chromium.instance8786;chromium.instance9951;firefox.instance1240573;firefox.instance1947;firefox.instance1966;firefox.instance1977;firefox.instance1978;firefox.instance2109;firefox.instance3984;firefox.instance845771;firefox.instance909630;firefox.instance915916;kdeconnect.mpris_090f79a70139451cacd3210cd700def5;kdeconnect.mpris_0c28974310ee408595565f956a1e9df0;kdeconnect.mpris_0d88b0c992ab4d4fb10acd707185a4f8;kdeconnect.mpris_0fcc09c59ad84c7bad4e14303ba79ad3;kdeconnect.mpris_100cbd42b6c4431089a096d2fd4a4348;kdeconnect.mpris_10d6ddb6607547fb85c8538423b237aa;kdeconnect.mpris_12e7a9078e3e4a57b375b3f4822e9012;kdeconnect.mpris_1315639afea944c08d693bb6d3e7fea2;kdeconnect.mpris_1358ed4d77634ae2af0e2b23a4b60389;kdeconnect.mpris_136907d2010848219949427dd6523531;kdeconnect.mpris_183c6039ef8b4ea7a3781f125ba953b3;kdeconnect.mpris_185a731a14ab4cc18dc3f73d0ef35569;kdeconnect.mpris_1959768ff46a4b3595b524b48e8a7638;kdeconnect.mpris_1aeaca8452a34a79b8f51ae0deca6d7a;kdeconnect.mpris_1b42496040e24c1481c7f9ac3b614f38;kdeconnect.mpris_1c2bb2f6d9ee4164a2f356c699b30006;kdeconnect.mpris_1d16059b71dc40cb89bbe9e1e718cb67;kdeconnect.mpris_2088782810d74e799f5da196680fb8b2;kdeconnect.mpris_20abde5cdb8747369f71b1dd94f2fab2;kdeconnect.mpris_2215048e29344225b152692fabfc4098;kdeconnect.mpris_23908d7045dd4bd1adfab2b31c8d7636;kdeconnect.mpris_24bfcbff2f794521a635bf359a468d80;kdeconnect.mpris_24cd90fb8f9a4599b628f26715a468d3;kdeconnect.mpris_268d1d0aa0a4458e96bb66c5d5707597;kdeconnect.mpris_27510c49a3184eb9b786dd709b2e7432;kdeconnect.mpris_28e49a65495f4daeb015262830406625;kdeconnect.mpris_2918a8f53ff4439ab4ec02dc22bd5665;kdeconnect.mpris_2afca2c1639d4e78869df5b79da4ec31;kdeconnect.mpris_2c0aae162a7b473e918493f03fe1d279;kdeconnect.mpris_2dcba82980c9479cb1be2c5786305721;kdeconnect.mpris_2e1ef248ebba41ca84ed89c3950d5398;kdeconnect.mpris_2eeff2d332464b5f8533e7d3c93d8184;kdeconnect.mpris_317c4fa02683407ab263b7f2f9ff083b;kdeconnect.mpris_320f8648a87f4542b95bb9627d27cf53;kdeconnect.mpris_3281ed83a80149e4bca212c794b995f9;kdeconnect.mpris_32b3db8c125e4559b1222f4d84ce772a;kdeconnect.mpris_33903e3bd53644efad47d938ee246e65;kdeconnect.mpris_34b40ac0e31d4113b594e39fe90ca83e;kdeconnect.mpris_3628e9df790e46da86a32b3ba27c6eb7;kdeconnect.mpris_368cacd8afc34b8fbbfc2fe1fdc1b9f0;kdeconnect.mpris_37fcafa1ad8447cf8d59fe2b8acdf208;kdeconnect.mpris_382ec03302174d9da50328ab649f2054;kdeconnect.mpris_3ba29fe67d3f4bb08102ee68f2599a03;kdeconnect.mpris_3d3a58ce8e554325a2b6ad52b9f6cb66;kdeconnect.mpris_3d9d4913bab24a56906612702b07e402;kdeconnect.mpris_3dece2e37f3648e2a9afd777253b7712;kdeconnect.mpris_3f78908fb7724d86b16573fe631d36e7;kdeconnect.mpris_403f3bb8d0954b048b180584d57156d5;kdeconnect.mpris_4082e76f24c24565814b485c9d69c1a8;kdeconnect.mpris_43c4d1c2f0a940adb3e5e6d29b3a71cf;kdeconnect.mpris_4466c43de2cb4b7bb81879dc572729e3;kdeconnect.mpris_449bbf4a06614d708835f24f43b48d04;kdeconnect.mpris_452d51af192f482c97c3899e1f69b6bd;kdeconnect.mpris_47b005e172d742e891dda194f86c14c6;kdeconnect.mpris_47e4d183e91c48d4bf70d4b7d9cac418;kdeconnect.mpris_4b9c0b3f8fda43ed82bdddab47bd2b17;kdeconnect.mpris_4c41f8987f804a2982a313160afe8442;kdeconnect.mpris_4e48fb3267364359bce336f04a6b7062;kdeconnect.mpris_4f7e9f2774a84d2e9d7b6e27dcbfc2fd;kdeconnect.mpris_5176e197a637478abe338be721b34fef;kdeconnect.mpris_51baef30f9384f68a49fc4076fac3511;kdeconnect.mpris_53b87499e2fe4c0d83e371db1451e291;kdeconnect.mpris_54babb88bb52456999f33c4850b119a2;kdeconnect.mpris_57c7a3d371d64dc0baec0b369f8639ec;kdeconnect.mpris_59f7a92a886142ad8e7f988676b828e6;kdeconnect.mpris_5a552718c08649bd9d44db86a052f998;kdeconnect.mpris_5a83688dbcb14d5e948741dc8ac5b1d1;kdeconnect.mpris_5b55aef2517046da8b90d955000d020d;kdeconnect.mpris_5cb5d438a01d46ea8ad43d97b2246840;kdeconnect.mpris_5d90023558b449cc8e5ec35cae8a157f;kdeconnect.mpris_5f7a1ec4564548d5bbf11960608f74fe;kdeconnect.mpris_604d71a4845c4d2685fc397055c42b10;kdeconnect.mpris_60d674262936440c9e6e6beb494eea46;kdeconnect.mpris_6173081b7fb048d8ac08ac1f791189e7;kdeconnect.mpris_696bf6b5b97f46a5997df3b185cdb79c;kdeconnect.mpris_6a0628ea75474c01857ab70c926f4978;kdeconnect.mpris_6b0964d7f3444aa68d00342aecf5b02b;kdeconnect.mpris_6e667725bf8648f6998e59b345d55324;kdeconnect.mpris_6e8921df50804104b4ebe905d48a8298;kdeconnect.mpris_6ed31088b443492980b14d787ac38f45;kdeconnect.mpris_6f2f5e138ee44a0cb4d0e83834362df6;kdeconnect.mpris_6f5145050bbb4ff483fbe8b040dcdf95;kdeconnect.mpris_71436ffef34349209fcbb3d9d352b199;kdeconnect.mpris_73cc4eca651d41eba8aca6ddbd918b12;kdeconnect.mpris_7a334f895d7546cf8afb6a64b9c16d6c;kdeconnect.mpris_7af7615cc47f4604b45a289728e145e5;kdeconnect.mpris_7d1ac82fd3fb42a1a721d28a9954fe93;kdeconnect.mpris_7f8d9fef73874a5581ef5b9ac13e58d2;kdeconnect.mpris_800277b4daea48eb940016378c4aa985;kdeconnect.mpris_80c2a6652e804cb3b97a5fef3d35b1ce;kdeconnect.mpris_82c82ccfaca24f84beb27b5045becd97;kdeconnect.mpris_83a2f75c41de4fad908c2b033d0f9aae;kdeconnect.mpris_83b01c8bd2594f5ebdaa4da6ca3e930f;kdeconnect.mpris_848a4563cd5c49dcbffc726082f444d4;kdeconnect.mpris_8671c8604234490791b413ce8f9795fe;kdeconnect.mpris_868e1a9b18e04986b09bbf1fadd55d45;kdeconnect.mpris_87149bb6544946879f9bb602b5812f4c;kdeconnect.mpris_88730c375ae3402bbdf02d36b69b5276;kdeconnect.mpris_896510fdf78047d688b34293b8688066;kdeconnect.mpris_8bf7caf8306542d78e6ccdb9ea69c467;kdeconnect.mpris_8c8bf53bc24c464ab73cffe34317f986;kdeconnect.mpris_8cc655fa7f0e446aa8013d0a5c7a4469;kdeconnect.mpris_8db9705c29bb4868b36e7c06189edc81;kdeconnect.mpris_8dc3915dbd7d47cd984215337d115c10;kdeconnect.mpris_900c75d906784fe09ea4bb51d2fe6554;kdeconnect.mpris_9132f743a3cd4b5b8b0270ae610225ec;kdeconnect.mpris_9331a0245944454ba6fa13cfec3315f0;kdeconnect.mpris_9345801935474d08b03e8ac22b825420;kdeconnect.mpris_96fbac54de66436a9b4be9cfd77afff1;kdeconnect.mpris_98c269bc47c24a5d9bd44e2c870e8750;kdeconnect.mpris_997ef1974ecf46209f9e2ff434dc2170;kdeconnect.mpris_9b484f3aab954d8fb7bd1198c8a67c70;kdeconnect.mpris_9bbc204cbdfc414c95ad9b8cf8b2fe3f;kdeconnect.mpris_9c6a6b8a19554704830e758f58c5fb23;kdeconnect.mpris_9ca52668d12a4a468517bb4f94bc49e8;kdeconnect.mpris_9cb8074dd4004603845f0c1ccf3faa91;kdeconnect.mpris_9d00ec6797f541cb9ca7abd13115a368;kdeconnect.mpris_9d3e97492add46c0b9ec0008a9b7e050;kdeconnect.mpris_9d488748bb924cea907e7f806c4a832a;kdeconnect.mpris_a023ce62c40a4476af41cfd94c2d4fb8;kdeconnect.mpris_a2184c59507e48ebaa165416cf4b8bf9;kdeconnect.mpris_a58056db97bf46e89afe8e394b6ebc2e;kdeconnect.mpris_a66ccfea32ed4cb3bb40ea7c22bd7808;kdeconnect.mpris_a7282aa954944bb49bab89b45b998b98;kdeconnect.mpris_a75eea328966418daba8b79128461cfd;kdeconnect.mpris_a7de89dd9a224abaa6c63c89e3368084;kdeconnect.mpris_aa529209b6e64c3590231045dfd591c3;kdeconnect.mpris_ab3b6f3402404ef6be5a5b1804ddae39;kdeconnect.mpris_ace917fe8cd44773b124135c49c15848;kdeconnect.mpris_ae83264549764cee92aa0e6236ecb83e;kdeconnect.mpris_aeee397c39dc40b6b1d327b8787f9dfd;kdeconnect.mpris_b00e7e8ca181474c987a808ec0a39942;kdeconnect.mpris_b1bf5c16cfb84aa5abb12b46739159ad;kdeconnect.mpris_b23c97d2c15248cea2b099e61f13623d;kdeconnect.mpris_b2ca69db27204224bbc3be76c7ca5670;kdeconnect.mpris_b3a881526648412bba25563e4d1cc1d0;kdeconnect.mpris_b3e429e3b44141e3a31f9c7f8e5c6133;kdeconnect.mpris_b690948816274a85ade84cb117ba0478;kdeconnect.mpris_b7259a981d464740bb0c1dd4550a4e54;kdeconnect.mpris_b74b1c7587b749bdae633ecbb188bc68;kdeconnect.mpris_bc0a1aef0d3d4cceb8f68c9b7d579128;kdeconnect.mpris_bc6e82196f06486ba6a4a6c8df626684;kdeconnect.mpris_bd8044b49d854f2085fd6f4836f1f2f4;kdeconnect.mpris_bf5799db8ae5446390315f760e8c3873;kdeconnect.mpris_c2d6d38d78fb4f14a17e701d716b6fcc;kdeconnect.mpris_c2d91ef6a2924badb259c768e35a79d9;kdeconnect.mpris_c4d029cd558e46ee87bf6574ed0bcef6;kdeconnect.mpris_c4e597b0a34f4eb6bd1059afdfabcbb1;kdeconnect.mpris_c6b31e5b99d243399d539af5a5c913d4;kdeconnect.mpris_c6e4c3b75c1d4d2eb75d2bae2c9bf728;kdeconnect.mpris_ca62d700adf347ac9f3542655f624f2b;kdeconnect.mpris_ca648c4e91a84e1985bb14bcbe447e25;kdeconnect.mpris_cc81b1c96f29450ca6c42bb48bae15e1;kdeconnect.mpris_cce26aae9ac345998fa8b53707ebf97b;kdeconnect.mpris_cd1244fcf4b1425baf7d085ddb2933d5;kdeconnect.mpris_ce8ab6cf439a47ecb3eccf0ed10f8320;kdeconnect.mpris_d0c9ef18a3af4c64ab828fc9b35f6353;kdeconnect.mpris_d0cecd43ef3744e297f65cd9f4ad6d4d;kdeconnect.mpris_d44538f19b6a4bbd97587611c34ea59a;kdeconnect.mpris_d679655752c3492e8dc1afb5e619d49a;kdeconnect.mpris_d7a8e868597c406987cb8c0c04a01e68;kdeconnect.mpris_d909338fa5bd4a5e9e5a048221b2d9e9;kdeconnect.mpris_ddcb06f1e9d8448bb2e6ca250451bbd7;kdeconnect.mpris_dff6d9dd358e487c9072488a43aa3c23;kdeconnect.mpris_e3e7289f5ddf4c4fb6b27314aacd4774;kdeconnect.mpris_e47fd22db2fd4f708dd54f774a9f7702;kdeconnect.mpris_e6531b16eca340c287e744f2d3d59872;kdeconnect.mpris_e67ce782be1745afae6c2cacfa2d5f39;kdeconnect.mpris_e68564934d02472b9b6364ef469c4d83;kdeconnect.mpris_e7c30bd6b55643ad96a6f0d61ab50747;kdeconnect.mpris_e8c592d1d9f34be2b25284638e56053e;kdeconnect.mpris_e971f528f5e14ca0a36aeb46d4cd5e66;kdeconnect.mpris_e98b6030737a4f3187fd272d5bef43b8;kdeconnect.mpris_ea09d58fe9864aa1be453bf0159665b7;kdeconnect.mpris_ed3b484a20844e409bba2e0bc7577476;kdeconnect.mpris_edbae6b926b648b18fd092bde11af225;kdeconnect.mpris_f08266cd7c2c4edabd1ebe2b00f06a8b;kdeconnect.mpris_f0c5aba8cb83444c81b12b4fc7907cb7;kdeconnect.mpris_f310a41639ad456a9dea9fc6d8cee3fa;kdeconnect.mpris_f343c41da9f64b4fae8e91a35dd20d53;kdeconnect.mpris_f57188f815c54b01bbbbb2c844a47072;kdeconnect.mpris_f5ab5f22106e457bbc44f5d6eb2f7328;kdeconnect.mpris_f5ed4a4f60d04a1cbd0fe9011045864c;kdeconnect.mpris_f62626bf52cd4e41af9d65690d5f2db3;kdeconnect.mpris_f73c3648d86343ff816b648c3cf89797;kdeconnect.mpris_f9f4e83522eb49e8b31b7a284e6be0ca;kdeconnect.mpris_fa454eacd0a74a17ae2167f144a7aede;kdeconnect.mpris_fe9d887ba6a246039b544f30a4cce38a;MellowPlayer3;qutebrowser.instance10930;qutebrowser.instance115723;qutebrowser.instance12055;qutebrowser.instance12147;qutebrowser.instance135108;qutebrowser.instance13863;qutebrowser.instance139346;qutebrowser.instance17437;qutebrowser.instance22459;qutebrowser.instance25912;qutebrowser.instance3142;qutebrowser.instance327918;qutebrowser.instance3335;qutebrowser.instance3438;qutebrowser.instance35774;qutebrowser.instance36436;qutebrowser.instance379914;qutebrowser.instance4016;qutebrowser.instance4321;qutebrowser.instance45130;qutebrowser.instance51144;qutebrowser.instance5588;qutebrowser.instance56511;qutebrowser.instance60814;qutebrowser.instance6164;qutebrowser.instance6242;qutebrowser.instance6945;qutebrowser.instance6952;qutebrowser.instance71914;qutebrowser.instance72634;qutebrowser.instance831684;qutebrowser.instance845778;qutebrowser.instance94568"/>
+    </property>
   </property>
 </channel>

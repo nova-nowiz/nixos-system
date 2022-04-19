@@ -1,57 +1,44 @@
 { suites, lib, pkgs, ... }:
 {
-  imports = suites.base;
+  imports = suites.default;
 
   networking = {
-    interfaces.wlp0s20f3.useDHCP = true;
-    networkmanager.enable = true;
+    interfaces.wlan0.useDHCP = true;
+    networkmanager = {
+      enable = true;
+    };
   };
 
   boot = {
     loader = {
       systemd-boot.enable = true;
-      efi.canTouchEfiVariables = true;
+      efi.canTouchEfiVariables = false;
     };
     initrd = {
       # Corresponds to NixOS's first boot stage
       availableKernelModules = [ "xhci_pci" "thunderbolt" "vmd" "nvme" "usb_storage" "sd_mod" ];
-      kernelModules = [ ];
-    };
-    kernel.sysctl = {
-      "vm.swappiness" = lib.mkForce 1;
+      kernelModules = [ "i915" ];
     };
     kernelModules = [ "kvm-intel" ];
     extraModulePackages = [ ];
   };
 
+  hardware.enableRedistributableFirmware = true;
+  hardware.cpu.intel.updateMicrocode = true;
+  hardware.opengl.extraPackages = with pkgs; [
+    vaapiIntel
+    vaapiVdpau
+    libvdpau-va-gl
+    intel-media-driver
+    intel-compute-runtime
+  ];
+  services.fwupd.enable = true;
+  musnix.kernel.packages = pkgs.linuxPackages_latest; # For hardware reasons
+
   services = {
     fstrim.enable = true;
     xserver = {
-      libinput = {
-        enable = true;
-	touchpad = {
-	  tapping = true;
-	  tappingDragLock = true;
-	  scrollMethod = "twofinger";
-	  disableWhileTyping = false;
-	};
-      };
-      
-      desktopManager.gnome.enable = true;
-    };
-  };
-
-  hardware = {
-    opengl = {
-      enable = true;
-      driSupport32Bit = true;
-      extraPackages = with pkgs; [
-        rocm-opencl-icd
-        rocm-opencl-runtime
-      ];
-      extraPackages32 = with pkgs; [
-        pkgsi686Linux.libva
-      ];
+      useGlamor = true;
     };
   };
 
@@ -82,8 +69,6 @@
   ];
 
   powerManagement.cpuFreqGovernor = lib.mkForce "powersave";
-  # high-resolution display
-  hardware.video.hidpi.enable = true;
 
   system.stateVersion = "21.11";
 }

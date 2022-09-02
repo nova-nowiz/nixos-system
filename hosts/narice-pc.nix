@@ -25,15 +25,14 @@
   };
 
   services = {
-    xserver = {
-      videoDrivers = [ "amdgpu" ];
-    };
     fstrim.enable = true;
   };
 
   hardware = {
+    cpu.amd.updateMicrocode = true;
     opengl = {
       enable = true;
+      driSupport = true;
       driSupport32Bit = true;
       extraPackages = with pkgs; [
         rocm-opencl-icd
@@ -46,6 +45,7 @@
       ];
     };
   };
+  musnix.kernel.packages = pkgs.linuxPackages_latest; # For hardware reasons
 
   fileSystems = {
     "/" = {

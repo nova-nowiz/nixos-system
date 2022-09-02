@@ -58,13 +58,29 @@ in
     firewall = {
       allowedTCPPorts = [ ];
       allowedUDPPorts = [ ];
-      allowedTCPPortRanges = [ { from = 1714; to = 1764; } ];
-      allowedUDPPortRanges = [ { from = 1714; to = 1764; } ];
+      allowedTCPPortRanges = [{ from = 1714; to = 1764; }];
+      allowedUDPPortRanges = [{ from = 1714; to = 1764; }];
     };
   };
 
-  i18n.defaultLocale = "en_US.UTF-8";
-  time.timeZone = "Europe/Dublin";
+  i18n = {
+    defaultLocale = "en_US.UTF-8";
+    extraLocaleSettings = {
+      LC_CTYPE = "fr_FR.UTF-8";
+      LC_NUMERIC = "fr_FR.UTF-8";
+      LC_TIME = "fr_FR.UTF-8";
+      LC_COLLATE = "fr_FR.UTF-8";
+      LC_MONETARY = "fr_FR.UTF-8";
+      LC_MESSAGES = "fr_FR.UTF-8";
+      LC_PAPER = "fr_FR.UTF-8";
+      LC_NAME = "fr_FR.UTF-8";
+      LC_ADDRESS = "fr_FR.UTF-8";
+      LC_TELEPHONE = "fr_FR.UTF-8";
+      LC_MEASUREMENT = "fr_FR.UTF-8";
+      LC_IDENTIFICATION = "fr_FR.UTF-8";
+    };
+  };
+  time.timeZone = "Europe/Paris";
 
   nix = {
 
@@ -122,16 +138,6 @@ in
     };
     dconf.enable = true;
     nm-applet.enable = true;
-    # sway = {
-    #   enable = true;
-    #   extraPackages = with pkgs; [
-    #     swaylock # lockscreen
-    #     swayidle
-    #     xwayland # for legacy apps
-    #     mako # notification daemon
-    #     kanshi # autorandr
-    #   ];
-    # };
   };
 
   systemd = {

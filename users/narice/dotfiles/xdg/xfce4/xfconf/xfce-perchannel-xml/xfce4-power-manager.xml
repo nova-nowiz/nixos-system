@@ -5,7 +5,7 @@
     <property name="lock-screen-suspend-hibernate" type="bool" value="true"/>
     <property name="show-tray-icon" type="bool" value="false"/>
     <property name="general-notification" type="bool" value="false"/>
-    <property name="blank-on-ac" type="int" value="7"/>
+    <property name="blank-on-ac" type="int" value="0"/>
     <property name="brightness-switch-restore-on-exit" type="int" value="1"/>
     <property name="brightness-switch" type="int" value="0"/>
     <property name="show-panel-label" type="int" value="0"/>
@@ -22,5 +22,7 @@
     <property name="dpms-on-battery-sleep" type="uint" value="10"/>
     <property name="dpms-enabled" type="bool" value="true"/>
     <property name="dpms-on-battery-off" type="uint" value="15"/>
+    <property name="dpms-on-ac-sleep" type="uint" value="20"/>
+    <property name="dpms-on-ac-off" type="uint" value="30"/>
   </property>
 </channel>

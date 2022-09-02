@@ -20,12 +20,13 @@
       fd
       feh
       ffmpeg
-      # flameshot
+      flameshot
       freerdp
       fzf
       ghostscript
       git
       git-crypt
+      gnome.zenity
       gnome3.gnome-calculator
       gnome3.seahorse
       gparted
@@ -52,6 +53,7 @@
       nix-prefetch-github
       nmap
       ntfs3g
+      openssl
       pandoc
       pass
       pavucontrol
@@ -99,16 +101,15 @@
       };
 
       alacritty.enable = true;
-      waybar.enable = true;
       firefox.enable = true;
       qutebrowser = {
         enable = true;
         settings = {
-          colors = {
-            webpage.preferred_color_scheme = "dark";
-            tabs.bar.bg = "#000000";
-          };
-          qt.args = ["widevine-path=${pkgs.vivaldi-widevine}/share/google/chrome/WidevineCdm/_platform_specific/linux_x64/libwidevinecdm.so"];
+          # colors = {
+          #   webpage.preferred_color_scheme = "dark";
+          #   tabs.bar.bg = "#000000";
+          # };
+          qt.args = [ "widevine-path=${pkgs.vivaldi-widevine}/share/google/chrome/WidevineCdm/_platform_specific/linux_x64/libwidevinecdm.so" ];
         };
         aliases = {
           mpv = "spawn --userscript ${pkgs.qutebrowser}/share/qutebrowser/userscripts/view_in_mpv";
@@ -142,6 +143,8 @@
       {
         "alacritty".source = "${conf}/alacritty";
         "i3".source = "${conf}/i3";
+        "sway".source = "${conf}/sway";
+        "hypr".source = "${conf}/hypr";
         "zathura".source = "${conf}/zathura";
         # "nvim".source = "${conf}/nvim";
         "deadd".source = "${conf}/deadd";
@@ -279,10 +282,6 @@
       Xft.lcdfilter: lcddefault
     '';
 
-    wayland.windowManager.sway = {
-      enable = true;
-      wrapperFeatures.gtk = true;
-    };
     # TODO: firefox config?
     # TODO: discord config?
     # TODO: mellowdream config?
@@ -294,7 +293,7 @@
     uid = 1000;
     description = "Narice";
     isNormalUser = true;
-    extraGroups = [ "wheel" "kvm" "libvirtd" "docker" "audio" "networkmanager" "video" "dialout"];
+    extraGroups = [ "wheel" "kvm" "libvirtd" "docker" "audio" "networkmanager" "video" "dialout" ];
     hashedPassword =
       "$6$Gdi6PgGv5c/NLe$Xcp9rJ8MZZetBiuhoy2C0LU8KhHXj3PwLVUjlsKx9/GPaveAXH53gOHBNu8Fp0DQqqR1xpr1tg7yZEF7X7crA0";
   };

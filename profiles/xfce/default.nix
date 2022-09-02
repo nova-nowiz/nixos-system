@@ -5,6 +5,7 @@ in
   environment = {
     systemPackages = with pkgs; [
       lightlocker
+      xfce.xfce4-pulseaudio-plugin
     ];
   };
   services = {

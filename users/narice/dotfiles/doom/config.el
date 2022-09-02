@@ -114,6 +114,15 @@
   (setq org-log-into-drawer 't
         org-columns-default-format "%40ITEM(name) %TODO(status) %3PRIORITY(priority) %Effort(time estimate){:} %CLOCKSUM(time spent) %SCHEDULED(scheduled) %DEADLINE(deadline) %TIMESTAMP(timestamp) %TAGS(tags)"))
 
+(after! ox-latex
+  (add-to-list 'org-latex-classes
+               '("uccthesis"
+                 "\\documentclass{uccthesis}\n[NO-DEFAULT-PACKAGES]\n[NO-PACKAGES]\n[NO-EXTRA]"
+                 ("\\chapter{%s}" . "\\chapter*{%s}")
+                 ("\\section{%s}" . "\\section*{%s}")
+                 ("\\subsection{%s}" . "\\subsection*{%s}")
+                 ("\\subsubsection{%s}" . "\\subsubsection*{%s}"))))
+
 ;; org agenda
 (after! org-agenda
  (defun org-time-to-minutes (time)
@@ -295,3 +304,4 @@
 ;; remove after PR #5881
 (general-auto-unbind-keys :off)
 (remove-hook 'doom-after-init-modules-hook #'general-auto-unbind-keys)
+(setq byte-compile-warnings '(not obsolete))

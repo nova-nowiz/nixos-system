@@ -293,7 +293,7 @@
     uid = 1000;
     description = "Narice";
     isNormalUser = true;
-    extraGroups = [ "wheel" "kvm" "libvirtd" "docker" "audio" "networkmanager" "video" "dialout" ];
+    extraGroups = [ "wheel" "kvm" "libvirtd" "docker" "audio" "networkmanager" "video" "dialout" "input" ];
     hashedPassword =
       "$6$Gdi6PgGv5c/NLe$Xcp9rJ8MZZetBiuhoy2C0LU8KhHXj3PwLVUjlsKx9/GPaveAXH53gOHBNu8Fp0DQqqR1xpr1tg7yZEF7X7crA0";
   };

@@ -187,11 +187,11 @@
 ;; (add-hook 'after-init-hook #'global-emojify-mode)
 
 (after! ispell
-  (setq ispell-dictionary "american,fr-toutesvariantes")
+  (setq ispell-dictionary "en_US,fr-toutesvariantes")
   ;; ispell-set-spellchecker-params has to be called
   ;; before ispell-hunspell-add-multi-dic will work
   (ispell-set-spellchecker-params)
-  (ispell-hunspell-add-multi-dic "american,fr-toutesvariantes"))
+  (ispell-hunspell-add-multi-dic "en_US,fr-toutesvariantes"))
 
 (after! langtool
   (setq langtool-default-language auto))

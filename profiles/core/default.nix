@@ -50,6 +50,7 @@ in
       "vm.max_map_count" = 262144;
       "fs.file-max" = 65536;
     };
+    kernelPackages = pkgs.linuxPackages_latest;
     plymouth.enable = true;
   };
 

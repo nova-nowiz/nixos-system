@@ -44,10 +44,10 @@
       pkgs.url = "path:./pkgs";
       pkgs.inputs.nixpkgs.follows = "nixos";
 
-      emacs.url = "github:nix-community/emacs-overlay/8707d84ec67b39d5655929fc974055bcb9a160fb";
+      emacs.url = "github:nix-community/emacs-overlay/4deb8259b99eeabe4a4343c3ecb90c40d51d5d8a";
 
       musnix-flake.url = "github:musnix/musnix";
-      hyprland-flake.url = "github:vaxerski/Hyprland";
+      hyprland-flake.url = "github:hyprwm/Hyprland";
     };
 
   outputs =
@@ -78,6 +78,7 @@
             "minecraft-launcher"
             "slack"
             "steam"
+            "steam-run"
             "steam-original"
             "steam-runtime"
             "teams"
@@ -153,12 +154,26 @@
                 users.narice
                 users.root
               ];
+              minimal = [
+                base
+                lightdm
+                xfce
+                i3
+                xfce-i3
+                virtualization
+                keyboard
+                picom
+                fonts
+                pipewire
+                zsh
+              ];
               default = [
                 base
                 bluetooth
                 fail2ban
                 fonts
                 fzf
+                # gdm
                 gnome
                 graphic-tablet
                 hyprland
@@ -187,6 +202,7 @@
                 fail2ban
                 fonts
                 fzf
+                gdm
                 graphic-tablet
                 hyprland
                 keyboard

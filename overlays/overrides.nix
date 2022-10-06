@@ -3,16 +3,18 @@ channels: final: prev: {
   __dontExport = true; # overrides clutter up actual creations
 
   inherit (channels.latest)
+    # discord # now using flatpak
     ;
 
   inherit (channels.unstable)
     cachix
     element-desktop
+    # emacsPgtkNativeComp
     manix
     rage
     steam
-    qutebrowser
-    yuzu
+    # qutebrowser # flatpak
+    # yuzu # flatpak
     yuzu-ea;
 
 

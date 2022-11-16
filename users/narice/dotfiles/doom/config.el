@@ -85,7 +85,7 @@
       evil-vsplit-window-right 't)
 
 (after! org
-  (setq org-todo-keywords '((sequence "TODO(t)" "DOING(d)" "WAIT(w)" "|" "DONE(v)" "CANCELLED(x)"))
+  (setq org-todo-keywords '((sequence "TODO(t!)" "DOING(d!)" "WAIT(w@/@)" "|" "DONE(v!)" "CANCELLED(x!)"))
         org-todo-keyword-faces
         '(("TODO" :foreground "#2ecc71" :weight bold)
           ("DOING" :foreground "#3498db" :weight bold)
@@ -122,6 +122,9 @@
                  ("\\section{%s}" . "\\section*{%s}")
                  ("\\subsection{%s}" . "\\subsection*{%s}")
                  ("\\subsubsection{%s}" . "\\subsubsection*{%s}"))))
+(after! ox
+  (require 'ox-extra)
+  (ox-extras-activate '(ignore-headlines)))
 
 ;; org agenda
 (after! org-agenda

@@ -16,6 +16,7 @@ exec discord
 #exec slack
 exec syncthing
 exec deadd-notification-center
+exec com.nextcloud.desktopclient.nextcloud
 
 
 # settings -- -- -- -- -- --

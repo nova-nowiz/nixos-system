@@ -36,6 +36,11 @@
       url = "github:hlissner/doom-emacs";
       flake = false;
     };
+
+    hack-nerd-font-ligature = {
+      url = "github:pyrho/hack-font-ligature-nerd-font";
+      flake = false;
+    };
   };
 
   outputs = { self, nixpkgs, ... }: {

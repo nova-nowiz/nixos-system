@@ -47,6 +47,7 @@
       emacs.url = "github:nix-community/emacs-overlay/4deb8259b99eeabe4a4343c3ecb90c40d51d5d8a";
 
       musnix-flake.url = "github:musnix/musnix";
+      # hyprland-flake.url = "github:Narice/Hyprland/22cdf0580b6cbdc5d20920358c99560bfc109c7d";
       hyprland-flake.url = "github:hyprwm/Hyprland";
     };
 
@@ -73,6 +74,8 @@
 
         channelsConfig = {
           allowUnfreePredicate = pkg: builtins.elem (nixos.lib.getName pkg) [
+            # Unfree Fonts
+            "symbola"
             # Narice Unfree Packages
             "discord"
             "minecraft-launcher"

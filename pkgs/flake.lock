@@ -32,6 +32,22 @@
         "type": "github"
       }
     },
+    "hack-nerd-font-ligature": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1553021576,
+        "narHash": "sha256-haURxyxy0vWzkrXR8B65Lzi2wLjc34YiT3O4rv7BTKA=",
+        "owner": "pyrho",
+        "repo": "hack-font-ligature-nerd-font",
+        "rev": "d7b312fb5b45bb1e2f793eae2f2de408fe529034",
+        "type": "github"
+      },
+      "original": {
+        "owner": "pyrho",
+        "repo": "hack-font-ligature-nerd-font",
+        "type": "github"
+      }
+    },
     "nixpkgs": {
       "locked": {
         "lastModified": 1626616805,
@@ -50,6 +66,7 @@
       "inputs": {
         "candy-icon-theme": "candy-icon-theme",
         "doom-emacs": "doom-emacs",
+        "hack-nerd-font-ligature": "hack-nerd-font-ligature",
         "nixpkgs": "nixpkgs",
         "zsh-autopair": "zsh-autopair",
         "zsh-completions": "zsh-completions",

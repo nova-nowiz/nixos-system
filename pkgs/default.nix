@@ -5,4 +5,5 @@ final: prev: rec {
   widevine-cdm = prev.callPackage ./widevine-cdm.nix { };
   # hyprland = prev.callPackage ./hyprland.nix { wlroots = wlroots-git; };
   # wlroots-git = prev.callPackage ./wlroots-git.nix { inherit (prev.xorg) xcbutilrenderutil; };
+  hack-nerd-font-ligature = prev.callPackage ./hack-nerd-font-ligature.nix { };
 }

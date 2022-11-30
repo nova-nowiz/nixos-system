@@ -22,10 +22,11 @@
 ;;
 ;; They all accept either a font-spec, font string ("Input Mono-12"), or xlfd
 ;; font string. You generally only need these two:
-(setq doom-font (font-spec :family "Hack Nerd Font" :size 16))
+(setq doom-font (font-spec :family "Hack Nerd Font Mono" :size 16))
 (setq doom-variable-pitch-font (font-spec :family "DejaVu Serif" :style "Book" :size 16))
-(setq doom-unicode-font (font-spec :family "Hack Nerd Font"))
-(setq doom-symbol-fallback-font-families '("Hack Nerd Font"))
+(setq doom-unicode-font (font-spec :family "Symbola"))
+(setq doom-symbol-fallback-font-families '("Hack Nerd Font Mono" "DejaVu Sans Mono"))
+(setq doom-emoji-fallback-font-families '("Twitter Color Emoji" "Noto Color Emoji"))
 
 ;; There are two ways to load a theme. Both assume the theme is installed and
 ;; available. You can either set `doom-theme' or manually load a theme with the

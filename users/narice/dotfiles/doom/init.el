@@ -125,6 +125,7 @@
        taskrunner        ; taskrunner for all your projects
        ;;terraform         ; infrastructure as code
        ;;tmux              ; an API for interacting with tmux
+       tree-sitter       ; syntax and parsing, sitting in a tree...
        ;;upload            ; map local to remote projects via ssh/ftp
 
        :os
@@ -133,43 +134,52 @@
 
        :lang
        ;;agda              ; types of types of types of types...
-       assembly          ; assembly for fun or debugging
+       ;; assembly          ; assembly for fun or debugging ;; IS NO MORE x)
        ;;beancount         ; mind the GAAP
-       (cc               ; C/C++/Obj-C madness
+       (cc               ; C/C++/Obj-C madness ; C > C++ == 1
+        +tree-sitter
         +lsp)
        (clojure           ; java with a lisp
+        +tree-sitter
         +lsp)
        ;;common-lisp       ; if you've seen one lisp, you've seen them all
        coq               ; proofs-as-programs
        crystal           ; ruby at the speed of c
        (csharp           ; unity, .NET, and mono shenanigans
+        +tree-sitter
         +lsp)
        data              ; config/data formats
        (dart +flutter)   ; paint ui and not much else
        ;;dhall
        ;;elixir            ; erlang done right
        (elm              ; care for a cup of TEA?
+        +tree-sitter
         +lsp)
        emacs-lisp        ; drown in parentheses
        ;;erlang            ; an elegant language for a more civilized age
        ;;ess               ; emacs speaks statistics
        ;;factor
        ;;faust             ; dsp, but you get to keep your soul
+       ;;fortran           ; in FORTRAN, GOD is REAL (unless declared INTEGER)
        ;;fsharp           ; ML stands for Microsoft's Language
        fstar             ; (dependent) types and (monadic) effects and Z3
        gdscript          ; the language you waited for
        ;;(go +lsp)         ; the hipster dialect
+       (graphql +lsp)    ; Give queries a REST
        (haskell           ; a language that's lazier than I am
+        +tree-sitter
         +dante
         +lsp)
        ;;hy                ; readability of scheme w/ speed of python
        (idris            ; a language you can depend on
+        +tree-sitter
         +lsp)
        json              ; At least it ain't XML
        (java             ; the poster child for carpal tunnel syndrome
-        +meghanada
+        +tree-sitter
         +lsp)
        (javascript       ; all(hope(abandon(ye(who(enter(here))))))
+        +tree-sitter
         +lsp)
        ;;julia             ; a better, faster MATLAB
        kotlin            ; a better, slicker Java(Script)
@@ -177,11 +187,14 @@
        lean
        ;;ledger            ; an accounting system in Emacs
        (lua              ; one-based indices? one-based indices
+        +tree-sitter
         +lsp)
        markdown          ; writing docs for people to ignore
        (nim               ; python + lisp at the speed of c
+        +tree-sitter
         +lsp)
        (nix              ; I hereby declare "nix geht mehr!"
+        +tree-sitter
         +lsp)
        ;;ocaml             ; an objective camel
        (org              ; organize your plain life in plain text
@@ -198,11 +211,13 @@
         +roam2)
        ;;perl              ; write code no one else can comprehend ; NOT IN DOOM EMACS ANYMORE -> RAKU
        (php              ; perl's insecure younger brother
+        +tree-sitter
         +lsp)
        plantuml          ; diagrams for confusing people more
        ;;purescript        ; javascript, but functional
        (python           ; beautiful is better than ugly
         +lsp
+        +tree-sitter
         +pyright)
        ;;qt                ; the 'cutest' gui framework ever
        ;;racket            ; a DSL for DSLs
@@ -211,19 +226,23 @@
        ;;rst               ; ReST in peace
        ;;(ruby +rails)     ; 1.step {|i| p "Ruby is #{i.even? ? 'love' : 'life'}"}
        (rust             ; Fe2O3.unwrap().unwrap().unwrap().unwrap()
+        +tree-sitter
         +lsp)
        scala             ; java, but good
        ;;scheme            ; a fully conniving family of lisps
        (sh               ; she sells {ba,z,fi}sh shells on the C xor
+        +tree-sitter
         +lsp)
        ;;sml
        ;;solidity          ; do you need a blockchain? No.
        ;;swift             ; who asked for emoji variables?
        terra             ; Earth and Moon in alignment for performance.
        (web              ; the tubes
+        +tree-sitter
         +lsp)
        yaml              ; JSON, but readable
        (zig              ; C, but simpler
+        +tree-sitter
         +lsp)
 
        :email

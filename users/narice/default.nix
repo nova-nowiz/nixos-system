@@ -104,6 +104,7 @@
       firefox.enable = true;
       qutebrowser = {
         enable = true;
+        loadAutoconfig = true;
         settings = {
           # colors = {
           #   webpage.preferred_color_scheme = "dark";

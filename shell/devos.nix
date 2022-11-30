@@ -50,6 +50,30 @@ in
       help = nvfetcher-bin.meta.description;
       command = "cd $PRJ_ROOT/pkgs; ${nvfetcher-bin}/bin/nvfetcher -c ./sources.toml $@";
     }
+    {
+      category = "tools";
+      name = "dry";
+      help = "Test if your config builds! | usage: dry <config>";
+      command = "nixos-rebuild dry-activate --flake .#$@";
+    }
+    {
+      category = "tools";
+      name = "dry-build";
+      help = "Test what will build! | usage: dry-build <config>";
+      command = "nixos-rebuild dry-build --flake .#$@";
+    }
+    {
+      category = "tools";
+      name = "switch";
+      help = "Makes rebuilding easy! | usage: switch <config>";
+      command = "sudo nixos-rebuild switch --flake .#$@";
+    }
+    {
+      category = "tools";
+      name = "update";
+      help = "Update an input to a flake! | usage: update <input>";
+      command = "nix flake lock --update-input $@";
+    }
 
     (linter nixpkgs-fmt)
     (linter editorconfig-checker)

@@ -1,12 +1,5 @@
-[![Bors enabled](https://bors.tech/images/badge_small.svg)](https://app.bors.tech/repositories/32678)
 [![MIT License](https://img.shields.io/github/license/divnix/devos)][mit]
 [![NixOS](https://img.shields.io/badge/NixOS-unstable-blue.svg?style=flat&logo=NixOS&logoColor=white)](https://nixos.org)
-
-> #### ⚠ Advisory ⚠
-> DevOS requires the [flakes][flakes] feature available via an _experimental_
-> branch of [nix][nix]. Until nix 3.0 is released, this project
-> should be considered unstable, though quite usable as flakes have been
-> maturing _well_ [for a while](https://github.com/divnix/devos/tree/17713c22d07c54525c728c62060a0428b76dee3b).
 
 # Things to do before installation
 

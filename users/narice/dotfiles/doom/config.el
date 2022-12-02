@@ -309,3 +309,4 @@
 (general-auto-unbind-keys :off)
 (remove-hook 'doom-after-init-modules-hook #'general-auto-unbind-keys)
 (setq byte-compile-warnings '(not obsolete))
+(setq mouse-wheel-progressive-speed nil) ;; fixed trackpad scrolling way too fast

@@ -3,6 +3,8 @@
   home-manager.users.narice = { suites, pkgs, lib, nixos, config, ... }: {
     imports = suites.base;
 
+    home.stateVersion = "22.11";
+
     home.packages = with pkgs; [
       ark
       audacity

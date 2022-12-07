@@ -167,18 +167,39 @@
               ];
               minimal = [
                 base
+
+                # session manager
                 lightdm
-                xfce
-                i3
-                xfce-i3
+
+                # WM
+                hyprland
+                xwayland
+
+                # making eveything usable
                 virtualization
                 keyboard
-                picom
+                touchpad
                 fonts
                 pipewire
+                bluetooth
+                printing
+                graphic-tablet
+
+                # important apps
+                thunar
                 zsh
               ];
               default = [
+                minimal
+
+                # backup DE and cool apps
+                gnome
+
+                musnix
+                qt
+                steam
+              ];
+              all = [
                 base
                 bluetooth
                 fail2ban
@@ -188,21 +209,22 @@
                 gnome
                 graphic-tablet
                 hyprland
-                i3
+                # i3
                 keyboard
                 lightdm
-                location
+                # location
                 musnix
-                picom
+                # picom
                 pipewire
                 printing
                 qt
-                redshift
+                # redshift
                 steam
                 sway
+                thunar
                 touchpad
                 virtualization
-                xfce
+                # xfce
                 # xfce-i3
                 xwayland
                 zsh
@@ -222,7 +244,7 @@
                 printing
                 qt
                 steam
-                sway
+                thunar
                 touchpad
                 virtualization
                 xwayland

@@ -22,7 +22,15 @@
 #workspaces button {
   color: @overlay2;
   border-radius: 1rem;
-  padding: 0.4rem;
+  padding: 0.2rem;
+}
+
+#workspaces button:first-child {
+  padding-left: 0.4rem;
+}
+
+#workspaces button:last-child {
+  padding-right: 0.4rem;
 }
 
 #workspaces button.active {
@@ -45,7 +53,7 @@
 #custom-lock,
 #custom-power {
   background-color: @surface0;
-  padding: 0.5rem 1rem;
+  padding: 0.5rem 0.8rem;
   margin: 5px 0;
 }
 
@@ -53,6 +61,7 @@
   color: @blue;
   border-radius: 0px 1rem 1rem 0px;
   margin-right: 1rem;
+  padding-right: 1rem;
 }
 
 #custom-notification {
@@ -83,6 +92,7 @@
   color: @maroon;
   border-radius: 1rem 0px 0px 1rem;
   margin-left: 1rem;
+  padding-left: 1rem;
 }
 
 #custom-music {
@@ -91,17 +101,23 @@
 }
 
 #custom-lock {
-    border-radius: 1rem 0px 0px 1rem;
-    color: @lavender;
+  border-radius: 1rem 0px 0px 1rem;
+  color: @lavender;
+  padding-left: 1rem;
+  padding-right: 0.8rem;
 }
 
 #custom-power {
-    margin-right: 1rem;
-    border-radius: 0px 1rem 1rem 0px;
-    color: @red;
+  margin-right: 1rem;
+  border-radius: 0px 1rem 1rem 0px;
+  color: @red;
+  padding-left: 0.8rem;
+  padding-right: 1rem;
 }
 
 #tray {
   margin-right: 1rem;
   border-radius: 1rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
 }

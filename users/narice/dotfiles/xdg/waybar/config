@@ -81,10 +81,10 @@
         "tooltip": false,
         "format": "{icon}",
         "format-icons": {
-            "notification": "<sup></sup>",
-            "none": "",
-            "dnd-notification": "<sup></sup>",
-            "dnd-none": ""
+            "notification": "<sup></sup> ",
+            "none": " ",
+            "dnd-notification": "<sup></sup> ",
+            "dnd-none": " "
         },
         "return-type": "json",
         "exec-if": "which swaync-client",

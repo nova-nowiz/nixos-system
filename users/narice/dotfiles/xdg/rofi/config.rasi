@@ -144,4 +144,4 @@ kb-row-down: "Down,Control+j";
       sorting-method:    "name";
   }
 }
-@theme "tokyonight.rasi"
+@theme "catppuccin-mocha.rasi"

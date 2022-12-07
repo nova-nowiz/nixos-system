@@ -8,7 +8,7 @@
 
   inputs =
     {
-      nixos.url = "nixpkgs/nixos-22.05";
+      nixos.url = "nixpkgs/nixos-22.11";
       unstable.url = "nixpkgs/nixos-unstable";
       latest.url = "nixpkgs/master";
 
@@ -44,11 +44,15 @@
       pkgs.url = "path:./pkgs";
       pkgs.inputs.nixpkgs.follows = "nixos";
 
-      emacs.url = "github:nix-community/emacs-overlay/4deb8259b99eeabe4a4343c3ecb90c40d51d5d8a";
+      emacs.url = "github:nix-community/emacs-overlay/49e3c66d211d5110909375fe48d85c3c43753d61";
 
       musnix-flake.url = "github:musnix/musnix";
       # hyprland-flake.url = "github:Narice/Hyprland/22cdf0580b6cbdc5d20920358c99560bfc109c7d";
       hyprland-flake.url = "github:hyprwm/Hyprland";
+      wpaperd-flake.url = "github:Narice/wpaperd";
+      wpaperd-flake.inputs.nixpkgs.follows = "nixos";
+      waybar-flake.url = "github:Narice/Waybar/my-main";
+      waybar-flake.inputs.nixpkgs.follows = "nixos";
     };
 
   outputs =
@@ -66,6 +70,8 @@
     , emacs
     , musnix-flake
     , hyprland-flake
+    , wpaperd-flake
+    , waybar-flake
     , ...
     }:
     digga.lib.mkFlake
@@ -121,6 +127,8 @@
           deploy.overlay
           emacs.overlay
           hyprland-flake.overlays.default
+          wpaperd-flake.overlays.default
+          waybar-flake.overlays.default
         ];
 
         nixos = {
@@ -195,7 +203,7 @@
                 touchpad
                 virtualization
                 xfce
-                xfce-i3
+                # xfce-i3
                 xwayland
                 zsh
               ];

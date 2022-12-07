@@ -67,5 +67,5 @@
 (package! org-ql)
 (package! org-super-agenda)
 (package! org-ref)
+(package! autothemer)
 (unpin! lsp-ui)
-(package! general :pin "9651024e7f40a8ac5c3f31f8675d3ebe2b667344") ;; remove after PR #5881 is merged

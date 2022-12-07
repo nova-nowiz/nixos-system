@@ -1,0 +1,80 @@
+{
+    "layer": "top", // Waybar at top layer
+    "position": "top", // Waybar position (top|bottom|left|right)
+    // "width": 1280, // Waybar width
+    // Choose the order of the modules
+    "modules-left": ["wlr/workspaces"],
+    "modules-center": ["custom/music"],
+    "modules-right": ["pulseaudio", "backlight", "battery", "clock", "tray", "custom/lock", "custom/power"],
+    "wlr/workspaces": {
+         "disable-scroll": true,
+         "sort-by-name": true,
+         "format": " {icon} ",
+         "format-icons": {
+             "default": " ",
+         },
+     },
+    "tray": {
+        "icon-size": 21,
+        "spacing": 10
+    },
+    "custom/music": {
+        "format": "🎜  {}",
+        "escape": true,
+        "interval": 5,
+        "tooltip": false,
+        "exec": "playerctl metadata --format '{{ title }} - {{ artist }}'",
+        "on-click": "playerctl play-pause",
+        "max-length": 50
+    },
+    "clock": {
+        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
+        "format-alt": "  {:%d/%m/%Y}",
+        "format": "  {:%H:%M}"
+    },
+    // "network": {
+    //     "format": "",
+    //     "on-click": "~/.config/rofi/scripts/rofi-wifi-menu",
+    //     "tooltip": false
+    // },
+    "backlight": {
+        "device": "intel_backlight",
+        "format": "{icon_exp}  {percent_exp}%",
+        "format-icons": ["", "", "", "", "", "", "", "", ""],
+        "on-scroll-up": "brightnessctl -n --exponent=2.718 s 1%-", // due to natural scroll
+        "on-scroll-down": "brightnessctl -n --exponent=2.718 s +1%",
+    },
+    "battery": {
+        "bat": "BAT0",
+        "adapter": "AC",
+        "states": {
+            "warning": 30,
+            "critical": 15
+        },
+        "format": "{icon}  {capacity}%",
+        "format-charging": "  {capacity}%",
+        "format-plugged": "  {capacity}%",
+        "format-alt": "{icon}  {capacity}%",
+        "format-icons": ["", "",  "", "", "", "", "", "", "", "", "", ""]
+    },
+    "pulseaudio": {
+        // "scroll-step": 1,
+        "format": "{icon}  {volume}%",
+        "format-muted": "",
+        "format-icons": {
+            "default": ["", "", " "]
+        },
+        "on-click": "pkill pavucontrol || pavucontrol --class='pavuctl popup' --name='pavuctl popup' -t 1"
+    },
+    "custom/lock": {
+        "tooltip": false,
+        "on-click": "gtklock",
+        "format": "",
+    },
+    "custom/power": {
+        "tooltip": false,
+        // "on-click": "wlogout &",
+        "on-click": "rofi -show power-menu -modi power-menu:~/.config/rofi/scripts/rofi-power-menu",
+        "format": "襤"
+    }
+}

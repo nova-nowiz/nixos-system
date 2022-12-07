@@ -7,6 +7,7 @@
       ark
       audacity
       bat
+      brightnessctl
       chessx
       # cura
       # (discord.override { nss = nss; })
@@ -30,6 +31,7 @@
       gnome3.gnome-calculator
       gnome3.seahorse
       gparted
+      gtklock
       hardinfo
       htop
       hunspell
@@ -47,6 +49,7 @@
       mu
       neofetch
       neovim
+      networkmanagerapplet
       nix-du
       nix-index
       nix-prefetch
@@ -59,6 +62,7 @@
       pavucontrol
       pciutils
       peek
+      playerctl
       procs
       psensor
       radeon-profile
@@ -68,6 +72,7 @@
       rnix-lsp
       (rofi.override { plugins = with pkgs; [ rofi-calc rofi-emoji ]; })
       sway-contrib.grimshot
+      swaynotificationcenter
       tealdeer
       thunderbird
       tokei
@@ -79,6 +84,7 @@
       wev
       wget
       wine
+      wpaperd
       wofi
       x2goclient
       xclip
@@ -96,7 +102,7 @@
     programs = {
       emacs = {
         enable = true;
-        package = pkgs.emacsPgtkNativeComp;
+        package = pkgs.emacsPgtk;
         extraPackages = (epkgs: with epkgs; [ vterm pdf-tools ]);
       };
 
@@ -106,15 +112,22 @@
         enable = true;
         loadAutoconfig = true;
         settings = {
-          # colors = {
-          #   webpage.preferred_color_scheme = "dark";
-          #   tabs.bar.bg = "#000000";
-          # };
           qt.args = [ "widevine-path=${pkgs.vivaldi-widevine}/share/google/chrome/WidevineCdm/_platform_specific/linux_x64/libwidevinecdm.so" ];
         };
         aliases = {
           mpv = "spawn --userscript ${pkgs.qutebrowser}/share/qutebrowser/userscripts/view_in_mpv";
         };
+        extraConfig = ''
+          import catppuccin
+
+          catppuccin.setup(c, 'mocha')
+        '';
+      };
+      waybar = {
+        enable = true;
+        package = pkgs.waybar.overrideAttrs (oldAttrs: {
+          mesonFlags = oldAttrs.mesonFlags ++ [ "-Dexperimental=true" ];
+        });
       };
     };
 
@@ -145,11 +158,17 @@
         "alacritty".source = "${conf}/alacritty";
         "i3".source = "${conf}/i3";
         "sway".source = "${conf}/sway";
+        "swaync".source = "${conf}/swaync";
         "hypr".source = "${conf}/hypr";
         "zathura".source = "${conf}/zathura";
+        "qutebrowser/catppuccin".source = "${conf}/qutebrowser/catppuccin";
         # "nvim".source = "${conf}/nvim";
+        "rofi".source = "${conf}/rofi";
+        "waybar".source = "${conf}/waybar";
+        "wpaperd".source = "${conf}/wpaperd";
         "deadd".source = "${conf}/deadd";
         "background".source = "${conf}/background";
+        "gtklock".source = "${conf}/gtklock";
         "xfce4" = {
           source = config.lib.file.mkOutOfStoreSymlink "${conf}/xfce4";
           recursive = true;
@@ -266,7 +285,7 @@
     #   };
     # };
 
-    xresources.extraConfig = (builtins.readFile ./dotfiles/home/challenger-deep-xresources) + ''
+    xresources.extraConfig = (builtins.readFile ./dotfiles/home/mocha.Xresources) + ''
 
       URxvt.font: xft:Hack Nerd Font:size=12
       URxvt.depth: 32

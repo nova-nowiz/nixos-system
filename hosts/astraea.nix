@@ -37,9 +37,6 @@
 
   services = {
     fstrim.enable = true;
-    xserver = {
-      useGlamor = true;
-    };
   };
 
   fileSystems = {

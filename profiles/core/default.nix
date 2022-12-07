@@ -149,6 +149,7 @@ in
   security.pam = {
     services = {
       kwallet.enableKwallet = true;
+      gtklock = { };
     };
     loginLimits = [
       {

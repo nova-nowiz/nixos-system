@@ -8,8 +8,4 @@ in
     style = "gtk2";
     platformTheme = "gtk2";
   };
-  programs = {
-    qt5ct.enable = true;
-  };
-  environment.variables.QT_QPA_PLATFORMTHEME = lib.mkForce "qt5ct";
 }

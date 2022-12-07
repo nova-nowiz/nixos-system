@@ -10,6 +10,7 @@ channels: final: prev: {
     cachix
     element-desktop
     # emacsPgtkNativeComp
+    gtklock
     manix
     rage
     steam

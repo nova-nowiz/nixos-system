@@ -222,7 +222,12 @@
       font = {
         package = pkgs.ubuntu_font_family;
         name = "Ubuntu";
-        size = 12;
+        size = 14;
+      };
+      cursorTheme = {
+        package = pkgs.qogir-icon-theme;
+        name = "Qogir";
+        size = 24;
       };
       # FIXME: not applied correctly on xfce
       iconTheme = {

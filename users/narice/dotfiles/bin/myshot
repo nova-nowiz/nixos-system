@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+
+set -eu
+
+grimshot save "$1" - | swappy -f -

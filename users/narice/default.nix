@@ -73,6 +73,7 @@
       ripgrep-all
       rnix-lsp
       (rofi.override { plugins = with pkgs; [ rofi-calc rofi-emoji ]; })
+      swappy
       sway-contrib.grimshot
       swaynotificationcenter
       tealdeer
@@ -86,6 +87,7 @@
       wev
       wget
       wine
+      wl-clipboard
       wpaperd
       wofi
       x2goclient

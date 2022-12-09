@@ -111,15 +111,15 @@
       };
 
       alacritty.enable = true;
-      firefox.enable = true;
       qutebrowser = {
         enable = true;
+        package = pkgs.qutebrowser-qt6;
         loadAutoconfig = true;
         settings = {
           qt.args = [ "widevine-path=${pkgs.vivaldi-widevine}/share/google/chrome/WidevineCdm/_platform_specific/linux_x64/libwidevinecdm.so" ];
         };
         aliases = {
-          mpv = "spawn --userscript ${pkgs.qutebrowser}/share/qutebrowser/userscripts/view_in_mpv";
+          mpv = "spawn --userscript ${pkgs.qutebrowser-qt6}/share/qutebrowser/userscripts/view_in_mpv";
         };
         extraConfig = ''
           import catppuccin
@@ -127,6 +127,7 @@
           catppuccin.setup(c, 'mocha')
         '';
       };
+      firefox.enable = true;
       waybar = {
         enable = true;
         package = pkgs.waybar.overrideAttrs (oldAttrs: {

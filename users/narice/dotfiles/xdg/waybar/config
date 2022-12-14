@@ -64,7 +64,9 @@
         "format-icons": {
             "default": ["", "", " "]
         },
-        "on-click": "pkill pavucontrol || pavucontrol --class='pavuctl popup' --name='pavuctl popup' -t 1"
+        "on-click": "pkill pavucontrol || pavucontrol --class='pavuctl popup' --name='pavuctl popup' -t 1",
+        "on-scroll-up": "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.5%-", // natural scroll
+        "on-scroll-down": "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.5%+"
     },
     "custom/lock": {
         "tooltip": false,

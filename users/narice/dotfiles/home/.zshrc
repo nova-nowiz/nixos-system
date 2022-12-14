@@ -142,12 +142,12 @@ fi
 # - The first argument to the function ($1) is the base path to start traversal
 # - See the source code (completion.{bash,zsh}) for the details.
 _fzf_compgen_path() {
-  fd --color=always --hidden --follow --exclude ".git" . "$1"
+  fd --color=always --hidden --exclude ".git" . "$1"
 }
 
 # Use fd to generate the list for directory completion
 _fzf_compgen_dir() {
-  fd --color=always --type d --hidden --follow --exclude ".git" . "$1"
+  fd --color=always --type d --hidden --exclude ".git" . "$1"
 }
 
 # fzf-tab configuration
@@ -159,7 +159,7 @@ zstyle ':completion:*:git-checkout:*' sort false
 # set descriptions format to enable group support
 zstyle ':completion:*:descriptions' format '[%d]'
 # set list-colors to enable filename colorizing
-#zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
+zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
 # preview directory's content with exa when completing cd
 zstyle ':fzf-tab:complete:cd:*' fzf-preview 'exa -1 --color=always $realpath'
 # make fzf-tab use the same command and flags as normal fzf

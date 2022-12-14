@@ -128,6 +128,7 @@ in
     # TODO: research rage encryption
     openssh.enable = true;
     flatpak.enable = true;
+    udisks2.enable = true;
 
     dbus.packages = with pkgs; [ dconf ]; # for home-manager to not crash
   };
@@ -146,23 +147,21 @@ in
     user.extraConfig = "DefaultLimitNOFILE=524288";
   };
 
-  security.pam = {
-    services = {
-      kwallet.enableKwallet = true;
-      gtklock = { };
+  security = {
+    polkit.enable = true;
+    pam = {
+      services = {
+        kwallet.enableKwallet = true;
+        gtklock = { };
+      };
+      loginLimits = [
+        {
+          domain = "narice";
+          type = "hard";
+          item = "nofile";
+          value = "524288";
+        }
+      ];
     };
-    loginLimits = [
-      {
-        domain = "narice";
-        type = "hard";
-        item = "nofile";
-        value = "524288";
-      }
-    ];
-  };
-
-  xdg.portal = {
-    enable = true;
-    wlr.enable = true;
   };
 }

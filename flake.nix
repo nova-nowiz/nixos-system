@@ -175,13 +175,16 @@
                 hyprland
                 xwayland
 
-                # making eveything usable
+                # essentials
                 virtualization
                 keyboard
                 touchpad
                 fonts
                 pipewire
                 bluetooth
+                upower
+
+                # making eveything usable
                 printing
                 graphic-tablet
 
@@ -192,11 +195,11 @@
               default = [
                 minimal
 
-                # backup DE and cool apps
-                gnome
-
                 musnix
                 qt
+
+                # cool apps
+                gnome-apps
                 steam
               ];
               all = [

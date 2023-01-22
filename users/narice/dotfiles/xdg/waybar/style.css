@@ -40,6 +40,11 @@
   border-radius: 1rem;
 }
 
+#workspaces button.focused {
+  color: @sky;
+  border-radius: 1rem;
+}
+
 #workspaces button:hover {
   color: @sapphire;
   border-radius: 1rem;

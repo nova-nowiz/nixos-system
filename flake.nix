@@ -201,6 +201,15 @@
                 # cool apps
                 gnome-apps
                 steam
+
+                # backup wayland session
+                sway
+                # note: gnome is not usable with hyprland/sway because of gnome's xdg portal
+
+                # backup x11 DE
+                i3
+                xfce
+                xfce-i3
               ];
               all = [
                 base

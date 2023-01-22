@@ -8,7 +8,7 @@ in
   services = {
     xserver = {
       displayManager = {
-        defaultSession = "hyprland";
+        defaultSession = lib.mkDefault "hyprland";
       };
       # updateDbusEnvironment = true;
     };

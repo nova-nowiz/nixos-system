@@ -9,12 +9,12 @@ exec $HOME/.config/i3/auto-nitro.sh
 
 exec sleep 10 && keepassxc
 #exec firefox
-exec discord
+#exec discord
 #exec Huion_WH1409.sh
 #exec teams
 #exec emacsclient -cn
 #exec slack
-exec syncthing
+#exec syncthing
 exec deadd-notification-center
 exec com.nextcloud.desktopclient.nextcloud
 

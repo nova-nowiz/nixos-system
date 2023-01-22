@@ -31,30 +31,38 @@ output * bg ../background/3440x1440/Sailing\ Ship.jpg fill
 #
 # You can get the names of your outputs by running: swaymsg -t get_outputs
 
-### Idle configuration
-#
-# Example configuration:
-#
+# Sucks for now, I need to add more stuff but I don't care enough
 # exec swayidle -w \
-#          timeout 300 'swaylock -f -c 000000' \
+#          timeout 300 'gtklock' \
 #          timeout 600 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"' \
-#          before-sleep 'swaylock -f -c 000000'
-#
-# This will lock your screen after 300 seconds of inactivity, then turn off
-# your displays after another 300 seconds, and turn your screens back on when
-# resumed. It will also lock your screen before your computer goes to sleep.
+#          before-sleep 'gtklock'
+
+exec dbus-update-activation-environment --systemd --all && systemctl restart --user xdg-desktop-portal{,-gtk,-wlr}
+exec waybar -c ~/.config/waybar/config-sway &
+exec wpaperd &
+exec swaync &
+
+exec nm-applet --indicator &
+exec blueman-applet &
+exec sleep 3 && com.nextcloud.desktopclient.nextcloud --background &
+exec sleep 3 && systemctl restart --user kdeconnect{,-indicator} && kdeconnect-indicator &
 
 ### Input configuration
-#
-# Example configuration:
-#
-#   input "2:14:SynPS/2_Synaptics_TouchPad" {
-#       dwt enabled
-#       tap enabled
-#       natural_scroll enabled
-#       middle_emulation enabled
-#   }
-#
+input "type:keyboard" {
+    xkb_layout fr
+    xkb_variant us
+    xkb_model pc105
+    xkb_options grp:alt_shift_toggle
+    xkb_rules evdev
+}
+
+input "type:touchpad" {
+    dwt disabled
+    tap enabled
+    drag_lock enabled
+    natural_scroll enabled
+    middle_emulation enabled
+}
 # You can get the names of your inputs by running: swaymsg -t get_inputs
 # Read `man 5 sway-input` for more information about this section.
 
@@ -82,7 +90,16 @@ output * bg ../background/3440x1440/Sailing\ Ship.jpg fill
     bindsym $mod+Shift+c reload
 
     # Exit sway (logs you out of your Wayland session)
-    bindsym $mod+Shift+e exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -B 'Yes, exit sway' 'swaymsg exit'
+    bindsym $mod+Shift+e exec rofi -show power-menu -modi power-menu:~/.config/rofi/scripts/rofi-power-menu
+
+    # Lock sway
+    bindsym $mod+Shift+x exec gtklock
+
+    # Print Screen
+    bindsym Print exec myshot area
+
+    bindsym $mod+b exec qutebrowser-profile
+    bindsym $mod+n exec swaync-client -t -sw
 #
 # Moving around:
 #
@@ -140,11 +157,11 @@ output * bg ../background/3440x1440/Sailing\ Ship.jpg fill
     # You can "split" the current object of your focus with
     # $mod+b or $mod+v, for horizontal and vertical splits
     # respectively.
-    bindsym $mod+b splith
+    bindsym $mod+s splith
     bindsym $mod+v splitv
 
     # Switch the current container between different layout styles
-    bindsym $mod+s layout stacking
+    bindsym $mod+m layout stacking
     bindsym $mod+w layout tabbed
     bindsym $mod+e layout toggle split
 
@@ -158,7 +175,7 @@ output * bg ../background/3440x1440/Sailing\ Ship.jpg fill
     bindsym $mod+Ctrl+space focus mode_toggle
 
     # Move focus to the parent container
-    bindsym $mod+a focus parent
+    bindsym $mod+p focus parent
 #
 # Scratchpad:
 #
@@ -200,18 +217,59 @@ bindsym $mod+r mode "resize"
 # Status Bar:
 #
 # Read `man 5 sway-bar` for more information about this section.
-bar {
-    position top
+# bar {
+#     position top
 
-    # When the status_command prints a new line to stdout, swaybar updates.
-    # The default just shows the current date and time.
-    status_command while date +'%Y-%m-%d %I:%M:%S %p'; do sleep 1; done
+#     # When the status_command prints a new line to stdout, swaybar updates.
+#     # The default just shows the current date and time.
+#     status_command while date +'%Y-%m-%d %I:%M:%S %p'; do sleep 1; done
 
-    colors {
-        statusline #ffffff
-        background #323232
-        inactive_workspace #32323200 #32323200 #5c5c5c
-    }
-}
+#     colors {
+#         statusline #ffffff
+#         background #323232
+#         inactive_workspace #32323200 #32323200 #5c5c5c
+#     }
+# }
+
+## Shortcut controls
+
+# Pulse Audio controls
+bindsym XF86AudioRaiseVolume exec pactl set-sink-volume 0 +5% #increase sound volume
+bindsym XF86AudioLowerVolume exec pactl set-sink-volume 0 -5% #decrease sound volume
+bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle # mute sound
+
+# Sreen brightness controls
+bindsym XF86MonBrightnessUp exec xbacklight -inc 5 # increase screen brightness
+bindsym XF86MonBrightnessDown exec xbacklight -dec 5 # decrease screen brightness
+
+# Media player controls
+bindsym XF86AudioPlay exec playerctl play-pause
+bindsym XF86AudioPause exec playerctl pause
+bindsym XF86AudioNext exec playerctl next
+bindsym XF86AudioPrev exec playerctl previous
+
+
+# Aesthetics -- -- -- -- --
+
+font pango:Hack Nerd Font 8
+
+title_align center
+
+hide_edge_borders smart
+default_border pixel 0
+default_floating_border none
+
+gaps inner 5
+gaps outer 0
+
+include catppuccin-mocha
+
+# target                 title     bg    text   indicator  border
+client.focused           $pink     $base $text  $rosewater $pink
+client.focused_inactive  $mauve    $base $text  $rosewater $mauve
+client.unfocused         $mauve    $base $text  $rosewater $mauve
+client.urgent            $peach    $base $peach $overlay0  $peach
+client.placeholder       $overlay0 $base $text  $overlay0  $overlay0
+client.background        $base
 
 include @sysconfdir@/sway/config.d/*

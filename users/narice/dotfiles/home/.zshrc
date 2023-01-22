@@ -10,6 +10,7 @@ export ZSH=$HOME/.oh-my-zsh
 export ZSH_CUSTOM=$HOME/.oh-my-zsh-custom
 
 export MAKEFLAGS="-j5 -l4"
+export SYSTEMD_LESS="j.25MqRSW#.25"
 
 export DEFAULT_USER="narice"
 export LANG="en_US.UTF-8"

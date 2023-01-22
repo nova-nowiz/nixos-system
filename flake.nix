@@ -183,6 +183,7 @@
                 pipewire
                 bluetooth
                 upower
+                gnome-keyring
 
                 # making eveything usable
                 printing

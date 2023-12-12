@@ -1,8 +1,9 @@
 { suites, lib, pkgs, ... }:
 {
-  imports = suites.default;
+  imports = suites.main;
 
   networking = {
+    hostName = "vm";
     interfaces.wlan0.virtual = true;
     networkmanager = {
       enable = true;

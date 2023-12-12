@@ -2,8 +2,6 @@
 let inherit (lib) fileContents;
 in
 {
-  imports = [ ../cachix ];
-
   # TODO: check the systemPackages
   # TODO: split everything of into profiles
   environment = {
@@ -63,6 +61,8 @@ in
       allowedUDPPortRanges = [{ from = 1714; to = 1764; }];
     };
   };
+
+  hardware.enableRedistributableFirmware = true;
 
   i18n = {
     defaultLocale = "en_US.UTF-8";

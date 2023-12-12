@@ -1,179 +1,204 @@
 {
-  # config primarly based on divnix/devos/f88acc1 and updated to divnix/devos/079adc4 then updated to divnix/digga/examples/devos/24cb8eb
-  description = "A highly structured configuration database.";
+  description = "Heyooooo, amma do some OS here, don't mind meeeeee";
 
-  nixConfig.extra-experimental-features = "nix-command flakes";
-  nixConfig.extra-substituters = "https://nrdxp.cachix.org https://nix-community.cachix.org";
-  nixConfig.extra-trusted-public-keys = "nrdxp.cachix.org-1:Fc5PSqY2Jm1TrWfm88l6cvGWwz3s93c6IOifQWnhNW4= nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs=";
+  inputs = {
+    stable.url = "nixpkgs/nixos-23.05";
+    unstable.url = "nixpkgs/nixos-unstable";
+    latest.url = "nixpkgs/master";
 
-  inputs =
-    {
-      nixos.url = "nixpkgs/nixos-22.11";
-      unstable.url = "nixpkgs/nixos-unstable";
-      latest.url = "nixpkgs/master";
 
-      digga.url = "github:divnix/digga";
-      digga.inputs.nixpkgs.follows = "nixos";
-      digga.inputs.nixlib.follows = "nixos";
-      digga.inputs.home-manager.follows = "home";
-      digga.inputs.deploy.follows = "deploy";
+    home.url = "github:nix-community/home-manager/release-23.05";
+    home.inputs.nixpkgs.follows = "stable";
 
-      darwin.url = "github:LnL7/nix-darwin";
-      darwin.inputs.nixpkgs.follows = "latest";
+    nixos-hardware.url = "github:nixos/nixos-hardware";
 
-      home.url = "github:nix-community/home-manager/release-22.11";
-      home.inputs.nixpkgs.follows = "nixos";
+    flake-parts.url = "github:hercules-ci/flake-parts";
+    colmena.url = "github:zhaofengli/colmena";
+    haumea.url = "github:nix-community/haumea";
 
-      deploy.url = "github:serokell/deploy-rs";
-      deploy.inputs.nixpkgs.follows = "nixos";
+    devshell.url = "github:numtide/devshell";
+    treefmt-nix.url = "github:numtide/treefmt-nix";
+    agenix.url = "github:ryantm/agenix";
 
-      # TODO: research and use it
-      agenix.url = "github:ryantm/agenix";
-      agenix.inputs.nixpkgs.follows = "nixos";
+    pkgs-flake.url = "path:./pkgs";
+    pkgs-flake.inputs.nixpkgs.follows = "stable";
 
-      nvfetcher.url = "github:berberman/nvfetcher";
-      nvfetcher.inputs.nixpkgs.follows = "nixos";
+    # emacs.url = "github:nix-community/emacs-overlay/49e3c66d211d5110909375fe48d85c3c43753d61";
 
-      naersk.url = "github:nmattia/naersk";
-      naersk.inputs.nixpkgs.follows = "nixos";
-
-      nixos-hardware.url = "github:nixos/nixos-hardware";
-
-      nixos-generators.url = "github:nix-community/nixos-generators";
-
-      pkgs.url = "path:./pkgs";
-      pkgs.inputs.nixpkgs.follows = "nixos";
-
-      emacs.url = "github:nix-community/emacs-overlay/49e3c66d211d5110909375fe48d85c3c43753d61";
-
-      musnix-flake.url = "github:musnix/musnix";
-      # hyprland-flake.url = "github:Narice/Hyprland/22cdf0580b6cbdc5d20920358c99560bfc109c7d";
-      hyprland-flake.url = "github:hyprwm/Hyprland";
-      wpaperd-flake.url = "github:Narice/wpaperd";
-      wpaperd-flake.inputs.nixpkgs.follows = "nixos";
-      waybar-flake.url = "github:Narice/Waybar/my-main";
-      waybar-flake.inputs.nixpkgs.follows = "nixos";
-    };
+    musnix-flake.url = "github:musnix/musnix";
+    # hyprland-flake.url = "github:Narice/Hyprland/22cdf0580b6cbdc5d20920358c99560bfc109c7d";
+    hyprland-flake.url = "github:hyprwm/Hyprland";
+    wpaperd-flake.url = "github:Narice/wpaperd";
+    wpaperd-flake.inputs.nixpkgs.follows = "stable";
+    waybar-flake.url = "github:Narice/Waybar/my-main";
+    waybar-flake.inputs.nixpkgs.follows = "stable";
+  };
 
   outputs =
     inputs@
     { self
-    , pkgs
-    , digga
-    , nixos
+    , stable
+    , unstable
+    , latest
     , home
     , nixos-hardware
-    , nur
+    , flake-parts
+    , colmena
+    , haumea
+    , devshell
+    , treefmt-nix
     , agenix
-    , nvfetcher
-    , deploy
-    , emacs
+    , pkgs-flake
+      # , emacs
     , musnix-flake
     , hyprland-flake
     , wpaperd-flake
     , waybar-flake
     , ...
     }:
-    digga.lib.mkFlake
-      {
-        inherit self inputs;
-
-        channelsConfig = {
-          allowUnfreePredicate = pkg: builtins.elem (nixos.lib.getName pkg) [
-            # Unfree Fonts
-            "symbola"
-            # Narice Unfree Packages
-            "discord"
-            "minecraft-launcher"
-            "slack"
-            "steam"
-            "steam-run"
-            "steam-original"
-            "steam-runtime"
-            "teams"
-            "widevine"
-            "yuzu-mainline"
-            "yuzu-ea"
-            "zoom"
-          ];
-        };
-
-        channels = {
-          nixos = {
-            imports = [ (digga.lib.importOverlays ./overlays) ];
-            overlays = [ ];
-          };
-          unstable = { };
-          latest = { };
-        };
-
-        lib = import ./lib { lib = digga.lib // nixos.lib; };
-
-        sharedOverlays = [
-          (final: prev: {
-            __dontExport = true;
-            lib = prev.lib.extend (lfinal: lprev: {
-              our = self.lib;
-            });
-          })
-
-          nur.overlay
-          agenix.overlay
-          nvfetcher.overlay
-
-          pkgs.overlay # for `srcs`
-          (import ./pkgs)
-
-          deploy.overlay
-          emacs.overlay
-          hyprland-flake.overlays.default
-          wpaperd-flake.overlays.default
-          waybar-flake.overlays.default
+    flake-parts.lib.mkFlake { inherit inputs; }
+      ({ moduleWithSystem, ... }: {
+        imports = [
+          devshell.flakeModule
+          treefmt-nix.flakeModule
         ];
 
-        nixos = {
-          hostDefaults = {
-            system = "x86_64-linux";
-            channelName = "nixos";
-            imports = [ (digga.lib.importExportableModules ./modules) ];
-            modules = [
-              { lib.our = self.lib; }
-              digga.nixosModules.bootstrapIso
-              digga.nixosModules.nixConfig
-              home.nixosModules.home-manager
-              agenix.nixosModules.age
-              musnix-flake.nixosModules.musnix
-              hyprland-flake.nixosModules.default
-            ];
+        systems = [
+          "x86_64-linux"
+          "aarch64-linux"
+        ];
+
+        debug = true;
+
+        perSystem =
+          { config
+          , self'
+          , inputs'
+          , pkgs
+          , system
+          , ...
+          }: {
+            _module.args.pkgs = import stable {
+              inherit system;
+              config.allowUnfreePredicate =
+                pkg: builtins.elem (stable.lib.getName pkg) [
+                  # Unfree Fonts
+                  "symbola"
+                  # Narice Unfree Packages
+                  "discord"
+                  "minecraft-launcher"
+                  "slack"
+                  "steam"
+                  "steam-run"
+                  "steam-original"
+                  "steam-runtime"
+                  "teams"
+                  "widevine"
+                  "yuzu-mainline"
+                  "yuzu-ea"
+                  "zoom"
+                ];
+              overlays = [
+                agenix.overlays.default
+
+                # emacs.overlays.default
+                hyprland-flake.overlays.default
+                wpaperd-flake.overlays.default
+                waybar-flake.overlays.default
+
+                pkgs-flake.overlay
+                (import ./pkgs)
+              ];
+            };
+
+            treefmt = {
+              programs. alejandra. enable = true;
+              flakeFormatter = true;
+              projectRootFile = "flake.nix";
+            };
+
+            devshells.default = { pkgs, ... }: {
+              commands = [
+                { package = pkgs.nixUnstable; }
+                { package = inputs'.agenix.packages.default; }
+                { package = inputs'.colmena.packages.colmena; }
+                {
+                  category = "tools";
+                  name = "switch";
+                  help = "Makes rebuilding easy! | usage: switch";
+                  command = "colmena apply-local --sudo --show-trace";
+                }
+                {
+                  category = "tools";
+                  name = "update";
+                  help = "Update inputs of your flake lock! | usage: update {<input>,<input>,...} (don't put spaces)";
+                  command = "nix flake lock --update-input $@";
+                }
+                {
+                  category = "tools";
+                  name = "update-all";
+                  help = "Update all inputs of your flake lock! | usage: update <input>";
+                  command = "nix flake update";
+                }
+              ];
+            };
           };
 
-          imports = [ (digga.lib.importHosts ./hosts) ];
-          hosts = {
-            /* set host specific properties here */
-            narice-pc = { };
-            astraea = {
-              modules = with nixos-hardware.nixosModules; [ dell-xps-13-9310 ];
-            };
+        flake = {
+          userProfiles = haumea.lib.load {
+            src = ./users/profiles;
+            loader = haumea.lib.loaders.path;
           };
-          importables = rec {
-            profiles = digga.lib.rakeLeaves ./profiles // {
-              users = digga.lib.rakeLeaves ./users;
+
+          userSuites =
+            let
+              suites = self.userSuites;
+            in
+            with self.userProfiles; {
+              base = [
+                direnv
+                git
+              ];
+              all = stable.lib.flatten [
+                suites.base
+                ardour
+              ];
             };
-            suites = with profiles; rec {
+
+          userConfigs = {
+            root = ./users/root/default.nix;
+            narice = ./users/narice/default.nix;
+          };
+
+          nixosModules = {
+            # bla = ./modules/bla.nix
+          };
+
+          nixosProfiles = haumea.lib.load {
+            src = ./profiles;
+            loader = haumea.lib.loaders.path;
+          };
+
+          nixosSuites =
+            let
+              suites = self.nixosSuites;
+              users = self.userConfigs;
+            in
+            with self.nixosProfiles; {
               base = [
                 core
+                cachix.default
                 users.narice
                 users.root
               ];
-              minimal = [
-                base
+              minimal = stable.lib.flatten [
+                suites.base
 
                 # session manager
-                lightdm
+                lightdm.default
 
                 # WM
                 hyprland
-                xwayland
 
                 # essentials
                 virtualization
@@ -193,8 +218,8 @@
                 thunar
                 zsh
               ];
-              default = [
-                minimal
+              main = stable.lib.flatten [
+                suites.minimal
 
                 musnix
                 qt
@@ -208,12 +233,13 @@
                 # note: gnome is not usable with hyprland/sway because of gnome's xdg portal
 
                 # backup x11 DE
-                i3
-                xfce
-                xfce-i3
+                # i3
+                # picom
+                # xfce
+                # xfce-i3
               ];
-              all = [
-                base
+              all = stable.lib.flatten [
+                suites.base
                 bluetooth
                 fail2ban
                 fonts
@@ -224,7 +250,7 @@
                 hyprland
                 # i3
                 keyboard
-                lightdm
+                lightdm.default
                 # location
                 musnix
                 # picom
@@ -242,13 +268,13 @@
                 xwayland
                 zsh
               ];
-              wayland = [
-                base
+              wayland = stable.lib.flatten [
+                suites.base
                 bluetooth
                 fail2ban
                 fonts
                 fzf
-                gdm
+                gdm.default
                 graphic-tablet
                 hyprland
                 keyboard
@@ -264,26 +290,85 @@
                 zsh
               ];
             };
-          };
-        };
 
-        home = {
-          imports = [ (digga.lib.importExportableModules ./users/modules) ];
-          modules = [ ];
-          importables = rec {
-            profiles = digga.lib.rakeLeaves ./users/profiles;
-            suites = with profiles; rec {
-              base = [ direnv git ];
+          colmena = {
+            meta = {
+              nixpkgs = import stable {
+                system = "x86_64-linux";
+                config.allowUnfreePredicate =
+                  pkg: builtins.elem (stable.lib.getName pkg) [
+                    # Unfree Fonts
+                    "symbola"
+                    # Narice Unfree Packages
+                    "discord"
+                    "minecraft-launcher"
+                    "slack"
+                    "steam"
+                    "steam-run"
+                    "steam-original"
+                    "steam-runtime"
+                    "teams"
+                    "widevine"
+                    "yuzu-mainline"
+                    "yuzu-ea"
+                    "zoom"
+                  ];
+                overlays = [
+                  agenix.overlays.default
+
+                  # emacs.overlays.default
+                  hyprland-flake.overlays.default
+                  wpaperd-flake.overlays.default
+                  waybar-flake.overlays.default
+
+                  pkgs-flake.overlay
+                  (import ./pkgs)
+                ];
+              };
+              specialArgs.suites = self.nixosSuites;
+              specialArgs.usrSuites = self.userSuites;
+            };
+
+            defaults = moduleWithSystem (
+              perSystem @
+              { inputs'
+              , self'
+              }: { lib, ... }: {
+                imports = [
+                  agenix.nixosModules.default
+                  home.nixosModules.home-manager
+                  musnix-flake.nixosModules.musnix
+                  hyprland-flake.nixosModules.default
+                ]
+                ++ lib.attrValues self.nixosModules;
+                _module.args = {
+                  inputs = perSystem.inputs';
+                  self = self // perSystem.self'; # to preserve original attributes in self like outPath
+                };
+                deployment = {
+                  buildOnTarget = true;
+                  targetUser = null;
+                  allowLocalDeployment = true;
+                };
+              }
+            );
+            narice-pc = { ... }: {
+              imports = [
+                ./hosts/narice-pc.nix
+              ];
+            };
+            astraea = { ... }: {
+              imports = [
+                ./hosts/astraea.nix
+                nixos-hardware.nixosModules.dell-xps-13-9310
+              ];
+            };
+            vm = { ... }: {
+              imports = [
+                ./hosts/vm.nix
+              ];
             };
           };
-          # NOTE: users can be managed differently
         };
-
-        devshell = ./shell;
-
-        homeConfigurations = digga.lib.mkHomeConfigurations self.nixosConfigurations;
-
-        deploy.nodes = digga.lib.mkDeployNodes self.nixosConfigurations { };
-      }
-  ;
+      });
 }

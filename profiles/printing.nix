@@ -9,5 +9,9 @@ in
         hplip
       ];
     };
+    avahi = {
+      enable = true;
+      nssmdns = true;
+    };
   };
 }

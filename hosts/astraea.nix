@@ -1,8 +1,9 @@
 { suites, lib, pkgs, ... }:
 {
-  imports = suites.default;
+  imports = suites.main;
 
   networking = {
+    hostName = "astraea";
     interfaces.wlan0.useDHCP = true;
     networkmanager = {
       enable = true;

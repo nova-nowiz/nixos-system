@@ -4,6 +4,10 @@ in
 {
   programs.hyprland = {
     enable = true;
+    xwayland = {
+      enable = true;
+      hidpi = true;
+    };
   };
   services = {
     xserver = {
@@ -18,9 +22,7 @@ in
     mime.enable = true;
     icons.enable = true;
     portal = {
-      enable = true;
-      wlr.enable = false;
-      extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
+      # extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
     };
   };
 }

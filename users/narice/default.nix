@@ -1,7 +1,7 @@
-{ ... }:
+{ usrSuites, pkgs, ... }:
 {
-  home-manager.users.narice = { suites, pkgs, lib, nixos, config, ... }: {
-    imports = suites.base;
+  home-manager.users.narice = { lib, config, ... }: {
+    imports = usrSuites.all;
 
     home.stateVersion = "22.11";
 
@@ -41,6 +41,7 @@
       hunspellDicts.fr-any
       imagemagick
       isync
+      jq
       openscad
       keepassxc
       killall
@@ -48,6 +49,7 @@
       libtool
       lm_sensors
       lxappearance
+      mpv
       mu
       neofetch
       neovim
@@ -72,7 +74,9 @@
       ripgrep
       ripgrep-all
       rnix-lsp
-      (rofi.override { plugins = with pkgs; [ rofi-calc rofi-emoji ]; })
+      (rofi-wayland.override { plugins = with pkgs; [ rofi-calc rofi-emoji ]; })
+      slurp
+      stremio
       swappy
       sway-contrib.grimshot
       swaynotificationcenter
@@ -106,20 +110,29 @@
     programs = {
       emacs = {
         enable = true;
-        package = pkgs.emacsPgtk;
+        package = pkgs.emacs29-pgtk;
         extraPackages = (epkgs: with epkgs; [ vterm pdf-tools ]);
       };
 
       alacritty.enable = true;
       qutebrowser = {
         enable = true;
-        package = pkgs.qutebrowser-qt6;
+        package = pkgs.qutebrowser-qt6.override { enableWideVine = true; };
         loadAutoconfig = true;
         settings = {
-          qt.args = [ "widevine-path=${pkgs.vivaldi-widevine}/share/google/chrome/WidevineCdm/_platform_specific/linux_x64/libwidevinecdm.so" ];
+          content.javascript.clipboard = "access";
         };
         aliases = {
-          mpv = "spawn --userscript ${pkgs.qutebrowser-qt6}/share/qutebrowser/userscripts/view_in_mpv";
+          mpv = "spawn --userscript view_in_mpv";
+          pw = "spawn --userscript qute-keepassxc --key Narice";
+        };
+        keyBindings = {
+          insert = {
+            "<Ctrl+Alt+p>" = "pw";
+          };
+          normal = {
+            "pw" = "pw";
+          };
         };
         extraConfig = ''
           import catppuccin
@@ -142,10 +155,10 @@
         indicator = true;
       };
 
-      # emacs = {
-      #   enable = true;
-      #   client.enable = true;
-      # };
+      emacs = {
+        enable = true;
+        client.enable = true;
+      };
 
       # syncthing = {
       #   enable = true;

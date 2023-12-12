@@ -1,8 +1,9 @@
 { suites, lib, pkgs, ... }:
 {
-  imports = suites.default;
+  imports = suites.main;
 
   networking = {
+    hostName = "narice-pc";
     interfaces.eno1.useDHCP = true;
     networkmanager.enable = true;
   };
@@ -26,7 +27,7 @@
 
   services = {
     fstrim.enable = true;
-    xserver.videoDrivers = [ "amdgpu" ];
+    xserver.videoDrivers = [ "modesetting" ];
   };
 
   hardware = {
@@ -74,17 +75,22 @@
       fsType = "ext4";
     };
 
-    # "/home/monasbook/vault" = {
-    #   label = "vault-monasbook";
-    #   fsType = "ext4";
-    # };
-
     "/home/narice/shared" = {
       label = "shared";
       fsType = "ext4";
     };
 
-    # "/home/monasbook/shared" = {
+    "/home/narice/vault/hot-data" = {
+      label = "hot-data";
+      fsType = "ext4";
+    };
+
+    "/home/narice/vault/warm-data" = {
+      label = "warm-data";
+      fsType = "ext4";
+    };
+
+    # "/home/bonk/shared" = {
     #   device = "/home/narice/shared";
     #   fsType = "none";
     #   options = [ "bind" ];
@@ -96,8 +102,6 @@
   ];
 
   powerManagement.cpuFreqGovernor = lib.mkForce "powersave";
-  # high-resolution display
-  hardware.video.hidpi.enable = true;
 
   system.stateVersion = "21.11";
 }
